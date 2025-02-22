@@ -32,7 +32,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 					state_machine.world.handle_tile_click()
 					return
 	
-	if event.is_action("build_mode"):
+	if event.is_action("build_mode") and event.is_pressed():
 		get_viewport().set_input_as_handled()
 		start_construction.emit()
 
