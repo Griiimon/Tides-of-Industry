@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://iavwu0hw23ri"]
+
+[ext_resource type="Script" path="res://core/ui/action_bar_panel_container.gd" id="1_qdcb5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaqmo"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 0.513726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3fr6"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0.769432, 0.769432, 0.769432, 1)
+
+[node name="Action Bar PanelContainer" type="PanelContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vaqmo")
+script = ExtResource("1_qdcb5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Build Button" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "Build"
+
+[node name="Upgrade Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Upgrade"
+
+[node name="Remove Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Remove"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_y3fr6")
+
+[node name="Research Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Research"
+
+[node name="Research Button2" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Factions"
+
+[node name="Research Button3" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Policies"
+
+[connection signal="toggled" from="MarginContainer/HBoxContainer/Build Button" to="." method="_on_build_button_toggled"]

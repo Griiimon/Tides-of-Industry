@@ -1,4 +1,3 @@
-Add placement conditions ( can render too, for example town center build radius )
 Add construction preview resource ( renders/show ui stuff that helps with placement: neighbor/self pollution, resources in radius...)
 
 
@@ -87,3 +86,10 @@ EVENTS
 ---------------
 
 - Gain x research points when switching to Research y ( other research gets lost )
+
+
+
+MISC
+-----------------
+
+Image prompts: ", video game sprite sheet pixel art"

@@ -2,8 +2,13 @@ class_name UI
 extends CanvasLayer
 
 @export var world: World
+@export var game_states: GameStateMachine
 
 @export var tile_info_container_scene: PackedScene
+
+@onready var action_bar_container: ActionBarPanelContainer = %"Action Bar PanelContainer"
+@onready var building_list_container: BuildingListPanelContainer = %"Building List PanelContainer"
+
 
 var tile_info_container: TileInfoPanelContainer
 
@@ -12,6 +17,11 @@ var tile_info_container: TileInfoPanelContainer
 func _ready() -> void:
 	assert(world)
 	assert(tile_info_container_scene)
+
+	action_bar_container.open_build_list.connect(building_list_container.show)
+	action_bar_container.close_build_list.connect(building_list_container.hide)
+
+	building_list_container.selected.connect(on_build)
 	
 	SignalManager.show_tile_info.connect(show_tile_info)
 	SignalManager.hide_tile_info.connect(hide_tile_info)
@@ -29,3 +39,9 @@ func show_tile_info(tile: Vector2i):
 
 func hide_tile_info():
 	tile_info_container.hide()
+
+
+func on_build(building: Building):
+	building_list_container.hide()
+	action_bar_container.untoggle_build_button()
+	game_states.build(building)

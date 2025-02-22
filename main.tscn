@@ -236,5 +236,6 @@ script = ExtResource("8_kfd3r")
 [node name="Upgrade" type="Node" parent="Game States"]
 script = ExtResource("9_s2afl")
 
-[node name="UI" parent="." node_paths=PackedStringArray("world") instance=ExtResource("14_5g3eo")]
+[node name="UI" parent="." node_paths=PackedStringArray("world", "game_states") instance=ExtResource("14_5g3eo")]
 world = NodePath("../World")
+game_states = NodePath("../Game States")
