@@ -34,6 +34,11 @@ func settle_island(town_center_pos: Vector2i)-> IslandInstance:
 	return island_instance
 
 
+func set_building_ghost_layer_valid(flag: bool):
+	tile_map_buildings_ghost.modulate.g= 1.0 if flag else 0.0
+	tile_map_buildings_ghost.modulate.b= 1.0 if flag else 0.0
+
+
 func get_mouse_tile()-> Vector2i:
 	return tile_map_terrain.local_to_map(tile_map_terrain.to_local(tile_map_terrain.get_global_mouse_position()))
 
@@ -84,3 +89,17 @@ func get_feature(tile: Vector2i)-> TerrainFeature:
 	var coords: Vector2i= tile_map_terrain_features.get_cell_atlas_coords(tile)
 	if not GameData.terrain_feature_atlas_lookup.has(coords): return null
 	return GameData.terrain_feature_atlas_lookup[coords]
+
+
+func get_island(tile: Vector2i)-> IslandInstance:
+	for island in get_islands():
+		if island.definition.bounding_box.has_point(tile):
+			return island
+	return null
+
+
+func get_islands()-> Array[IslandInstance]:
+	var result: Array[IslandInstance]
+	result.assign(islands.get_children())
+	return result
+	
