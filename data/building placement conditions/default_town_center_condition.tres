@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TownCenterRadiusPlacementCondition" load_steps=2 format=3 uid="uid://400suhsme0to"]
+
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/town_center_radius_placement_condition.gd" id="1_niln4"]
+
+[resource]
+script = ExtResource("1_niln4")
+invert = false

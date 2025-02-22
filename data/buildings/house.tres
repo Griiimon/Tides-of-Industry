@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="Building" load_steps=3 format=3 uid="uid://du2mv4j0w164v"]
+[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://du2mv4j0w164v"]
 
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_30t3y"]
 [ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_bchg5"]
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_4r0vm"]
+[ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_sj4c4"]
+[ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_x118r"]
 
 [resource]
 script = ExtResource("1_30t3y")
 atlas_coords = Vector2i(0, 0)
 build_costs = Array[int]([])
 category = ExtResource("1_bchg5")
+placement_conditions = Array[ExtResource("2_4r0vm")]([ExtResource("3_sj4c4"), ExtResource("4_x118r")])
 production = Array[int]([])
 pollution = Array[int]([10, 25, 50])
 population = Array[int]([])
 research = Array[int]([])
-is_town_center = false
 name = ""

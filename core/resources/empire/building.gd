@@ -13,5 +13,12 @@ extends NamedResource
 
 
 
+func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandInstance)-> bool:
+	for condition in placement_conditions:
+		if not condition.evaluate(tile, world, island):
+			return false
+	return true
+
+
 func is_town_center()-> bool:
 	return false

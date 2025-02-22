@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TerrainPlacementCondition" load_steps=4 format=3 uid="uid://citxcsqn1v114"]
+
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/terrain_placement_condition.gd" id="1_d8vic"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="2_ek5si"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="3_exu5w"]
+
+[resource]
+script = ExtResource("1_d8vic")
+terrain_whitelist = Array[ExtResource("2_ek5si")]([ExtResource("3_exu5w")])
+terrain_blacklist = Array[ExtResource("2_ek5si")]([])
