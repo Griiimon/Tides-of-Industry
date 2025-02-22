@@ -43,18 +43,16 @@ func get_mouse_tile()-> Vector2i:
 	return tile_map_terrain.local_to_map(tile_map_terrain.to_local(tile_map_terrain.get_global_mouse_position()))
 
 
-func get_building_stat(stat_name: String, tile: Vector2i)-> int:
+func get_building_stat(stat: Building.Stat, tile: Vector2i)-> int:
 	var atlas_coords: Vector2i= tile_map_buildings.get_cell_atlas_coords(tile)
 	assert(GameData.building_atlas_lookup.has(atlas_coords))
 	var building: Building= GameData.building_atlas_lookup[atlas_coords]
-	var stat_arr: Array[int]= building.get(stat_name)
-	assert(stat_arr != null)
-	if stat_arr.is_empty():
-		return 0
 	var level: int= tile_map_building_levels.get_cell_source_id(tile)
-	if stat_arr.size() >= level:
-		return stat_arr[level]
-	return 0
+	return building.get_stat(stat, level)
+
+
+func has_building(tile: Vector2i)-> bool:
+	return get_building(tile) != null
 
 
 func get_building(tile: Vector2i)-> Building:
@@ -102,4 +100,12 @@ func get_islands()-> Array[IslandInstance]:
 	var result: Array[IslandInstance]
 	result.assign(islands.get_children())
 	return result
-	
+
+
+func get_neighbor_buildings(tile: Vector2i, whitelist: Array[Building]= [])-> Array[Vector2i]:
+	var result: Array[Vector2i]
+	for neighbor in tile_map_buildings.get_surrounding_cells(tile):
+		var building: Building= get_building(neighbor)
+		if building:
+			result.append(neighbor)
+	return result
