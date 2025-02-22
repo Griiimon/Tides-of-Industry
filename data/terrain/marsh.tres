@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=3 format=3 uid="uid://dktqjcvqafqgc"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="1_a1nec"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="2_obe62"]
+
+[resource]
+script = ExtResource("1_a1nec")
+atlas_coords = Vector2i(0, 0)
+is_sea = false
+terraforming_result = ExtResource("2_obe62")
+terraforming_cost = 10000
+name = ""

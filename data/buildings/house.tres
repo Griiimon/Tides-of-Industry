@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Building" load_steps=3 format=3 uid="uid://du2mv4j0w164v"]
+
+[ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_30t3y"]
+[ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_bchg5"]
+
+[resource]
+script = ExtResource("1_30t3y")
+atlas_coords = Vector2i(0, 0)
+build_costs = Array[int]([])
+category = ExtResource("1_bchg5")
+production = Array[int]([])
+pollution = Array[int]([10, 25, 50])
+population = Array[int]([])
+research = Array[int]([])
+is_town_center = false
+name = ""

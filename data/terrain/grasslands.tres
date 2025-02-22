@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://b2c02ee8f5x0o"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="1_fenna"]
+
+[resource]
+script = ExtResource("1_fenna")
+terrain_set_name = "Grass"
+is_sea = false
+terraforming_cost = 0
+name = ""

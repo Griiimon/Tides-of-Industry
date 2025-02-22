@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://dicp2fwadfdlv"]
+
+[ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_qfag8"]
+
+[resource]
+script = ExtResource("1_qfag8")
+atlas_coords = Vector2i(0, 0)
+build_costs = Array[int]([])
+name = ""

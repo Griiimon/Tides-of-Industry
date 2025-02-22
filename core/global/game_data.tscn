@@ -1,0 +1,15 @@
+[gd_scene load_steps=9 format=3 uid="uid://dh5gadx5pq421"]
+
+[ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
+[ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="2_fdkgq"]
+[ext_resource type="Resource" uid="uid://416y2yuxhu1u" path="res://data/buildings/town_center.tres" id="3_ge107"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="3_m04ym"]
+[ext_resource type="Resource" uid="uid://du2mv4j0w164v" path="res://data/buildings/house.tres" id="3_y316n"]
+[ext_resource type="Resource" uid="uid://j756207jehvn" path="res://data/terrain/coast.tres" id="4_bhox0"]
+[ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="5_87nd6"]
+
+[node name="GameData" type="Node"]
+script = ExtResource("1_xq1md")
+terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6")])
+buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n")])

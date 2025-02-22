@@ -1,0 +1,240 @@
+[gd_scene load_steps=21 format=4 uid="uid://be5fso6j67b01"]
+
+[ext_resource type="Script" path="res://core/world.gd" id="1_bd8if"]
+[ext_resource type="Script" path="res://core/main.gd" id="1_n11ok"]
+[ext_resource type="Texture2D" uid="uid://bd70h087fi7ie" path="res://textures/terrain_tiles.png" id="1_sqkbh"]
+[ext_resource type="Texture2D" uid="uid://1d3j784hvd3d" path="res://textures/features.png" id="2_3mwv3"]
+[ext_resource type="Texture2D" uid="uid://b5cgqw27uhbp3" path="res://textures/buildings.png" id="3_2b7uq"]
+[ext_resource type="Script" path="res://core/game states/game_state_machine.gd" id="4_7s3ma"]
+[ext_resource type="Script" path="res://core/my_camera.gd" id="5_8nmma"]
+[ext_resource type="Script" path="res://core/game states/idle_state.gd" id="5_t57mi"]
+[ext_resource type="Script" path="res://core/game states/construction_state.gd" id="6_nea45"]
+[ext_resource type="Script" path="res://core/game states/move_unit_state.gd" id="7_xeex4"]
+[ext_resource type="Script" path="res://core/game states/remove_state.gd" id="8_kfd3r"]
+[ext_resource type="Script" path="res://core/game states/upgrade_state.gd" id="9_s2afl"]
+[ext_resource type="Resource" uid="uid://416y2yuxhu1u" path="res://data/buildings/town_center.tres" id="10_vrar1"]
+[ext_resource type="PackedScene" uid="uid://idc6uwm0cuky" path="res://core/ui/ui.tscn" id="14_5g3eo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58g06"]
+texture = ExtResource("1_sqkbh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/top_side = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/top_side = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/right_side = 0
+1:3/0/terrains_peering_bit/left_side = 0
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/left_side = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 1
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+0:5/0/terrain_set = 0
+0:5/0/terrain = 2
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_otpmu"]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Grass"
+terrain_set_0/terrain_0/color = Color(0.242558, 0.442946, 0.174231, 1)
+terrain_set_0/terrain_1/name = "Coast"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_2/name = "Sea"
+terrain_set_0/terrain_2/color = Color(0.470588, 0.501961, 0.894118, 1)
+sources/0 = SubResource("TileSetAtlasSource_58g06")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iu8yb"]
+texture = ExtResource("2_3mwv3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5tw1o"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_iu8yb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mtop1"]
+texture = ExtResource("3_2b7uq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_oy6i8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_mtop1")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_n11ok")
+
+[node name="World" type="Node" parent="."]
+script = ExtResource("1_bd8if")
+
+[node name="TileMap Terrain" type="TileMapLayer" parent="World"]
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAEAAAABAAQAAAABAAIAAAACAAMAAAABAAEAAAADAAMAAAACAAEAAAADAAQAAAACAAIAAAACAAUAAAADAAIAAAACAAIAAAABAAAAAAD//wIAAAAAAAAAAAD//wQAAAAAAAIAAAADAAIAAAACAAAAAAD//wUAAAAAAAQAAAABAAUAAAAAAAQAAAADAAUAAAAAAAQAAAD//wYAAAAAAAUAAAAAAAYAAAAAAAUAAAABAAYAAAAAAAUAAAACAAYAAAAAAAQAAAADAAYAAAAAAAUAAAAEAAYAAAAAAAUAAAAEAAUAAAAAAAUAAAACAAQAAAABAAEAAAAAAAUAAAAAAAQAAAAAAAQAAAABAAIAAAA=")
+tile_set = SubResource("TileSet_otpmu")
+
+[node name="TileMap Terrain Features" type="TileMapLayer" parent="World"]
+tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAACAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_5tw1o")
+
+[node name="TileMap Buildings" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_oy6i8")
+
+[node name="TileMap Building Levels" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_oy6i8")
+
+[node name="TileMap Buildings Ghost" type="TileMapLayer" parent="World"]
+modulate = Color(1, 1, 1, 0.501961)
+tile_set = SubResource("TileSet_oy6i8")
+
+[node name="Islands" type="Node" parent="World"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("5_8nmma")
+
+[node name="Game States" type="Node" parent="." node_paths=PackedStringArray("world", "camera", "current_state")]
+script = ExtResource("4_7s3ma")
+world = NodePath("../World")
+camera = NodePath("../Camera2D")
+current_state = NodePath("Idle")
+debug = true
+
+[node name="Idle" type="Node" parent="Game States"]
+script = ExtResource("5_t57mi")
+
+[node name="Construction" type="Node" parent="Game States"]
+script = ExtResource("6_nea45")
+building = ExtResource("10_vrar1")
+
+[node name="Move Unit" type="Node" parent="Game States"]
+script = ExtResource("7_xeex4")
+
+[node name="Remove" type="Node" parent="Game States"]
+script = ExtResource("8_kfd3r")
+
+[node name="Upgrade" type="Node" parent="Game States"]
+script = ExtResource("9_s2afl")
+
+[node name="UI" parent="." node_paths=PackedStringArray("world") instance=ExtResource("14_5g3eo")]
+world = NodePath("../World")

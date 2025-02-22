@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://cxd4dr0x5vqw2"]
+
+[ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_fhsnp"]
+
+[resource]
+script = ExtResource("1_fhsnp")
+atlas_coords = Vector2i(0, 0)
+build_costs = Array[int]([])
+name = ""

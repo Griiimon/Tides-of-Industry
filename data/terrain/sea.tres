@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://ntnwkcxxmguq"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="1_ebusv"]
+
+[resource]
+script = ExtResource("1_ebusv")
+terrain_set_name = "Sea"
+is_sea = true
+terraforming_cost = 0
+name = ""

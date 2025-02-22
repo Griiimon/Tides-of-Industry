@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://bde357srjk4qd"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="1_mnoyj"]
+
+[resource]
+script = ExtResource("1_mnoyj")
+atlas_coords = Vector2i(0, 0)
+is_sea = false
+name = ""
