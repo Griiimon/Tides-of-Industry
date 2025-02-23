@@ -20,4 +20,10 @@ func late_ready():
 
 
 func _input(event: InputEvent) -> void:
-	pass
+	if event is InputEventKey and event.is_pressed():
+		var key_event: InputEventKey= event
+		match key_event.keycode:
+			KEY_F1:
+				print(get_viewport().get_camera_2d().get_screen_center_position())
+			KEY_H:
+				game_states.build(load("res://data/buildings/house.tres"))

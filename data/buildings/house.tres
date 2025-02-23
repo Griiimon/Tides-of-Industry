@@ -1,10 +1,26 @@
-[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://du2mv4j0w164v"]
+[gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://du2mv4j0w164v"]
 
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_30t3y"]
 [ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_bchg5"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_4r0vm"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_sj4c4"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_x118r"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="6_7a0pk"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_same_neighbor_building_percentage_modifier.gd" id="7_bkdl7"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_neighbor_terrain_list_percentage_modifier.gd" id="8_m3bem"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="9_jt4m7"]
+[ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="10_sjsfm"]
+
+[sub_resource type="Resource" id="Resource_omj8f"]
+script = ExtResource("7_bkdl7")
+percentage = 20.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_4fqgy"]
+script = ExtResource("8_m3bem")
+terrains = Array[ExtResource("9_jt4m7")]([ExtResource("10_sjsfm")])
+percentage = -50.0
+type = 2
 
 [resource]
 script = ExtResource("1_30t3y")
@@ -12,8 +28,10 @@ atlas_coords = Vector2i(0, 0)
 build_costs = Array[int]([])
 category = ExtResource("1_bchg5")
 placement_conditions = Array[ExtResource("2_4r0vm")]([ExtResource("3_sj4c4"), ExtResource("4_x118r")])
+stat_modifiers = Array[ExtResource("6_7a0pk")]([SubResource("Resource_omj8f"), SubResource("Resource_4fqgy")])
 production = Array[int]([])
-pollution = Array[int]([10, 25, 50])
-population = Array[int]([])
+pollution = Array[int]([2, 6, 12])
+population = Array[int]([10, 25, 50])
+power = Array[int]([])
 research = Array[int]([])
 name = ""

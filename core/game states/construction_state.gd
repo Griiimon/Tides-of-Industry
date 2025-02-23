@@ -55,7 +55,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 func build():
 	var island: IslandInstance
 	
-	if building.is_town_center:
+	if building.is_town_center():
 		island= state_machine.world.settle_island(current_tile)
 	else:
 		island= state_machine.world.get_island(current_tile)

@@ -4,6 +4,9 @@ extends Node
 @export var terrain_features: Array[TerrainFeature]
 @export var buildings: Array[Building]
 
+var empire: EmpireState= EmpireState.new()
+var world_state: WorldState= WorldState.new()
+
 var terrain_set_lookup: Dictionary
 var terrain_feature_atlas_lookup: Dictionary
 var building_atlas_lookup: Dictionary

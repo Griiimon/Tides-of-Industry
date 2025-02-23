@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://br60o54jal4bn"]
+[gd_scene load_steps=2 format=3 uid="uid://br60o54jal4bn"]
+
+[ext_resource type="Script" path="res://core/ui/top_bar_panel_container.gd" id="1_qersk"]
 
 [node name="Top Bar PanelContainer" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+script = ExtResource("1_qersk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -15,57 +18,59 @@ theme_override_constants/margin_bottom = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer Left" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Island HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Island Name Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Island Name Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Island #1"
 
-[node name="Population Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Population Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Pop: 10"
 
-[node name="Production Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Production Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Prod: 2"
 
-[node name="Pollution Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Pollution Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Poll: 0"
 
-[node name="Power Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Power Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Pow: 0"
 
-[node name="Research Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Left"]
+[node name="Research Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Res: 1"
 
-[node name="HBoxContainer Right" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Empire HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 25
 alignment = 2
 
-[node name="Stability Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Right"]
+[node name="Stability Label" type="Label" parent="MarginContainer/HBoxContainer/Empire HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Stab: 80%"
 
-[node name="Money Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Right"]
+[node name="Money Label" type="Label" parent="MarginContainer/HBoxContainer/Empire HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "$250"
 
-[node name="Turn Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer Right"]
+[node name="Turn Label" type="Label" parent="MarginContainer/HBoxContainer/Empire HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Turn 1"

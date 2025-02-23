@@ -16,12 +16,14 @@ var research: int
 
 
 
-func update():
+func update_stats():
 	update_pollution()
 	update_population()
 	update_production()
 	update_power()
 	update_research()
+
+	SignalManager.island_stats_updated.emit(self)
 
 
 func build(building: Building, tile: Vector2i):
@@ -30,6 +32,8 @@ func build(building: Building, tile: Vector2i):
 	
 	if building.is_town_center():
 		definition.add_town_center_position(tile)
+
+	update_stats()
 
 
 func update_pollution():

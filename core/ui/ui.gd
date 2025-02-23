@@ -6,6 +6,7 @@ extends CanvasLayer
 
 @export var tile_info_container_scene: PackedScene
 
+@onready var top_bar_container: TopBarPanelContainer = $"Top Bar PanelContainer"
 @onready var action_bar_container: ActionBarPanelContainer = %"Action Bar PanelContainer"
 @onready var building_list_container: BuildingListPanelContainer = %"Building List PanelContainer"
 
@@ -25,10 +26,18 @@ func _ready() -> void:
 	
 	SignalManager.show_tile_info.connect(show_tile_info)
 	SignalManager.hide_tile_info.connect(hide_tile_info)
+	SignalManager.island_stats_updated.connect(on_island_stats_updated)
 
 	tile_info_container= tile_info_container_scene.instantiate()
 	tile_info_container.hide()
+	
 	add_child(tile_info_container)
+
+	update.call_deferred()
+
+
+func update():
+	update_top_bar()
 
 
 func show_tile_info(tile: Vector2i):
@@ -41,7 +50,21 @@ func hide_tile_info():
 	tile_info_container.hide()
 
 
+func update_top_bar():
+	top_bar_container.update(get_island_in_view())
+
+
 func on_build(building: Building):
 	building_list_container.hide()
 	action_bar_container.untoggle_build_button()
 	game_states.build(building)
+
+
+func on_island_stats_updated(island: IslandInstance):
+	if get_island_in_view() == island:
+		update_top_bar()
+
+
+func get_island_in_view()-> IslandInstance:
+	var global_pos: Vector2= get_viewport().get_camera_2d().get_screen_center_position()
+	return world.get_island(world.get_tile(global_pos))

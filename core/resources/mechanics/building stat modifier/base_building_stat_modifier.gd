@@ -1,15 +1,10 @@
 class_name BaseBuildingStatModifier
 extends Resource
 
-var type: Building.Stat
-var cached_value= 0
+@export var type: Building.Stat
 
 
 
-func update(tile: Vector2i, world: World, island: IslandInstance):
-	assert(false, "Abstract class")
-
-
-func apply(base_value: int)-> int:
+func apply(base_value: int, tile: Vector2i, world: World, island: IslandInstance)-> int:
 	assert(false, "Abstract class")
 	return 0

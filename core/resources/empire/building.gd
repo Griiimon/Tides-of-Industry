@@ -24,23 +24,29 @@ func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandI
 	return true
 
 
-func get_stat(stat: Stat, level: int)-> int:
+func get_stat(stat: Stat, level: int, tile: Vector2i, world: World, island: IslandInstance)-> int:
 	var result: int
 	match stat:
 		Stat.POPULATION:
-			result= population[level] if level <= population.size() else 0
+			result= population[level] if level < population.size() else 0
 		Stat.PRODUCTION:
-			result= production[level] if level <= production.size() else 0
+			result= production[level] if level < production.size() else 0
 		Stat.POWER:
-			result= power[level] if level <= power.size() else 0
+			result= power[level] if level < power.size() else 0
 		Stat.POLLUTION:
-			result= pollution[level] if level <= pollution.size() else 0
+			result= pollution[level] if level < pollution.size() else 0
 		Stat.RESEARCH:
-			result= research[level] if level <= research.size() else 0
+			result= research[level] if level < research.size() else 0
 
 	for modifier in stat_modifiers:
-		result= modifier.apply(result)
-	
+		if modifier.type == stat:
+			var modifier_result= modifier.apply(result, tile, world, island)
+			if result > 0:
+				modifier_result= max(0, modifier_result)
+			elif result < 0:
+				modifier_result= min(0, modifier_result)
+				
+			result= modifier_result
 	return result
 
 
