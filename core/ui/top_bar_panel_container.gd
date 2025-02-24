@@ -29,6 +29,6 @@ func update(island: IslandInstance):
 		power_label.text= str("Pow: ", island.power)
 		research_label.text= str("Res: ", island.research)
 	
-	stability_label.text= str("Stab: ", GameData.get_empire_state().stability)
-	money_label.text= str("$", GameData.get_empire_state().money)
+	stability_label.text= str("Stab: ", int(GameData.get_empire_state().stability), "%")
+	money_label.text= str("$", int(GameData.get_empire_state().money))
 	turn_label.text= str("Turn ", GameData.world_state.turns)

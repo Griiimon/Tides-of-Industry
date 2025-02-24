@@ -55,3 +55,7 @@ func change_ratio(type: Type, delta: int):
 
 
 	SignalManager.production_yields_updated.emit(self)
+
+
+func calculate(type: Type, total_production: int)-> float:
+	return total_production * ratios[type] / 100.0

@@ -27,6 +27,7 @@ func _ready() -> void:
 	SignalManager.show_tile_info.connect(show_tile_info)
 	SignalManager.hide_tile_info.connect(hide_tile_info)
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)
+	SignalManager.empire_stats_updated.connect(update_top_bar)
 
 	tile_info_container= tile_info_container_scene.instantiate()
 	tile_info_container.hide()

@@ -1,14 +1,14 @@
 class_name EmpireState
 extends Resource
 
-@export var money: int
-@export var construction_points: int
-@export var stability: int
+@export var money: float
+@export var construction_points: float
+@export var stability: float
 
 @export var production_yields: ProductionYields= ProductionYields.new()
 
 @export var current_research: Technology
-@export var research_progress: int
+@export var research_progress: float
 
 @export var unlocked_technologies: Array[TechnologyLevel]
 

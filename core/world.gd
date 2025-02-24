@@ -10,10 +10,18 @@ extends Node
 
 @onready var islands: Node = $Islands
 
+var empire: Empire= Empire.new()
+
 
 
 func tick():
-	pass
+	var state: WorldState= GameData.world_state
+	
+	state.turns+= 1
+
+	empire.tick(self)
+	
+	
 
 
 func handle_tile_click():
@@ -84,6 +92,9 @@ func get_town_center_radius(tile: Vector2i)-> int:
 
 func get_terrain(tile: Vector2i)-> Terrain:
 	var tile_data: TileData= tile_map_terrain.get_cell_tile_data(tile)
+	if tile_data == null or tile_data.terrain_set == -1 or tile_data.terrain == -1:
+		return null
+		
 	var terrain_name: String= tile_map_terrain.tile_set.get_terrain_name(0, tile_data.terrain) if tile_data else ""
 	if terrain_name.is_empty():
 		return null
