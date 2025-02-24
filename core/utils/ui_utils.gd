@@ -30,7 +30,7 @@ static func add_button(control: Control, text: String, on_pressed: Callable, arg
 	if args.is_empty():
 		button.pressed.connect(on_pressed)
 	else:
-		button.pressed.connect(on_pressed.bind(args))
+		button.pressed.connect(on_pressed.bindv(args))
 
 	control.add_child(button)
 	return button

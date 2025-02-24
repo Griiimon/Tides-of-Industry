@@ -1,9 +1,46 @@
-[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://cxd4dr0x5vqw2"]
+[gd_resource type="Resource" script_class="Building" load_steps=15 format=3 uid="uid://cxd4dr0x5vqw2"]
 
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_fhsnp"]
+[ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_wgm41"]
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_46gi7"]
+[ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_c5sqn"]
+[ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_iup3q"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="6_76tqi"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_same_neighbor_building_percentage_modifier.gd" id="7_ku7k3"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_technology_condition.gd" id="8_8m6gy"]
+[ext_resource type="Script" path="res://core/resources/empire/technology_level.gd" id="9_as0ir"]
+[ext_resource type="Resource" uid="uid://cotu2nsxm3w7p" path="res://data/technologies/industrial_complex.tres" id="10_tarmp"]
+
+[sub_resource type="Resource" id="Resource_njswm"]
+script = ExtResource("7_ku7k3")
+percentage = 50.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_j24sk"]
+script = ExtResource("7_ku7k3")
+percentage = 50.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_dlwbs"]
+script = ExtResource("9_as0ir")
+technology = ExtResource("10_tarmp")
+level = 0
+
+[sub_resource type="Resource" id="Resource_dgk7i"]
+script = ExtResource("8_8m6gy")
+technology_level = SubResource("Resource_dlwbs")
+modifier = SubResource("Resource_j24sk")
 
 [resource]
 script = ExtResource("1_fhsnp")
-atlas_coords = Vector2i(0, 0)
+atlas_coords = Vector2i(5, 0)
 build_costs = Array[int]([])
+category = ExtResource("1_wgm41")
+placement_conditions = Array[ExtResource("2_46gi7")]([ExtResource("3_c5sqn"), ExtResource("4_iup3q")])
+stat_modifiers = Array[ExtResource("6_76tqi")]([SubResource("Resource_njswm"), SubResource("Resource_dgk7i")])
+production = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+pollution = Array[int]([10])
+population = Array[int]([])
+power = Array[int]([])
+research = Array[int]([])
 name = ""

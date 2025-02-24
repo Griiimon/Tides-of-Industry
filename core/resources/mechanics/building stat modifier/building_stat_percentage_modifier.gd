@@ -1,5 +1,5 @@
 class_name BuildingStatPercentageModifier
-extends BaseBuildingStatModifier
+extends BaseBuildingStatModifierWithStat
 
 @export var percentage: float
 

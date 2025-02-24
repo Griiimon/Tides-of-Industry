@@ -5,6 +5,8 @@ extends Resource
 @export var construction_points: int
 @export var stability: int
 
+@export var production_yields: ProductionYields= ProductionYields.new()
+
 @export var current_research: Technology
 @export var research_progress: int
 

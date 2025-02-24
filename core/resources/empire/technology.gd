@@ -5,6 +5,7 @@ extends NamedResource
 @export var required_tech: TechnologyLevel
 
 @export var passive_modifiers: Array[ModifierEffectCollection] 
+@export var desc: String
 
 
 

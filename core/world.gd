@@ -6,9 +6,14 @@ extends Node
 @onready var tile_map_buildings: TileMapLayer = $"TileMap Buildings"
 @onready var tile_map_building_levels: TileMapLayer = $"TileMap Building Levels"
 @onready var tile_map_buildings_ghost: TileMapLayer = $"TileMap Buildings Ghost"
+@onready var tile_map_frames: TileMapLayer = $"TileMap Frames"
 
 @onready var islands: Node = $Islands
 
+
+
+func tick():
+	pass
 
 
 func handle_tile_click():

@@ -4,7 +4,6 @@ extends Node
 @export var terrain_features: Array[TerrainFeature]
 @export var buildings: Array[Building]
 
-var empire: EmpireState= EmpireState.new()
 var world_state: WorldState= WorldState.new()
 
 var terrain_set_lookup: Dictionary
@@ -22,3 +21,7 @@ func _ready() -> void:
 
 	for building in buildings:
 		building_atlas_lookup[building.atlas_coords]= building
+
+
+func get_empire_state()-> EmpireState:
+	return world_state.empire_state

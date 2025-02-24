@@ -1,5 +1,7 @@
-class_name BaseBuildingStatModifier
-extends Resource
+class_name BaseBuildingStatModifierWithStat
+extends BaseBuildingStatModifier
+
+@export var type: Building.Stat
 
 
 

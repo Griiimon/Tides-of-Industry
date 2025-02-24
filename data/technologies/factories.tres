@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Technology" load_steps=3 format=3 uid="uid://dpw1pu7p4whwy"]
+
+[ext_resource type="Script" path="res://core/resources/mechanics/modifier_effects/modifier_effect_collection.gd" id="1_d5m70"]
+[ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_8kjw8"]
+
+[resource]
+script = ExtResource("2_8kjw8")
+costs = Array[int]([])
+passive_modifiers = Array[ExtResource("1_d5m70")]([])
+name = ""
