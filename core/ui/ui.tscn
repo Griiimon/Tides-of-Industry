@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://idc6uwm0cuky"]
+[gd_scene load_steps=8 format=3 uid="uid://idc6uwm0cuky"]
 
 [ext_resource type="Script" path="res://core/ui/ui.gd" id="1_rdvyd"]
 [ext_resource type="PackedScene" uid="uid://b0va4hhlw1rl6" path="res://core/ui/tile_info_panel_container.tscn" id="2_o5sdk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://iavwu0hw23ri" path="res://core/ui/action_bar_panel_container.tscn" id="4_hr0vf"]
 [ext_resource type="PackedScene" uid="uid://b7sfnyed3mmvx" path="res://core/ui/building_list_panel_container.tscn" id="5_3qdws"]
 [ext_resource type="PackedScene" uid="uid://dch1agyv3d815" path="res://core/ui/production_yield_panel_container.tscn" id="6_xqd2v"]
+[ext_resource type="PackedScene" uid="uid://dd4s5vamnrms6" path="res://core/ui/research_popup.tscn" id="7_613m4"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_rdvyd")
@@ -14,13 +15,12 @@ tile_info_container_scene = ExtResource("2_o5sdk")
 [node name="Top Bar PanelContainer" parent="." instance=ExtResource("3_exb7b")]
 
 [node name="Action Bar PanelContainer" parent="." instance=ExtResource("4_hr0vf")]
-unique_name_in_owner = true
 
 [node name="Building List PanelContainer" parent="." instance=ExtResource("5_3qdws")]
-unique_name_in_owner = true
 
 [node name="ProductionYield PanelContainer" parent="." instance=ExtResource("6_xqd2v")]
-unique_name_in_owner = true
 anchors_preset = -1
 anchor_top = 0.05
 anchor_bottom = 0.1
+
+[node name="Research Popup" parent="." instance=ExtResource("7_613m4")]

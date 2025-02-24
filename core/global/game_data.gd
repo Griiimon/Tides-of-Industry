@@ -3,6 +3,8 @@ extends Node
 @export var terrains: Array[Terrain]
 @export var terrain_features: Array[TerrainFeature]
 @export var buildings: Array[Building]
+@export var technologies: Array[Technology]
+
 
 var world_state: WorldState= WorldState.new()
 

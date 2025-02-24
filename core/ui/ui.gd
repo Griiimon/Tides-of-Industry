@@ -7,8 +7,9 @@ extends CanvasLayer
 @export var tile_info_container_scene: PackedScene
 
 @onready var top_bar_container: TopBarPanelContainer = $"Top Bar PanelContainer"
-@onready var action_bar_container: ActionBarPanelContainer = %"Action Bar PanelContainer"
-@onready var building_list_container: BuildingListPanelContainer = %"Building List PanelContainer"
+@onready var action_bar_container: ActionBarPanelContainer = $"Action Bar PanelContainer"
+@onready var building_list_container: BuildingListPanelContainer = $"Building List PanelContainer"
+@onready var research_popup: ResearchPopupPanel = $"Research Popup"
 
 
 var tile_info_container: TileInfoPanelContainer
@@ -21,9 +22,13 @@ func _ready() -> void:
 
 	action_bar_container.open_build_list.connect(building_list_container.show)
 	action_bar_container.close_build_list.connect(building_list_container.hide)
+	action_bar_container.open_research_list.connect(research_popup.open)
+	action_bar_container.close_research_list.connect(research_popup.hide)
 
 	building_list_container.selected.connect(on_build)
 	
+	research_popup.request_close.connect(action_bar_container.untoggle_research_button)
+
 	SignalManager.show_tile_info.connect(show_tile_info)
 	SignalManager.hide_tile_info.connect(hide_tile_info)
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)

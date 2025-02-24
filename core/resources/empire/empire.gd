@@ -14,6 +14,14 @@ func tick(world: World):
 	
 	state.money+= yields.calculate(ProductionYields.Type.MONEY, total_production)
 	state.construction_points+= yields.calculate(ProductionYields.Type.CONSTRUCTION_POINTS, total_production)
-	state.research_progress+= yields.calculate(ProductionYields.Type.RESEARCH, total_production)
+
+	if state.current_research: 
+		state.research_progress+= yields.calculate(ProductionYields.Type.RESEARCH, total_production)
+	
+		if state.research_progress >= state.current_research.get_research_cost():
+			state.research_finished()
+			state.current_research= null
+	else:
+		SignalManager.no_research_selected.emit()
 
 	SignalManager.empire_stats_updated.emit()

@@ -24,13 +24,14 @@ static func add_texture(control: Control, texture: Texture2D):
 	return texture_rect
 
 
-static func add_button(control: Control, text: String, on_pressed: Callable, args: Array= [])-> Button:
+static func add_button(control: Control, text: String, on_pressed= null, args: Array= [])-> Button:
 	var button= Button.new()
 	button.text= text
-	if args.is_empty():
-		button.pressed.connect(on_pressed)
-	else:
-		button.pressed.connect(on_pressed.bindv(args))
+	if on_pressed:
+		if args.is_empty():
+			button.pressed.connect(on_pressed)
+		else:
+			button.pressed.connect(on_pressed.bindv(args))
 
 	control.add_child(button)
 	return button

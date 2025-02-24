@@ -54,18 +54,21 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_y3fr6")
 
 [node name="Research Button" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 text = "Research"
 
-[node name="Research Button2" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Factions Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Factions"
 
-[node name="Research Button3" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Policies Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Policies"
 
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Build Button" to="." method="_on_build_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/Research Button" to="." method="_on_research_button_toggled"]

@@ -9,3 +9,7 @@ extends Resource
 func is_at_least(tech_level: TechnologyLevel)-> bool:
 	if technology != tech_level.technology: return false
 	return level >= tech_level.level
+
+
+func get_research_cost()-> int:
+	return technology.costs[level]
