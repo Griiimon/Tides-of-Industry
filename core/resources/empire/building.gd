@@ -8,6 +8,7 @@ enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 @export var category: BuildingCategory
 @export var placement_conditions: Array[BaseBuildingPlacementCondition]
 @export var stat_modifiers: Array[BaseBuildingStatModifier]
+@export var empire_modifiers: Array[BaseEmpireModifierEffect]
 
 @export var production: Array[int]
 @export var pollution: Array[int]
@@ -48,6 +49,14 @@ func get_stat(stat: Stat, level: int, tile: Vector2i, world: World, island: Isla
 				
 			result= modifier_result
 	return result
+
+
+func get_cost(level: int)-> int:
+	return build_costs[level]
+
+
+func get_max_level(level: int)-> int:
+	return build_costs.size()
 
 
 func is_town_center()-> bool:

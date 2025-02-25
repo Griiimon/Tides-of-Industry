@@ -1,3 +1,7 @@
+Remove empire effect modifiers from buildings? ( if they stay make them Array Collection like techs? )
+	=> at least make stability a default Array?
+	=> contra: how to make multiple bank levels provide interests?
+
 Add construction preview resource ( renders/show ui stuff that helps with placement: neighbor/self pollution, resources in radius...)
 
 
@@ -10,9 +14,11 @@ Add construction preview resource ( renders/show ui stuff that helps with placem
 BUILDINGS
 -----------
 
-Town Center
 Farm Field
-Factory ( Production Bonus from Resources/Distance, Pollution Penalty from nearby House/Park/Pond, Production Bonus from connected Houses immediate Neighbors/Road System )
+Factory ( Production Bonus from Resources/Distance, extra Pollution Penalty from nearby House/Park/Pond, Production Bonus from connected Houses immediate Neighbors/Road System )
+University ( Research+, stability penalty )
+Bank ( Gain interest on money, yearly? )
+
 
 
 
@@ -83,6 +89,8 @@ OTHER MECHANICS
 	heavy construction cost penalty ( 500% ? ), can be reduced by research
 	empire capital can be moved at heavy cost: temp. stability penalty, costs policy points and freezes point production for multiple years 
 
+- Building Removal Effects?
+	- Church Stability - 20, House 1/2/3 Stab - 5/10/15, University + 10 
 
 EVENTS
 ---------------

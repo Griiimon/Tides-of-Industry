@@ -1,22 +1,32 @@
-[gd_resource type="Resource" script_class="Building" load_steps=7 format=3 uid="uid://b5uu82kcqyy2q"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://b5uu82kcqyy2q"]
 
 [ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_kprtj"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_xth6r"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_pd5ll"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_ycda7"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_absolute.gd" id="3_6qag3"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_ug3xw"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_2hpl2"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="6_ry8ax"]
 
+[sub_resource type="Resource" id="Resource_j0uxa"]
+script = ExtResource("3_6qag3")
+value = -5
+type = 2
+duration = -1
+name = ""
+
 [resource]
 script = ExtResource("1_xth6r")
 atlas_coords = Vector2i(0, 1)
-build_costs = Array[int]([])
+build_costs = Array[int]([2000, 10000])
 category = ExtResource("1_kprtj")
 placement_conditions = Array[ExtResource("2_pd5ll")]([ExtResource("3_ug3xw"), ExtResource("4_2hpl2")])
 stat_modifiers = Array[ExtResource("6_ry8ax")]([])
+empire_modifiers = Array[ExtResource("2_ycda7")]([SubResource("Resource_j0uxa")])
 production = Array[int]([])
 pollution = Array[int]([])
 population = Array[int]([])
 power = Array[int]([])
-research = Array[int]([])
+research = Array[int]([10, 50])
 name = ""

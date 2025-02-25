@@ -2,7 +2,8 @@ class_name GameStateConstruction
 extends GameStateMachineState
 
 @export var building: Building
-
+var level: int
+var cost: int
 
 var is_valid_position: bool= false:
 	set(b):
@@ -24,10 +25,13 @@ var current_tile: Vector2i:
 
 func on_enter():
 	update_current_tile()
+	cost= building.get_cost(level)
 
 
 func on_exit():
 	state_machine.world.tile_map_buildings_ghost.clear()
+	building= null
+	level= 0
 
 
 func on_unhandled_input(event: InputEvent) -> void:
@@ -38,7 +42,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					if is_valid_position:
+					if is_valid_position and GameData.get_empire_state().can_affort(cost):
 						build()
 						if not event.shift_pressed:
 							finished.emit()
@@ -62,7 +66,7 @@ func build():
 		assert(island)
 
 	island.build(building, current_tile)
-	#SignalManager.construction_error.emit("Can only build on settled islands")
+	GameData.get_empire_state().pay(cost)
 
 
 func update_current_tile(force_update: bool= false):

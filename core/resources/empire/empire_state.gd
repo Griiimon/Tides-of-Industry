@@ -1,9 +1,9 @@
 class_name EmpireState
 extends Resource
 
-@export var money: float
-@export var construction_points: float
-@export var stability: float
+@export var money: float= 100
+@export var construction_points: float= 250
+@export var stability: float= 80
 
 @export var production_yields: ProductionYields= ProductionYields.new()
 
@@ -27,3 +27,11 @@ func research_finished():
 			unlocked.level+= 1
 			return
 	unlocked_technologies.append(current_research)
+
+
+func can_afford(cost: int)-> bool:
+	return money >= cost
+
+
+func pay(amount: int):
+	money-= amount

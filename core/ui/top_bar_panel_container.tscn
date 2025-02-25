@@ -65,6 +65,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Stab: 80%"
 
+[node name="Construction Points Label" type="Label" parent="MarginContainer/HBoxContainer/Empire HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CP: 0"
+
 [node name="Money Label" type="Label" parent="MarginContainer/HBoxContainer/Empire HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Technology" load_steps=10 format=3 uid="uid://bimat280ntdos"]
+
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="1_ctydu"]
+[ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_eglo6"]
+[ext_resource type="Resource" uid="uid://dbtill1y44ahh" path="res://data/political views/green.tres" id="2_7vi4j"]
+[ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_xiw15"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_yk2iq"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_percentage.gd" id="3_sp88d"]
+
+[sub_resource type="Resource" id="Resource_xpl66"]
+script = ExtResource("3_sp88d")
+factor = 0.25
+local = false
+type = 1
+duration = 500
+name = ""
+
+[sub_resource type="Resource" id="Resource_mx478"]
+script = ExtResource("3_sp88d")
+factor = -0.1
+local = false
+type = 3
+duration = -1
+name = ""
+
+[sub_resource type="Resource" id="Resource_0c76x"]
+script = ExtResource("1_ctydu")
+effects = Array[ExtResource("2_yk2iq")]([SubResource("Resource_xpl66"), SubResource("Resource_mx478")])
+
+[resource]
+script = ExtResource("2_xiw15")
+costs = Array[int]([1000, 2000, 5000])
+passive_modifiers = Array[ExtResource("1_ctydu")]([SubResource("Resource_0c76x")])
+enables_political_views = Array[ExtResource("1_eglo6")]([ExtResource("2_7vi4j")])
+desc = ""
+name = ""

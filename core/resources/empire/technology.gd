@@ -4,7 +4,9 @@ extends NamedResource
 @export var costs: Array[int]
 @export var required_tech: TechnologyLevel
 
-@export var passive_modifiers: Array[ModifierEffectCollection] 
+@export var passive_modifiers: Array[EmpireModifierEffectCollection] 
+@export var enables_political_views: Array[PoliticalView]
+
 @export var desc: String
 
 

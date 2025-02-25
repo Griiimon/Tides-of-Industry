@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Technology" load_steps=6 format=3 uid="uid://cotu2nsxm3w7p"]
 
-[ext_resource type="Script" path="res://core/resources/mechanics/modifier_effects/modifier_effect_collection.gd" id="1_76npx"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="1_7pudv"]
 [ext_resource type="Script" path="res://core/resources/empire/technology_level.gd" id="2_3254s"]
 [ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_mvyp6"]
 [ext_resource type="Resource" uid="uid://dpw1pu7p4whwy" path="res://data/technologies/factories.tres" id="3_b87d2"]
@@ -14,6 +14,6 @@ level = 0
 script = ExtResource("2_mvyp6")
 costs = Array[int]([])
 required_tech = SubResource("Resource_xqug0")
-passive_modifiers = Array[ExtResource("1_76npx")]([])
+passive_modifiers = Array[ExtResource("1_7pudv")]([])
 desc = ""
 name = ""

@@ -13,6 +13,7 @@ extends PanelContainer
 @onready var research_label: Label = %"Research Label"
 
 @onready var stability_label: Label = %"Stability Label"
+@onready var construction_points_label: Label = %"Construction Points Label"
 @onready var money_label: Label = %"Money Label"
 @onready var turn_label: Label = %"Turn Label"
 
@@ -29,6 +30,9 @@ func update(island: IslandInstance):
 		power_label.text= str("Pow: ", island.power)
 		research_label.text= str("Res: ", island.research)
 	
-	stability_label.text= str("Stab: ", int(GameData.get_empire_state().stability), "%")
-	money_label.text= str("$", int(GameData.get_empire_state().money))
+	var empire_state: EmpireState= GameData.get_empire_state()
+	
+	stability_label.text= str("Stab: ", int(empire_state.stability), "%")
+	construction_points_label.text= str("CP: ", int(empire_state.construction_points))
+	money_label.text= str("$", int(empire_state.money))
 	turn_label.text= str("Turn ", GameData.world_state.turns)
