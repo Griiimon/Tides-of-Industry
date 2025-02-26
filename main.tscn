@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=4 uid="uid://be5fso6j67b01"]
+[gd_scene load_steps=29 format=4 uid="uid://be5fso6j67b01"]
 
-[ext_resource type="Script" path="res://core/world.gd" id="1_bd8if"]
+[ext_resource type="Script" path="res://core/world/world.gd" id="1_bd8if"]
 [ext_resource type="Script" path="res://core/main.gd" id="1_n11ok"]
 [ext_resource type="Texture2D" uid="uid://bd70h087fi7ie" path="res://textures/terrain_tiles.png" id="1_sqkbh"]
 [ext_resource type="Texture2D" uid="uid://1d3j784hvd3d" path="res://textures/features.png" id="2_3mwv3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://core/game states/idle_state.gd" id="5_t57mi"]
 [ext_resource type="Script" path="res://core/game states/construction_state.gd" id="6_nea45"]
 [ext_resource type="Script" path="res://core/game states/move_unit_state.gd" id="7_xeex4"]
+[ext_resource type="Texture2D" uid="uid://bsnadgtu3arhg" path="res://textures/units.png" id="8_ax5s7"]
 [ext_resource type="Script" path="res://core/game states/remove_state.gd" id="8_kfd3r"]
 [ext_resource type="Texture2D" uid="uid://b2rjf7vw8v4sq" path="res://textures/thin_white_frame.png" id="8_ksohp"]
 [ext_resource type="Script" path="res://core/game states/upgrade_state.gd" id="9_s2afl"]
@@ -185,6 +186,50 @@ sources/0 = SubResource("TileSetAtlasSource_tmj0d")
 [sub_resource type="TileSet" id="TileSet_uhmkn"]
 tile_size = Vector2i(32, 32)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bniqd"]
+texture = ExtResource("8_ax5s7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_etllx"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_bniqd")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrvbt"]
 texture = ExtResource("8_ksohp")
 texture_region_size = Vector2i(32, 32)
@@ -219,6 +264,9 @@ tile_set = SubResource("TileSet_oy6i8")
 
 [node name="TileMap Building Levels" type="TileMapLayer" parent="World"]
 tile_set = SubResource("TileSet_uhmkn")
+
+[node name="TileMap Units" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_etllx")
 
 [node name="TileMap Buildings Ghost" type="TileMapLayer" parent="World"]
 modulate = Color(1, 1, 1, 0.501961)

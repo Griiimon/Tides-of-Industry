@@ -1,3 +1,4 @@
+Remove buildings costs CP
 Remove empire effect modifiers from buildings? ( if they stay make them Array Collection like techs? )
 	=> at least make stability a default Array?
 	=> contra: how to make multiple bank levels provide interests?
@@ -61,7 +62,7 @@ CORE MECHANICS
 	every tile has a production value, buildings can boost it
 	slider turns it into money, construction points and luxury ( lost )
 
-Power:
+- Power:
 	Island-wide factory production multiplier ( 0 power = 0 production ) / number of factories
 
 - Money
@@ -79,6 +80,15 @@ Power:
 	has thresholds with certain effects: >20= population * 0.95, >40= population * 0.9, >60= parks lose effect, >80= ponds lose production, >100= population * 0.75
 
 
+- Policies ( use progress points to change )
+	Welfare: Money yield turns into stability
+	Expansion: Explorer visibility range, Explorer unit chance
+	Spirituality: Religious buildings stability benefits
+	Militarism: General chance
+	Industrialization: Productivity bonus, Enginner chance
+	Creativity: Chance to get regular Research events
+	Progress: generates more progress points
+	
 OTHER MECHANICS
 -----------------
 

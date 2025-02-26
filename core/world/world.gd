@@ -12,6 +12,9 @@ extends Node
 
 var empire: Empire= Empire.new()
 
+var ai_units: Array[UnitInstance]
+var tile_to_unit: Dictionary
+
 
 
 func tick():

@@ -1,5 +1,7 @@
 class_name Empire
 
+var units: Array[UnitInstance]
+
 
 
 func tick(world: World):
