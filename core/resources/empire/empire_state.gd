@@ -9,8 +9,9 @@ extends Resource
 
 @export var current_research: TechnologyLevel
 @export var research_progress: float
-
 @export var unlocked_technologies: Array[TechnologyLevel]
+
+@export var active_modifiers: Array[ActiveEmpireModifierEffect]
 
 
 
@@ -27,6 +28,13 @@ func research_finished():
 			unlocked.level+= 1
 			return
 	unlocked_technologies.append(current_research)
+
+
+func apply_modifiers(type: BaseEmpireModifierEffect.Type, base_value: int)-> int:
+	var final_value: int= base_value
+	for modifier in active_modifiers:
+		final_value= modifier.apply_type(type, final_value)
+	return final_value
 
 
 func can_afford(cost: int)-> bool:

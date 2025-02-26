@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="Technology" load_steps=2 format=3 uid="uid://dpw1pu7p4whwy"]
+[gd_resource type="Resource" script_class="Technology" load_steps=4 format=3 uid="uid://dpw1pu7p4whwy"]
 
+[ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_5genh"]
 [ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_8kjw8"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="2_du0mx"]
 
 [resource]
 script = ExtResource("2_8kjw8")
 costs = Array[int]([1000, 10000, 100000])
-passive_modifiers = null
-desc = null
-name = null
+passive_modifiers = Array[ExtResource("2_du0mx")]([])
+enables_political_views = Array[ExtResource("1_5genh")]([])
+desc = ""
+name = ""

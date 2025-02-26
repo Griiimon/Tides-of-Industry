@@ -24,4 +24,11 @@ func tick(world: World):
 	else:
 		SignalManager.no_research_selected.emit()
 
+	for modifier in state.active_modifiers.duplicate():
+		if modifier.lifetime > 0:
+			modifier.lifetime-= 1
+			if modifier.lifetime == 0:
+				state.active_modifiers.erase(modifier)
+
+
 	SignalManager.empire_stats_updated.emit()
