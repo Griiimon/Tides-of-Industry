@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=20 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -14,11 +14,15 @@
 [ext_resource type="Resource" uid="uid://cxd4dr0x5vqw2" path="res://data/buildings/factory.tres" id="12_7tm4u"]
 [ext_resource type="Resource" uid="uid://cgkayum1fm8nb" path="res://data/buildings/power_plant.tres" id="13_7tmc8"]
 [ext_resource type="Resource" uid="uid://dicp2fwadfdlv" path="res://data/buildings/wind_turbine.tres" id="14_bnyoc"]
+[ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="15_8i0tv"]
 [ext_resource type="Resource" uid="uid://dpw1pu7p4whwy" path="res://data/technologies/factories.tres" id="16_qvaga"]
 [ext_resource type="Resource" uid="uid://cotu2nsxm3w7p" path="res://data/technologies/industrial_complex.tres" id="17_vhu8o"]
+[ext_resource type="Script" path="res://core/resources/empire/unit.gd" id="18_7rd6n"]
+[ext_resource type="Resource" uid="uid://dh7fwnvip37y1" path="res://data/units/explorer.tres" id="19_m8m46"]
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_xq1md")
 terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3")])
 buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc")])
-technologies = [ExtResource("16_qvaga"), ExtResource("17_vhu8o")]
+technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o")])
+units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])

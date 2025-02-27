@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var world: World = $World
+@onready var game_states: GameStateMachine = $"Game States"
 
 
 
@@ -14,4 +15,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func next_turn():
+	game_states.reset()
 	world.tick()

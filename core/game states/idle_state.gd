@@ -2,6 +2,7 @@ class_name GameStateIdle
 extends GameStateMachineState
 
 signal start_construction
+signal unit_selected(unit: UnitInstance)
 
 var current_tile: Vector2i
 
@@ -29,12 +30,17 @@ func on_unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					state_machine.world.handle_tile_click()
+					handle_tile_click()
 					return
 	
 	if event.is_action("build_mode") and event.is_pressed():
 		get_viewport().set_input_as_handled()
 		start_construction.emit()
+
+
+func handle_tile_click():
+	if handle_unit_click(unit_selected):
+		return
 
 
 func update_current_tile_check():

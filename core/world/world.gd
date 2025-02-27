@@ -1,20 +1,42 @@
 class_name World
 extends Node
 
+@export var generator: WorldGenerator
+@export var chunk_size: int= 32
+
 @onready var tile_map_terrain: TileMapLayer = $"TileMap Terrain"
 @onready var tile_map_terrain_features: TileMapLayer = $"TileMap Terrain Features"
 @onready var tile_map_buildings: TileMapLayer = $"TileMap Buildings"
 @onready var tile_map_building_levels: TileMapLayer = $"TileMap Building Levels"
 @onready var tile_map_buildings_ghost: TileMapLayer = $"TileMap Buildings Ghost"
 @onready var tile_map_frames: TileMapLayer = $"TileMap Frames"
+@onready var tile_map_units: TileMapLayer = $"TileMap Units"
+@onready var tile_map_unit_selection: TileMapLayer = $"TileMap Unit Selection"
 
 @onready var islands: Node = $Islands
 
 var empire: Empire= Empire.new()
 
 var ai_units: Array[UnitInstance]
+var all_units: Array[UnitInstance]
 var tile_to_unit: Dictionary
 
+var terrain_index_lookup: Dictionary
+
+
+
+func _ready() -> void:
+	if not generator: return
+	
+	for terrain in GameData.terrains:
+		var tile_set: TileSet= tile_map_terrain.tile_set
+		for i in tile_set.get_terrains_count(0):
+			if terrain.terrain_set_name == tile_set.get_terrain_name(0, i):
+				terrain_index_lookup[terrain]= i
+				break
+	
+	clear_tilemaps()
+	generate_chunk(Vector2i.ZERO)
 
 
 func tick():
@@ -23,12 +45,20 @@ func tick():
 	state.turns+= 1
 
 	empire.tick(self)
-	
-	
+
+	for unit in all_units:
+		unit.reset_moves()
 
 
-func handle_tile_click():
-	var tile: Vector2i= get_mouse_tile()
+func generate_chunk(chunk_coords: Vector2i):
+	var world_offset: Vector2i= chunk_coords * chunk_size
+
+	for x in chunk_size:
+		for y in chunk_size:
+			var world_coords: Vector2i= Vector2i(x, y) + world_offset
+			var terrain: Terrain= generator.get_terrain(world_coords)
+			tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[terrain], false)
+			#tile_map_terrain.set_cell(world_coords, 0, Vector2i.ZERO)
 
 
 func spawn_building(building: Building, tile: Vector2i):
@@ -53,6 +83,41 @@ func settle_island(town_center_pos: Vector2i)-> IslandInstance:
 func set_building_ghost_layer_valid(flag: bool):
 	tile_map_buildings_ghost.modulate.g= 1.0 if flag else 0.0
 	tile_map_buildings_ghost.modulate.b= 1.0 if flag else 0.0
+
+
+func spawn_unit(type: Unit, tile: Vector2i, player_unit: bool= true)-> UnitInstance:
+	var unit:= UnitInstance.new(type, tile, player_unit, self)
+	if player_unit:
+		empire.units.append(unit)
+	else:
+		ai_units.append(unit)
+	all_units.append(unit)
+	
+	update_unit_pos(unit, tile)
+	return unit
+
+
+func update_unit_pos(unit: UnitInstance, tile: Vector2i, previous_tile: Vector2i= Vector2i.ZERO, remove_previous: bool= false):
+	tile_map_units.set_cell(tile, 0, unit.get_atlas_coords())
+	tile_to_unit[tile]= unit
+	if remove_previous:
+		tile_map_units.set_cell(previous_tile, -1, Vector2i.ZERO)
+		tile_to_unit[previous_tile]= null
+
+
+func set_unit_selection_box(tile: Vector2i):
+	reset_unit_selection_boxes()
+	tile_map_unit_selection.set_cell(tile, 0, Vector2i.ZERO)
+
+
+func reset_unit_selection_boxes():
+	tile_map_unit_selection.clear()
+
+
+func clear_tilemaps():
+	tile_map_terrain.clear()
+	tile_map_terrain_features.clear()
+	tile_map_units.clear()
 
 
 func get_tile(global_pos: Vector2)-> Vector2i:
@@ -151,3 +216,17 @@ func get_neighbor_features(tile: Vector2i, whitelist: Array[TerrainFeature]= [])
 			if whitelist.is_empty() or feature in whitelist:
 				result.append(neighbor)
 	return result
+
+
+func get_unit(tile: Vector2i)-> UnitInstance:
+	if tile_to_unit.has(tile):
+		return tile_to_unit[tile]
+	return null
+
+
+func get_global_pos(tile: Vector2i)-> Vector2:
+	return tile_map_terrain.to_global(tile_map_terrain.map_to_local(tile))
+
+
+func is_tile_occupied(tile: Vector2i)-> bool:
+	return tile_map_units.get_cell_source_id(tile) > -1

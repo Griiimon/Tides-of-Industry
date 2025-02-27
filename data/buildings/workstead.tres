@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Building" load_steps=7 format=3 uid="uid://dln74k8chwa4x"]
+[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://dln74k8chwa4x"]
 
 [ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_f120o"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="1_ttmry"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_2w77r"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_6b5gv"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="3_lbgpu"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_qdt67"]
@@ -10,10 +11,11 @@
 [resource]
 script = ExtResource("2_6b5gv")
 atlas_coords = Vector2i(3, 0)
-build_costs = Array[int]([])
+build_costs = Array[int]([400])
 category = ExtResource("1_f120o")
 placement_conditions = Array[ExtResource("1_ttmry")]([ExtResource("3_qdt67"), ExtResource("4_beqqx")])
 stat_modifiers = Array[ExtResource("3_lbgpu")]([])
+empire_modifiers = Array[ExtResource("2_2w77r")]([])
 production = Array[int]([])
 pollution = Array[int]([])
 population = Array[int]([])

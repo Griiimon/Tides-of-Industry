@@ -2,6 +2,8 @@ extends Node
 
 @export var enabled: bool= true
 
+@export var clear_tilemaps: bool= true
+
 @export var game_states: GameStateMachine
 @export var world: World
 
@@ -15,8 +17,12 @@ func _ready() -> void:
 
 
 func late_ready():
+	if clear_tilemaps:
+		world.clear_tilemaps()
+
 	var tile:= Vector2i.ZERO
-	game_states.world.settle_island(tile).build(town_center, tile)
+	#game_states.world.settle_island(tile).build(town_center, tile)
+	#world.spawn_unit(load("res://data/units/explorer.tres"), Vector2i(0, 7))
 
 
 func _input(event: InputEvent) -> void:

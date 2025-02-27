@@ -26,7 +26,7 @@ type = 2
 [resource]
 script = ExtResource("1_30t3y")
 atlas_coords = Vector2i(0, 0)
-build_costs = Array[int]([])
+build_costs = Array[int]([150])
 category = ExtResource("1_bchg5")
 placement_conditions = Array[ExtResource("2_4r0vm")]([ExtResource("3_sj4c4"), ExtResource("4_x118r")])
 stat_modifiers = Array[ExtResource("6_7a0pk")]([SubResource("Resource_omj8f"), SubResource("Resource_4fqgy")])

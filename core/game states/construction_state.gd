@@ -42,7 +42,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					if is_valid_position and GameData.get_empire_state().can_affort(cost):
+					if is_valid_position and GameData.get_empire_state().can_afford(cost):
 						build()
 						if not event.shift_pressed:
 							finished.emit()

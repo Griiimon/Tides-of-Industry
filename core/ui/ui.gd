@@ -1,6 +1,8 @@
 class_name UI
 extends CanvasLayer
 
+const FLOATING_TILE_INFO_CONTAINER= false
+
 @export var world: World
 @export var game_states: GameStateMachine
 
@@ -11,8 +13,7 @@ extends CanvasLayer
 @onready var building_list_container: BuildingListPanelContainer = $"Building List PanelContainer"
 @onready var research_popup: ResearchPopupPanel = $"Research Popup"
 
-
-var tile_info_container: TileInfoPanelContainer
+@onready var tile_info_container: TileInfoPanelContainer = $"Tile Info PanelContainer"
 
 
 
@@ -34,10 +35,13 @@ func _ready() -> void:
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)
 	SignalManager.empire_stats_updated.connect(update_top_bar)
 
-	tile_info_container= tile_info_container_scene.instantiate()
-	tile_info_container.hide()
-	
-	add_child(tile_info_container)
+	if FLOATING_TILE_INFO_CONTAINER:
+		tile_info_container.queue_free()
+		tile_info_container= tile_info_container_scene.instantiate()
+		tile_info_container.hide()
+		add_child(tile_info_container)
+	else:
+		SignalManager.player_unit_moved.connect(on_player_unit_moved)
 
 	update.call_deferred()
 
@@ -47,13 +51,15 @@ func update():
 
 
 func show_tile_info(tile: Vector2i):
-	tile_info_container.update(world.get_building(tile), world.get_terrain(tile), world.get_feature(tile))
-	tile_info_container.position= get_viewport().get_mouse_position() + Vector2(20, 20)
+	tile_info_container.update(world.get_building(tile), world.get_terrain(tile), world.get_feature(tile), world.get_unit(tile))
+	if FLOATING_TILE_INFO_CONTAINER:
+		tile_info_container.position= get_viewport().get_mouse_position() + Vector2(20, 20)
 	tile_info_container.show()
 
 
 func hide_tile_info():
-	tile_info_container.hide()
+	if FLOATING_TILE_INFO_CONTAINER:
+		tile_info_container.hide()
 
 
 func update_top_bar():
@@ -69,6 +75,10 @@ func on_build(building: Building):
 func on_island_stats_updated(island: IslandInstance):
 	if get_island_in_view() == island:
 		update_top_bar()
+
+
+func on_player_unit_moved(unit: UnitInstance):
+	show_tile_info(unit.tile_pos)
 
 
 func get_island_in_view()-> IslandInstance:

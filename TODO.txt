@@ -1,4 +1,29 @@
-Remove buildings costs CP
+auto-end turn ( UserSettings resource ) if not empire_state.player_units_moves_left()
+
+select last used unit if any active when new turn starts
+
+SPACE pause/unpause
+
+world generator
+
+add farms
+
+unit selected TileMapLayer effect blinking
+
+unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
+
+implement ActiveEmpireModifierEffectFromPolicy ( apply with ratio )
+
+Policy slider UI
+
+Build Info: Shows building name/level/CP cost/tile validity warning
+
+Choose building level in menu
+
+Upgrads Buildings
+
+Destroy buildings costs CP
+
 Remove empire effect modifiers from buildings? ( if they stay make them Array Collection like techs? )
 	=> at least make stability a default Array?
 	=> contra: how to make multiple bank levels provide interests?

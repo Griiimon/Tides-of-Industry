@@ -7,4 +7,5 @@ script = ExtResource("1_1dvhk")
 atlas_coords = Vector2i(0, 0)
 is_ship = true
 is_land_unit = false
+moves_per_turn = 2
 name = ""

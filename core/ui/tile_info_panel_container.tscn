@@ -28,6 +28,7 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 2
 
 [node name="Tile Info PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
@@ -57,5 +58,18 @@ label_settings = SubResource("LabelSettings_f161e")
 
 [node name="Feature Label" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aevw6")
+
+[node name="Unit Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aevw6")
+
+[node name="Unit Moves Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 label_settings = SubResource("LabelSettings_aevw6")

@@ -1,9 +1,20 @@
-[gd_resource type="Resource" script_class="Building" load_steps=2 format=3 uid="uid://dxuvjpfakvf54"]
+[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://dxuvjpfakvf54"]
 
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="1_bghem"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_dpaov"]
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_3s5ce"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="4_q76go"]
 
 [resource]
 script = ExtResource("1_dpaov")
 atlas_coords = Vector2i(0, 0)
-build_costs = Array[int]([])
+build_costs = Array[int]([250])
+placement_conditions = Array[ExtResource("2_3s5ce")]([])
+stat_modifiers = Array[ExtResource("4_q76go")]([])
+empire_modifiers = Array[ExtResource("1_bghem")]([])
+production = Array[int]([])
+pollution = Array[int]([])
+population = Array[int]([])
+power = Array[int]([])
+research = Array[int]([])
 name = ""

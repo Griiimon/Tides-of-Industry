@@ -11,3 +11,5 @@ signal production_yields_updated(yields: ProductionYields)
 
 signal start_research(technology: Technology)
 signal no_research_selected
+
+signal player_unit_moved(unit: UnitInstance)
