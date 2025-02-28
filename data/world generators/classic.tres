@@ -1,15 +1,49 @@
-[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=5 format=3 uid="uid://dwyajv3mqqdd1"]
+[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=13 format=3 uid="uid://dwyajv3mqqdd1"]
 
+[ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="1_8v14v"]
 [ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="1_d3abn"]
 [ext_resource type="Script" path="res://data/world generators/world_generator_classic.gd" id="2_af3pd"]
+[ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="2_op2tq"]
 [ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="3_8avsj"]
+[ext_resource type="Resource" uid="uid://bpbexsgaw04kt" path="res://data/terrain/hills.tres" id="4_unbso"]
+[ext_resource type="Resource" uid="uid://dktqjcvqafqgc" path="res://data/terrain/marsh.tres" id="5_ersex"]
+[ext_resource type="Resource" uid="uid://bde357srjk4qd" path="res://data/terrain/mountains.tres" id="6_n2os7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fonl6"]
+frequency = 0.1585
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s74so"]
+frequency = 0.1585
+offset = Vector3(1000, 0, 0)
+fractal_octaves = 3
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3uc7c"]
 frequency = 0.0092
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 10.0
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gbm4o"]
+frequency = 0.5854
+fractal_type = 2
+fractal_lacunarity = 2.615
 
 [resource]
 script = ExtResource("2_af3pd")
 land_noise = SubResource("FastNoiseLite_3uc7c")
 land_threshold = 0.3
+forest_noise = SubResource("FastNoiseLite_fonl6")
+forest_threshold = 0.3
+hills_noise = SubResource("FastNoiseLite_s74so")
+hills_threshold = 0.45
+mountains_noise = SubResource("FastNoiseLite_gbm4o")
+mountains_threshold = 0.4
+mountains_height_threshold = 0.45
 grass = ExtResource("1_d3abn")
 sea = ExtResource("3_8avsj")
+hills = ExtResource("4_unbso")
+mountains = ExtResource("6_n2os7")
+desert = ExtResource("1_8v14v")
+marsh = ExtResource("5_ersex")
+forest = ExtResource("2_op2tq")

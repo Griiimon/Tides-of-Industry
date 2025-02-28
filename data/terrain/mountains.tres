@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_mnoyj")
-atlas_coords = Vector2i(0, 0)
+terrain_set_name = "Mountains"
 is_sea = false
+terraforming_cost = 0
 name = ""

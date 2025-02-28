@@ -42,7 +42,7 @@ func _ready() -> void:
 	
 	clear_tilemaps()
 	#generate_chunk(Vector2i.ZERO)
-	generate_radius(Vector2i.ZERO, 50)
+	generate_radius(Vector2i.ZERO, 100)
 
 
 
