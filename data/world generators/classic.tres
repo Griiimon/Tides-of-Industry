@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=13 format=3 uid="uid://dwyajv3mqqdd1"]
+[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=14 format=3 uid="uid://dwyajv3mqqdd1"]
 
 [ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="1_8v14v"]
 [ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="1_d3abn"]
@@ -17,6 +17,10 @@ frequency = 0.1585
 offset = Vector3(1000, 0, 0)
 fractal_octaves = 3
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pbh6k"]
+frequency = 0.0139
+fractal_lacunarity = 2.25
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3uc7c"]
 frequency = 0.0092
 domain_warp_enabled = true
@@ -25,8 +29,9 @@ domain_warp_amplitude = 10.0
 domain_warp_fractal_octaves = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gbm4o"]
-frequency = 0.5854
-fractal_type = 2
+noise_type = 4
+frequency = 0.4351
+fractal_type = 3
 fractal_lacunarity = 2.615
 
 [resource]
@@ -38,8 +43,11 @@ forest_threshold = 0.3
 hills_noise = SubResource("FastNoiseLite_s74so")
 hills_threshold = 0.45
 mountains_noise = SubResource("FastNoiseLite_gbm4o")
-mountains_threshold = 0.4
-mountains_height_threshold = 0.45
+mountains_threshold = 0.1
+mountains_height_threshold = 0.4
+humidity_noise = SubResource("FastNoiseLite_pbh6k")
+marsh_humidity_threshold = 0.4
+desert_humidity_threshold = -0.35
 grass = ExtResource("1_d3abn")
 sea = ExtResource("3_8avsj")
 hills = ExtResource("4_unbso")

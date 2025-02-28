@@ -14,6 +14,11 @@ extends WorldGenerator
 @export var mountains_threshold: float= 0
 @export var mountains_height_threshold: float= 0.5
 
+@export var humidity_noise: FastNoiseLite
+@export var marsh_humidity_threshold: float
+@export var desert_humidity_threshold: float
+
+@export_subgroup("Terrain assignments")
 @export var grass: Terrain
 @export var sea: Terrain
 @export var hills: Terrain
@@ -37,7 +42,12 @@ func get_terrain(coords: Vector2i)-> Terrain:
 		if forest_noise.get_noise_2dv(coords) > forest_threshold:
 			return forest
 
-
+		var humidity: float= humidity_noise.get_noise_2dv(coords)
+		if humidity > marsh_humidity_threshold:
+			return marsh
+		elif humidity < desert_humidity_threshold:
+			return desert
+		
 		return grass
 	else:
 		return sea
