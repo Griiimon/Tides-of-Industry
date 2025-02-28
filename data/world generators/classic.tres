@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=5 format=3 uid="uid://dwyajv3mqqdd1"]
+
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="1_d3abn"]
+[ext_resource type="Script" path="res://data/world generators/world_generator_classic.gd" id="2_af3pd"]
+[ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="3_8avsj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3uc7c"]
+frequency = 0.0092
+
+[resource]
+script = ExtResource("2_af3pd")
+land_noise = SubResource("FastNoiseLite_3uc7c")
+land_threshold = 0.3
+grass = ExtResource("1_d3abn")
+sea = ExtResource("3_8avsj")

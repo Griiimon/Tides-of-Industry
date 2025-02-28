@@ -3,8 +3,11 @@ extends Node
 
 @export var generator: WorldGenerator
 @export var chunk_size: int= 32
+@export var coast_terrain: Terrain
+@export var sea_terrain: Terrain
 
 @onready var tile_map_terrain: TileMapLayer = $"TileMap Terrain"
+@onready var tile_map_terrain_ids: TileMapLayer = $"TileMap Terrain IDs"
 @onready var tile_map_terrain_features: TileMapLayer = $"TileMap Terrain Features"
 @onready var tile_map_buildings: TileMapLayer = $"TileMap Buildings"
 @onready var tile_map_building_levels: TileMapLayer = $"TileMap Building Levels"
@@ -23,6 +26,8 @@ var tile_to_unit: Dictionary
 
 var terrain_index_lookup: Dictionary
 
+var generated_chunks: Array
+
 
 
 func _ready() -> void:
@@ -36,7 +41,9 @@ func _ready() -> void:
 				break
 	
 	clear_tilemaps()
-	generate_chunk(Vector2i.ZERO)
+	#generate_chunk(Vector2i.ZERO)
+	generate_radius(Vector2i.ZERO, 50)
+
 
 
 func tick():
@@ -51,14 +58,51 @@ func tick():
 
 
 func generate_chunk(chunk_coords: Vector2i):
+	var coast_id: int= GameData.terrains.find(coast_terrain)
+	var sea_id: int= GameData.terrains.find(sea_terrain)
 	var world_offset: Vector2i= chunk_coords * chunk_size
 
 	for x in chunk_size:
 		for y in chunk_size:
 			var world_coords: Vector2i= Vector2i(x, y) + world_offset
 			var terrain: Terrain= generator.get_terrain(world_coords)
+			if terrain.is_sea and terrain != coast_terrain and tile_map_terrain_ids.get_cell_source_id(world_coords) == coast_id:
+				terrain= coast_terrain
+				
 			tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[terrain], false)
-			#tile_map_terrain.set_cell(world_coords, 0, Vector2i.ZERO)
+			tile_map_terrain_ids.set_cell(world_coords, GameData.terrains.find(terrain), Vector2i.ZERO)
+
+			if terrain == coast_terrain:
+				var atlas_coords: Vector2i= (coast_terrain as CoastalTerrain).default_atlas_coords
+				var terrain_above: Terrain= get_terrain(world_coords + Vector2i.UP)
+				if terrain_above and not terrain_above.is_sea:
+					atlas_coords= (coast_terrain as CoastalTerrain).alt_atlas_coords
+				tile_map_terrain.set_cell(world_coords, 0, atlas_coords)
+			
+			if not terrain.is_sea:
+				for x2 in range(-1, 2):
+					for y2 in range(-1, 2):
+						if abs(x2) + abs(y2) != 1: continue
+						var neighbor_coords: Vector2i= world_coords + Vector2i(x2, y2)
+						var id: int= tile_map_terrain_ids.get_cell_source_id(neighbor_coords)
+						if id == -1 or id == sea_id:
+							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
+							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
+							
+
+	generated_chunks.append(chunk_coords)
+
+
+func generate_rect(rect: Rect2i):
+	for x in range(rect.position.x, rect.position.x + rect.size.x, chunk_size):
+		for y in range(rect.position.y, rect.position.y + rect.size.y, chunk_size):
+			var chunk_coords: Vector2i= get_chunk_coords(Vector2i(x, y))
+			if not has_chunk(chunk_coords):
+				generate_chunk(chunk_coords)
+
+
+func generate_radius(center: Vector2i, radius: int):
+	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius))
 
 
 func spawn_building(building: Building, tile: Vector2i):
@@ -159,14 +203,18 @@ func get_town_center_radius(tile: Vector2i)-> int:
 
 
 func get_terrain(tile: Vector2i)-> Terrain:
-	var tile_data: TileData= tile_map_terrain.get_cell_tile_data(tile)
-	if tile_data == null or tile_data.terrain_set == -1 or tile_data.terrain == -1:
+	#var tile_data: TileData= tile_map_terrain.get_cell_tile_data(tile)
+	#if tile_data == null or tile_data.terrain_set == -1 or tile_data.terrain == -1:
+		#return null
+		#
+	#var terrain_name: String= tile_map_terrain.tile_set.get_terrain_name(0, tile_data.terrain) if tile_data else ""
+	#if terrain_name.is_empty():
+		#return null
+	#return GameData.terrain_set_lookup[terrain_name]
+	var id: int= tile_map_terrain_ids.get_cell_source_id(tile)
+	if id == -1:
 		return null
-		
-	var terrain_name: String= tile_map_terrain.tile_set.get_terrain_name(0, tile_data.terrain) if tile_data else ""
-	if terrain_name.is_empty():
-		return null
-	return GameData.terrain_set_lookup[terrain_name]
+	return GameData.terrains[id]
 
 
 func get_feature(tile: Vector2i)-> TerrainFeature:
@@ -226,6 +274,14 @@ func get_unit(tile: Vector2i)-> UnitInstance:
 
 func get_global_pos(tile: Vector2i)-> Vector2:
 	return tile_map_terrain.to_global(tile_map_terrain.map_to_local(tile))
+
+
+func get_chunk_coords(tile: Vector2i)-> Vector2i:
+	return Vector2i(floor(tile.x / chunk_size), floor(tile.y / chunk_size))
+
+
+func has_chunk(chunk_coords: Vector2i)-> bool:
+	return chunk_coords in generated_chunks
 
 
 func is_tile_occupied(tile: Vector2i)-> bool:
