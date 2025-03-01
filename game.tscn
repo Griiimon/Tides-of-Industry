@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=4 uid="uid://be5fso6j67b01"]
 
 [ext_resource type="Script" path="res://core/world/world.gd" id="1_bd8if"]
-[ext_resource type="Script" path="res://core/main.gd" id="1_n11ok"]
+[ext_resource type="Script" path="res://core/game.gd" id="1_n11ok"]
 [ext_resource type="Texture2D" uid="uid://bd70h087fi7ie" path="res://textures/terrain_tiles.png" id="1_sqkbh"]
 [ext_resource type="Texture2D" uid="uid://1d3j784hvd3d" path="res://textures/features.png" id="2_3mwv3"]
 [ext_resource type="Script" path="res://core/sandbox.gd" id="2_keb41"]
@@ -320,7 +320,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_vrvbt")
 
-[node name="Main" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_n11ok")
 
 [node name="Sandbox" type="Node" parent="." node_paths=PackedStringArray("game_states", "world")]
@@ -403,6 +403,9 @@ script = ExtResource("8_kfd3r")
 
 [node name="Upgrade" type="Node" parent="Game States"]
 script = ExtResource("9_s2afl")
+
+[node name="Turn Cooldown Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="UI" parent="." node_paths=PackedStringArray("world", "game_states") instance=ExtResource("14_5g3eo")]
 world = NodePath("../World")

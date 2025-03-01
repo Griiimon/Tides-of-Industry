@@ -1,26 +1,47 @@
+class_name Game
 extends Node2D
 
 @onready var world: World = $World
 @onready var game_states: GameStateMachine = $"Game States"
+@onready var turn_cooldown: Timer = $"Turn Cooldown Timer"
+
+var is_paused: bool= true:
+	set(b):
+		is_paused= b
+		if not is_inside_tree(): return
+		update_turn_cooldown()
 
 
 
 func _ready() -> void:
 	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
+	turn_cooldown.timeout.connect(on_turn_cooldown_timeout)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action("ui_cancel"):
 			get_tree().quit()
-		if event.is_action("next_turn"):
-			next_turn()
-			get_viewport().set_input_as_handled()
 
 
 func next_turn():
 	game_states.reset()
 	world.tick()
+
+	update_turn_cooldown()
+
+
+func toggle_pause():
+	is_paused= not is_paused
+
+
+func update_turn_cooldown():
+	if not is_paused:
+		if world.empire.has_moves_left():
+			return
+		turn_cooldown.start()
+	else:
+		turn_cooldown.stop()
 
 
 func on_player_unit_move_finished(_unit: UnitInstance):
@@ -29,5 +50,9 @@ func on_player_unit_move_finished(_unit: UnitInstance):
 			game_states.select_unit(unit)
 			return
 	
-	if GameData.user_settings.auto_end_turns:
+	if GameData.user_settings.auto_end_turns or not is_paused:
 		next_turn()
+
+
+func on_turn_cooldown_timeout():
+	next_turn()

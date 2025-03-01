@@ -34,3 +34,10 @@ func tick(world: World):
 
 
 	SignalManager.empire_stats_updated.emit()
+
+
+func has_moves_left()-> bool:
+	for unit in units:
+		if unit.has_moves_left():
+			return true
+	return false

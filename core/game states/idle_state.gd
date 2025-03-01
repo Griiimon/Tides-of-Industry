@@ -26,16 +26,25 @@ func on_unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		update_current_tile_check()
 
-	elif event is InputEventMouseButton:
-		if event.is_pressed():
+	elif event.is_pressed():
+		if event is InputEventMouseButton:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
 					handle_tile_click()
 					return
-	
-	if event.is_action("build_mode") and event.is_pressed():
-		get_viewport().set_input_as_handled()
-		start_construction.emit()
+		
+		elif event.is_action("build_mode"):
+			get_viewport().set_input_as_handled()
+			start_construction.emit()
+		elif event.is_action("pause"):
+			get_viewport().set_input_as_handled()
+			state_machine.game.toggle_pause()
+		elif event.is_action("next_turn"):
+			get_viewport().set_input_as_handled()
+			if not state_machine.game.is_paused:
+				state_machine.game.is_paused= true
+			else:
+				state_machine.game.next_turn()
 
 
 func handle_tile_click():

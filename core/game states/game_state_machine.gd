@@ -4,6 +4,7 @@ extends FiniteStateMachine
 @export var world: World
 @export var camera: MyCamera
 
+@onready var game: Game= get_parent()
 @onready var idle_state: GameStateIdle = $Idle
 @onready var construction_state: GameStateConstruction = $Construction
 @onready var move_unit_state: GameStateMoveUnit = $"Move Unit"
