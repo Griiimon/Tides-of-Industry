@@ -10,7 +10,8 @@ var unit: UnitInstance
 func on_enter():
 	state_machine.camera.scroll_to(state_machine.world.get_global_pos(unit.tile_pos))
 	state_machine.world.set_unit_selection_box(unit.tile_pos)
-
+	SignalManager.show_tile_info.emit(unit.tile_pos)
+	
 
 func on_exit():
 	state_machine.world.reset_unit_selection_boxes()
@@ -28,6 +29,9 @@ func on_unhandled_input(event: InputEvent) -> void:
 						return
 					if target_pos.distance_to(unit.tile_pos):
 						try_to_move_to(target_pos)
+				MOUSE_BUTTON_RIGHT:
+					finished.emit()
+
 		elif event.is_action("end_unit_turn"):
 			unit.moves_left= 0
 			finished.emit()

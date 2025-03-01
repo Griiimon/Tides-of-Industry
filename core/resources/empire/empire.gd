@@ -1,9 +1,14 @@
 class_name Empire
 
 var units: Array[UnitInstance]
+var last_used_unit: UnitInstance= null
 
 
 
+func _init():
+	SignalManager.player_unit_move_finished.connect(on_unit_move_finished)
+
+	
 func tick(world: World):
 	var state: EmpireState= GameData.get_empire_state()
 	
@@ -34,6 +39,10 @@ func tick(world: World):
 
 
 	SignalManager.empire_stats_updated.emit()
+
+
+func on_unit_move_finished(unit: UnitInstance):
+	last_used_unit= unit
 
 
 func has_moves_left()-> bool:

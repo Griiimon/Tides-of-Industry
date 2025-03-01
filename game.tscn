@@ -325,6 +325,7 @@ script = ExtResource("1_n11ok")
 
 [node name="Sandbox" type="Node" parent="." node_paths=PackedStringArray("game_states", "world")]
 script = ExtResource("2_keb41")
+enable_units = true
 clear_tilemaps = false
 game_states = NodePath("../Game States")
 world = NodePath("../World")

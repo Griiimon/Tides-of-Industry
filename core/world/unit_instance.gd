@@ -21,23 +21,12 @@ func _init(_type: Unit= null, _tile_pos: Vector2i= Vector2i.ZERO, player_unit: b
 
 
 func move_to(new_tile_pos: Vector2i):
-	world.update_unit_pos(self, new_tile_pos, tile_pos, true)
 	assert(moves_left > 0)
 	moves_left-= world.get_move_cost(tile_pos)
 	moves_left= max(moves_left, 0)
+	var prev_pos: Vector2i= tile_pos
 	tile_pos= new_tile_pos
-
-
-func can_move_to(new_tile_pos: Vector2i):
-	if world.is_tile_occupied(new_tile_pos):
-		return false
-	
-	var terrain: Terrain= world.get_terrain(new_tile_pos)
-	if not can_enter_terrain(terrain):
-		return false
-	
-	#var feature: TerrainFeature= world.get_feature(new_tile_pos)
-	return true
+	world.update_unit_pos(self, tile_pos, prev_pos, true)
 
 
 func move(dir: Vector2i):
@@ -49,12 +38,31 @@ func reset_moves():
 	moves_left= get_actual_type().moves_per_turn
 
 
+func can_move_to(new_tile_pos: Vector2i):
+	if tile_pos.distance_to(new_tile_pos) >= 2:
+		return false
+		
+	if world.is_tile_occupied(new_tile_pos):
+		return false
+	
+	var terrain: Terrain= world.get_terrain(new_tile_pos)
+	if not can_enter_terrain(terrain):
+		return false
+	
+	#var feature: TerrainFeature= world.get_feature(new_tile_pos)
+	return true
+
+
 func can_move(dir: Vector2i):
 	var new_tile_pos: Vector2i= tile_pos + dir
 	return can_move_to(new_tile_pos)
 
 
 func can_enter_terrain(terrain: Terrain)-> bool:
+	if type is AmphibiousUnit:
+		var amphibious_unit: AmphibiousUnit= type
+		return amphibious_unit.can_enter_terrain(terrain) or amphibious_unit.ship_reference.can_enter_terrain(terrain)
+
 	return get_actual_type().can_enter_terrain(terrain)
 
 

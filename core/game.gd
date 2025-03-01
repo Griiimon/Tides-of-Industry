@@ -29,6 +29,10 @@ func next_turn():
 	world.tick()
 
 	update_turn_cooldown()
+	
+	var last_unit: UnitInstance= world.empire.last_used_unit
+	if last_unit:
+		game_states.select_unit(last_unit)
 
 
 func toggle_pause():

@@ -1,6 +1,8 @@
 extends Node
 
 @export var enabled: bool= true
+@export var enable_buildings: bool= false
+@export var enable_units: bool= false
 
 @export var clear_tilemaps: bool= true
 
@@ -21,8 +23,14 @@ func late_ready():
 		world.clear_tilemaps()
 
 	var tile:= Vector2i.ZERO
-	#game_states.world.settle_island(tile).build(town_center, tile)
-	#world.spawn_unit(load("res://data/units/explorer.tres"), Vector2i(0, 7))
+	
+# ------- BUILDINGS ------------
+	if enable_buildings:
+		game_states.world.settle_island(tile).build(town_center, tile)
+	
+# ------- UNITS ------------
+	if enable_units:
+		world.spawn_unit(load("res://data/units/explorer.tres"), Vector2i(0, 7))
 
 
 func _input(event: InputEvent) -> void:

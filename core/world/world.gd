@@ -2,7 +2,8 @@ class_name World
 extends Node
 
 @export var generator: WorldGenerator
-@export var chunk_size: int= 32
+@export var chunk_size: int= 16
+@export var initial_radius: int= 20
 @export var coast_terrain: Terrain
 @export var sea_terrain: Terrain
 
@@ -33,7 +34,6 @@ var generated_chunks: Array
 
 
 func _ready() -> void:
-	if not generator: return
 	
 	for terrain in GameData.terrains:
 		var tile_set: TileSet= tile_map_terrain.tile_set
@@ -42,9 +42,11 @@ func _ready() -> void:
 				terrain_index_lookup[terrain]= i
 				break
 	
+	if not generator: return
+
 	clear_tilemaps()
 	#generate_chunk(Vector2i.ZERO)
-	generate_radius(Vector2i.ZERO, 50)
+	generate_radius(Vector2i.ZERO, initial_radius)
 
 
 func tick():
