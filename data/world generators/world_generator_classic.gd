@@ -3,6 +3,7 @@ extends WorldGenerator
 
 @export var land_noise: FastNoiseLite
 @export var land_threshold: float= 0.0
+@export var deep_sea_threshold: float= -0.2
 
 @export var forest_noise: FastNoiseLite
 @export var forest_threshold: float= 0.3
@@ -26,6 +27,7 @@ extends WorldGenerator
 @export var desert: Terrain
 @export var marsh: Terrain
 @export var forest: Terrain
+@export var deep_sea: Terrain
 
 
 
@@ -50,4 +52,6 @@ func get_terrain(coords: Vector2i)-> Terrain:
 		
 		return grass
 	else:
+		if height < deep_sea_threshold:
+			return deep_sea
 		return sea

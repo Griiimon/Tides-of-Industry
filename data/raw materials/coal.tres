@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RawMaterial" load_steps=8 format=3 uid="uid://boldx1o1xn5y2"]
+
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="1_g7s44"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance_item.gd" id="1_timj5"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/terrain_occurrence_chance.gd" id="2_5ha6v"]
+[ext_resource type="Resource" uid="uid://bde357srjk4qd" path="res://data/terrain/mountains.tres" id="3_i78m6"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance.gd" id="4_op4k7"]
+
+[sub_resource type="Resource" id="Resource_byq6h"]
+script = ExtResource("2_5ha6v")
+terrain = ExtResource("3_i78m6")
+chance = 10.0
+
+[sub_resource type="Resource" id="Resource_gf41g"]
+script = ExtResource("4_op4k7")
+items = Array[ExtResource("1_timj5")]([SubResource("Resource_byq6h")])
+multiply = true
+
+[resource]
+script = ExtResource("1_g7s44")
+atlas_coords = Vector2i(0, 0)
+base_production_bonus = 0
+occurrence = SubResource("Resource_gf41g")
+initial_discovery_chance = 100.0
+name = ""

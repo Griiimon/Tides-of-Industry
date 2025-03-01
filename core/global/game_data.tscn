@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=34 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://dktqjcvqafqgc" path="res://data/terrain/marsh.tres" id="9_rsnw8"]
 [ext_resource type="Resource" uid="uid://dln74k8chwa4x" path="res://data/buildings/workstead.tres" id="10_1orlr"]
 [ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="10_33o1r"]
+[ext_resource type="Resource" uid="uid://dq00ggjsl27ip" path="res://data/terrain/deep_sea.tres" id="11_2qyk2"]
 [ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="11_jsqfy"]
 [ext_resource type="Resource" uid="uid://dv1ssg5ak36ro" path="res://data/buildings/harbor.tres" id="11_ot1wp"]
 [ext_resource type="Resource" uid="uid://ct0pnk2v4lhmh" path="res://data/terrain features/boulder.tres" id="12_0p5ue"]
@@ -28,11 +29,16 @@
 [ext_resource type="Resource" uid="uid://cotu2nsxm3w7p" path="res://data/technologies/industrial_complex.tres" id="17_vhu8o"]
 [ext_resource type="Script" path="res://core/resources/empire/unit.gd" id="18_7rd6n"]
 [ext_resource type="Resource" uid="uid://dh7fwnvip37y1" path="res://data/units/explorer.tres" id="19_m8m46"]
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="28_qnjjw"]
+[ext_resource type="Resource" uid="uid://boldx1o1xn5y2" path="res://data/raw materials/coal.tres" id="29_fonl1"]
+[ext_resource type="Resource" uid="uid://cji0xytrrc2am" path="res://data/raw materials/iron_ore.tres" id="30_paqvd"]
+[ext_resource type="Resource" uid="uid://cwennvw0rc1rt" path="res://data/raw materials/oil.tres" id="31_tfk34"]
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_xq1md")
-terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r")])
+terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r"), ExtResource("11_2qyk2")])
 terrain_features = Array[ExtResource("11_jsqfy")]([ExtResource("12_0p5ue"), ExtResource("13_fou44"), ExtResource("14_uicyi"), ExtResource("15_esuin")])
 buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc")])
 technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o")])
+raw_materials = Array[ExtResource("28_qnjjw")]([ExtResource("29_fonl1"), ExtResource("30_paqvd"), ExtResource("31_tfk34")])
 units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])

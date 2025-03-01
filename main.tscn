@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://be5fso6j67b01"]
+[gd_scene load_steps=40 format=4 uid="uid://be5fso6j67b01"]
 
 [ext_resource type="Script" path="res://core/world/world.gd" id="1_bd8if"]
 [ext_resource type="Script" path="res://core/main.gd" id="1_n11ok"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b2rjf7vw8v4sq" path="res://textures/thin_white_frame.png" id="8_ksohp"]
 [ext_resource type="Texture2D" uid="uid://demykfw6gqn2a" path="res://textures/thick_white_dash_dotted_frame.png" id="9_hxhfn"]
 [ext_resource type="Script" path="res://core/game states/upgrade_state.gd" id="9_s2afl"]
+[ext_resource type="Texture2D" uid="uid://cx54v0l2l0xiw" path="res://textures/raw_materials.png" id="10_2qnx0"]
 [ext_resource type="Resource" uid="uid://416y2yuxhu1u" path="res://data/buildings/town_center.tres" id="10_vrar1"]
 [ext_resource type="PackedScene" uid="uid://idc6uwm0cuky" path="res://core/ui/ui.tscn" id="14_5g3eo"]
 
@@ -214,6 +215,26 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2gtqh")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1h6k"]
+texture = ExtResource("10_2qnx0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1jrfm"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_d1h6k")
+
+[sub_resource type="TileSet" id="TileSet_6q0b5"]
+tile_size = Vector2i(32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmj0d"]
 texture = ExtResource("3_2b7uq")
 texture_region_size = Vector2i(32, 32)
@@ -326,6 +347,12 @@ tile_set = SubResource("TileSet_ko4q6")
 [node name="TileMap Terrain Features" type="TileMapLayer" parent="World"]
 tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAQAAAABAAAAAAD//wMAAAACAAAAAAD//wYAAAADAAAAAAACAAcAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_5tw1o")
+
+[node name="TileMap Resources" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_1jrfm")
+
+[node name="TileMap Resources Discovered" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_6q0b5")
 
 [node name="TileMap Buildings" type="TileMapLayer" parent="World"]
 tile_set = SubResource("TileSet_oy6i8")

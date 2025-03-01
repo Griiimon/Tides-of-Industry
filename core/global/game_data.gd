@@ -4,6 +4,7 @@ extends Node
 @export var terrain_features: Array[TerrainFeature]
 @export var buildings: Array[Building]
 @export var technologies: Array[Technology]
+@export var raw_materials: Array[RawMaterial]
 @export var units: Array[Unit]
 
 
@@ -12,6 +13,7 @@ var world_state: WorldState= WorldState.new()
 var terrain_set_lookup: Dictionary
 var terrain_feature_atlas_lookup: Dictionary
 var building_atlas_lookup: Dictionary
+var raw_material_atlas_lookup: Dictionary
 var unit_atlas_lookup: Dictionary
 
 
@@ -25,6 +27,9 @@ func _ready() -> void:
 
 	for building in buildings:
 		building_atlas_lookup[building.atlas_coords]= building
+
+	for raw_material in raw_materials:
+		raw_material_atlas_lookup[raw_material.atlas_coords]= raw_material
 
 	for unit in units:
 		unit_atlas_lookup[unit.atlas_coords]= unit

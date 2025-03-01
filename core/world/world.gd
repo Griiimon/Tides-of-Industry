@@ -15,6 +15,8 @@ extends Node
 @onready var tile_map_frames: TileMapLayer = $"TileMap Frames"
 @onready var tile_map_units: TileMapLayer = $"TileMap Units"
 @onready var tile_map_unit_selection: TileMapLayer = $"TileMap Unit Selection"
+@onready var tile_map_resources: TileMapLayer = $"TileMap Resources"
+@onready var tile_map_resources_discovered: TileMapLayer = $"TileMap Resources Discovered"
 
 @onready var islands: Node = $Islands
 
@@ -42,7 +44,7 @@ func _ready() -> void:
 	
 	clear_tilemaps()
 	#generate_chunk(Vector2i.ZERO)
-	generate_radius(Vector2i.ZERO, 120)
+	generate_radius(Vector2i.ZERO, 50)
 
 
 func tick():
@@ -99,7 +101,12 @@ func generate_chunk(chunk_coords: Vector2i):
 			var feature: TerrainFeature= generator.get_terrain_feature(world_coords, terrain, rng)
 			if feature:
 				tile_map_terrain_features.set_cell(world_coords, 0, feature.atlas_coords)
-
+			var raw_material: RawMaterial= generator.get_raw_material(world_coords, terrain, feature, rng)
+			if raw_material:
+				tile_map_resources.set_cell(world_coords, 0, raw_material.atlas_coords)
+				tile_map_resources_discovered.set_cell(world_coords, 0, Vector2i.ZERO)
+				
+			
 	generated_chunks.append(chunk_coords)
 
 
