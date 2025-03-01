@@ -13,3 +13,4 @@ signal start_research(technology: Technology)
 signal no_research_selected
 
 signal player_unit_moved(unit: UnitInstance)
+signal player_unit_move_finished(unit: UnitInstance)

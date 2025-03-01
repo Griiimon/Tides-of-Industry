@@ -9,6 +9,7 @@ extends Node
 
 
 var world_state: WorldState= WorldState.new()
+var user_settings: UserSettings= UserSettings.new()
 
 var terrain_set_lookup: Dictionary
 var terrain_feature_atlas_lookup: Dictionary

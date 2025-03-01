@@ -36,5 +36,6 @@ func try_to_move_to(target_pos: Vector2i):
 		SignalManager.player_unit_moved.emit(unit)
 		if unit.moves_left == 0:
 			finished.emit()
+			SignalManager.player_unit_move_finished.emit(unit)
 		else:
 			state_machine.world.set_unit_selection_box(unit.tile_pos)
