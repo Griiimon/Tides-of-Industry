@@ -17,8 +17,8 @@ func on_exit():
 
 
 func on_unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_pressed():
+	if event.is_pressed():
+		if event is InputEventMouseButton:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
 					var target_pos: Vector2i= state_machine.world.get_mouse_tile()
@@ -28,6 +28,10 @@ func on_unhandled_input(event: InputEvent) -> void:
 						return
 					if target_pos.distance_to(unit.tile_pos):
 						try_to_move_to(target_pos)
+		elif event.is_action("end_unit_turn"):
+			unit.moves_left= 0
+			finished.emit()
+			SignalManager.player_unit_move_finished.emit(unit)
 
 
 func try_to_move_to(target_pos: Vector2i):
