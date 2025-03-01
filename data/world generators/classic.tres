@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=14 format=3 uid="uid://dwyajv3mqqdd1"]
+[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=15 format=3 uid="uid://dwyajv3mqqdd1"]
 
 [ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="1_8v14v"]
+[ext_resource type="Resource" uid="uid://dq00ggjsl27ip" path="res://data/terrain/deep_sea.tres" id="1_a5klq"]
 [ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="1_d3abn"]
 [ext_resource type="Script" path="res://data/world generators/world_generator_classic.gd" id="2_af3pd"]
 [ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="2_op2tq"]
@@ -38,10 +39,11 @@ fractal_lacunarity = 2.615
 script = ExtResource("2_af3pd")
 land_noise = SubResource("FastNoiseLite_3uc7c")
 land_threshold = 0.3
+deep_sea_threshold = 0.2
 forest_noise = SubResource("FastNoiseLite_fonl6")
-forest_threshold = null
+forest_threshold = 0.3
 hills_noise = SubResource("FastNoiseLite_s74so")
-hills_threshold = null
+hills_threshold = 0.45
 mountains_noise = SubResource("FastNoiseLite_gbm4o")
 mountains_threshold = 0.1
 mountains_height_threshold = 0.4
@@ -55,3 +57,4 @@ mountains = ExtResource("6_n2os7")
 desert = ExtResource("1_8v14v")
 marsh = ExtResource("5_ersex")
 forest = ExtResource("2_op2tq")
+deep_sea = ExtResource("1_a5klq")
