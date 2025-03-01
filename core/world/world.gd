@@ -42,8 +42,7 @@ func _ready() -> void:
 	
 	clear_tilemaps()
 	#generate_chunk(Vector2i.ZERO)
-	generate_radius(Vector2i.ZERO, 100)
-
+	generate_radius(Vector2i.ZERO, 120)
 
 
 func tick():
@@ -88,7 +87,18 @@ func generate_chunk(chunk_coords: Vector2i):
 						if id == -1 or id == sea_id:
 							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
 							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
-							
+
+	var seed: int= get_chunk_rng_seed(chunk_coords)
+	var rng:= RandomNumberGenerator.new()
+	rng.seed= seed
+	
+	for x in chunk_size:
+		for y in chunk_size:
+			var world_coords: Vector2i= Vector2i(x, y) + world_offset
+			var terrain: Terrain= get_terrain(world_coords)
+			var feature: TerrainFeature= generator.get_terrain_feature(world_coords, terrain, rng)
+			if feature:
+				tile_map_terrain_features.set_cell(world_coords, 0, feature.atlas_coords)
 
 	generated_chunks.append(chunk_coords)
 
@@ -102,7 +112,7 @@ func generate_rect(rect: Rect2i):
 
 
 func generate_radius(center: Vector2i, radius: int):
-	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius))
+	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius * 2))
 
 
 func spawn_building(building: Building, tile: Vector2i):
@@ -282,6 +292,10 @@ func get_chunk_coords(tile: Vector2i)-> Vector2i:
 
 func has_chunk(chunk_coords: Vector2i)-> bool:
 	return chunk_coords in generated_chunks
+
+
+func get_chunk_rng_seed(chunk_coords: Vector2i)-> int:
+	return hash(str(GameData.world_state.world_seed, chunk_coords))
 
 
 func is_tile_occupied(tile: Vector2i)-> bool:

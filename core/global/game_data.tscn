@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=29 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -14,11 +14,16 @@
 [ext_resource type="Resource" uid="uid://dktqjcvqafqgc" path="res://data/terrain/marsh.tres" id="9_rsnw8"]
 [ext_resource type="Resource" uid="uid://dln74k8chwa4x" path="res://data/buildings/workstead.tres" id="10_1orlr"]
 [ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="10_33o1r"]
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="11_jsqfy"]
 [ext_resource type="Resource" uid="uid://dv1ssg5ak36ro" path="res://data/buildings/harbor.tres" id="11_ot1wp"]
+[ext_resource type="Resource" uid="uid://ct0pnk2v4lhmh" path="res://data/terrain features/boulder.tres" id="12_0p5ue"]
 [ext_resource type="Resource" uid="uid://cxd4dr0x5vqw2" path="res://data/buildings/factory.tres" id="12_7tm4u"]
 [ext_resource type="Resource" uid="uid://cgkayum1fm8nb" path="res://data/buildings/power_plant.tres" id="13_7tmc8"]
+[ext_resource type="Resource" uid="uid://krhupyuxsmfo" path="res://data/terrain features/deer.tres" id="13_fou44"]
 [ext_resource type="Resource" uid="uid://dicp2fwadfdlv" path="res://data/buildings/wind_turbine.tres" id="14_bnyoc"]
+[ext_resource type="Resource" uid="uid://frwusdxqq5yf" path="res://data/terrain features/fish.tres" id="14_uicyi"]
 [ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="15_8i0tv"]
+[ext_resource type="Resource" uid="uid://dg0u76uow1ktd" path="res://data/terrain features/pond.tres" id="15_esuin"]
 [ext_resource type="Resource" uid="uid://dpw1pu7p4whwy" path="res://data/technologies/factories.tres" id="16_qvaga"]
 [ext_resource type="Resource" uid="uid://cotu2nsxm3w7p" path="res://data/technologies/industrial_complex.tres" id="17_vhu8o"]
 [ext_resource type="Script" path="res://core/resources/empire/unit.gd" id="18_7rd6n"]
@@ -27,6 +32,7 @@
 [node name="GameData" type="Node"]
 script = ExtResource("1_xq1md")
 terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r")])
+terrain_features = Array[ExtResource("11_jsqfy")]([ExtResource("12_0p5ue"), ExtResource("13_fou44"), ExtResource("14_uicyi"), ExtResource("15_esuin")])
 buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc")])
 technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o")])
 units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])

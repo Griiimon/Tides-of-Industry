@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TerrainFeature" load_steps=8 format=3 uid="uid://ct0pnk2v4lhmh"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="1_bh6bn"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance_item.gd" id="1_wscf4"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/terrain_occurrence_chance.gd" id="2_dw5jm"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="3_7qmmh"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance.gd" id="4_ao2e0"]
+
+[sub_resource type="Resource" id="Resource_bq48g"]
+script = ExtResource("2_dw5jm")
+terrain = ExtResource("3_7qmmh")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_y154i"]
+script = ExtResource("4_ao2e0")
+items = Array[ExtResource("1_wscf4")]([SubResource("Resource_bq48g")])
+
+[resource]
+script = ExtResource("1_bh6bn")
+atlas_coords = Vector2i(0, 0)
+base_production = 0
+remove_cost = 0
+occurrence = SubResource("Resource_y154i")
+name = ""

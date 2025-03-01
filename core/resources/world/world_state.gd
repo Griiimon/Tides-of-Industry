@@ -5,3 +5,8 @@ extends Resource
 @export var turns: int
 
 @export var empire_state: EmpireState= EmpireState.new()
+
+
+
+func get_seed_hash()-> int:
+	return hash(world_seed)

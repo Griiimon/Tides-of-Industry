@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TerrainFeature" load_steps=11 format=3 uid="uid://krhupyuxsmfo"]
+
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance_item.gd" id="1_2g0ci"]
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="1_k7qfb"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/terrain_filter_occurrence_chance.gd" id="2_1jyhs"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="3_fxmcn"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="3_vswh8"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance.gd" id="4_62kbv"]
+[ext_resource type="Resource" uid="uid://bpbexsgaw04kt" path="res://data/terrain/hills.tres" id="5_h31xw"]
+[ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="6_bw0oy"]
+
+[sub_resource type="Resource" id="Resource_v4lkp"]
+script = ExtResource("2_1jyhs")
+terrain_whitelist = Array[ExtResource("3_vswh8")]([ExtResource("3_fxmcn"), ExtResource("5_h31xw"), ExtResource("6_bw0oy")])
+terrain_blacklist = Array[ExtResource("3_vswh8")]([])
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_3og8w"]
+script = ExtResource("4_62kbv")
+items = Array[ExtResource("1_2g0ci")]([SubResource("Resource_v4lkp")])
+
+[resource]
+script = ExtResource("1_k7qfb")
+atlas_coords = Vector2i(2, 0)
+base_production = 0
+remove_cost = 0
+occurrence = SubResource("Resource_3og8w")
+name = ""

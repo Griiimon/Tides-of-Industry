@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TerrainFeature" load_steps=8 format=3 uid="uid://frwusdxqq5yf"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="1_30ahe"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance_item.gd" id="1_kaggc"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/terrain_occurrence_chance.gd" id="2_5e3y8"]
+[ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="3_p8nrt"]
+[ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance.gd" id="4_dxbe0"]
+
+[sub_resource type="Resource" id="Resource_gobe1"]
+script = ExtResource("2_5e3y8")
+terrain = ExtResource("3_p8nrt")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_c1vmb"]
+script = ExtResource("4_dxbe0")
+items = Array[ExtResource("1_kaggc")]([SubResource("Resource_gobe1")])
+
+[resource]
+script = ExtResource("1_30ahe")
+atlas_coords = Vector2i(3, 0)
+base_production = 0
+remove_cost = 0
+occurrence = SubResource("Resource_c1vmb")
+name = ""
