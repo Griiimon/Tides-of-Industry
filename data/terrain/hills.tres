@@ -6,5 +6,6 @@
 script = ExtResource("1_cwwoi")
 terrain_set_name = "Hills"
 is_sea = false
+move_cost = 2
 terraforming_cost = 0
 name = ""

@@ -22,9 +22,10 @@ func _init(_type: Unit= null, _tile_pos: Vector2i= Vector2i.ZERO, player_unit: b
 
 func move_to(new_tile_pos: Vector2i):
 	world.update_unit_pos(self, new_tile_pos, tile_pos, true)
-	tile_pos= new_tile_pos
 	assert(moves_left > 0)
-	moves_left-= 1
+	moves_left-= world.get_move_cost(tile_pos)
+	moves_left= max(moves_left, 0)
+	tile_pos= new_tile_pos
 
 
 func can_move_to(new_tile_pos: Vector2i):

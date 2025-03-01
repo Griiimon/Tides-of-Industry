@@ -6,5 +6,6 @@
 script = ExtResource("1_mnoyj")
 terrain_set_name = "Mountains"
 is_sea = false
+move_cost = 3
 terraforming_cost = 0
 name = ""

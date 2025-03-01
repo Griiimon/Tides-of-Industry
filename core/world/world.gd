@@ -305,5 +305,9 @@ func get_chunk_rng_seed(chunk_coords: Vector2i)-> int:
 	return hash(str(GameData.world_state.world_seed, chunk_coords))
 
 
+func get_move_cost(tile: Vector2i)-> int:
+	return get_terrain(tile).move_cost
+
+
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1
