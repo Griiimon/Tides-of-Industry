@@ -5,7 +5,7 @@ extends OccurrenceChanceItem
 
 
 
-func evaluate(pos: Vector2i, _terrain: Terrain)-> float:
+func evaluate(pos: Vector2i, _terrain: Terrain, feature: TerrainFeature)-> float:
 	if terrain == _terrain:
-		return super(pos, terrain)
+		return super(pos, terrain, feature)
 	return 0

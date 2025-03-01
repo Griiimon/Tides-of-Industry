@@ -5,5 +5,5 @@ extends Resource
 
 
 
-func evaluate(pos: Vector2i, terrain: Terrain)-> float:
+func evaluate(pos: Vector2i, _terrain: Terrain, _feature: TerrainFeature)-> float:
 	return chance

@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="TerrainFeature" load_steps=8 format=3 uid="uid://dg0u76uow1ktd"]
+[gd_resource type="Resource" script_class="TerrainFeature" load_steps=10 format=3 uid="uid://dg0u76uow1ktd"]
 
 [ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance_item.gd" id="1_aj5b4"]
 [ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="1_s67am"]
 [ext_resource type="Script" path="res://core/resources/world/occurrence chance/terrain_filter_occurrence_chance.gd" id="2_xk366"]
 [ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="3_d8uh3"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="3_wosvf"]
 [ext_resource type="Script" path="res://core/resources/world/occurrence chance/occurrence_chance.gd" id="4_r4acs"]
+[ext_resource type="Resource" uid="uid://dktqjcvqafqgc" path="res://data/terrain/marsh.tres" id="5_ii4v7"]
 
 [sub_resource type="Resource" id="Resource_55tvb"]
 script = ExtResource("2_xk366")
-terrain_whitelist = Array[ExtResource("3_d8uh3")]([])
+terrain_whitelist = Array[ExtResource("3_d8uh3")]([ExtResource("3_wosvf"), ExtResource("5_ii4v7")])
 terrain_blacklist = Array[ExtResource("3_d8uh3")]([])
 chance = 1.0
 
 [sub_resource type="Resource" id="Resource_swyf3"]
 script = ExtResource("4_r4acs")
 items = Array[ExtResource("1_aj5b4")]([SubResource("Resource_55tvb")])
+multiply = true
 
 [resource]
 script = ExtResource("1_s67am")

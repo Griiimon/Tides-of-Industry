@@ -7,12 +7,12 @@ extends OccurrenceChanceItem
 
 
 
-func evaluate(pos: Vector2i, terrain: Terrain)-> float:
+func evaluate(pos: Vector2i, terrain: Terrain, feature: TerrainFeature)-> float:
 	var val: float= noise.get_noise_2dv(pos)
 
 	if not analog:
 		if val >= threshold:
-			return super(pos, terrain)
+			return super(pos, terrain, feature)
 		return 0
 
 	if val < threshold:

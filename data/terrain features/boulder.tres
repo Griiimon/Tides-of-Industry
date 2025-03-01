@@ -14,6 +14,7 @@ chance = 1.0
 [sub_resource type="Resource" id="Resource_y154i"]
 script = ExtResource("4_ao2e0")
 items = Array[ExtResource("1_wscf4")]([SubResource("Resource_bq48g")])
+multiply = true
 
 [resource]
 script = ExtResource("1_bh6bn")
