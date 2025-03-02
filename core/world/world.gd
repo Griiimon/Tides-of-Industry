@@ -4,6 +4,7 @@ extends Node
 @export var generator: WorldGenerator
 @export var chunk_size: int= 16
 @export var initial_radius: int= 20
+@export var generator_min_distance: int= 30
 @export var coast_terrain: Terrain
 @export var sea_terrain: Terrain
 
@@ -34,6 +35,8 @@ var generated_chunks: Array
 
 
 func _ready() -> void:
+	
+	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
 	
 	for terrain in GameData.terrains:
 		var tile_set: TileSet= tile_map_terrain.tile_set
@@ -91,6 +94,12 @@ func generate_chunk(chunk_coords: Vector2i):
 						if id == -1 or id == sea_id:
 							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
 							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
+
+	#if has_chunk(chunk_coords + Vector2i.DOWN):
+		#for x in chunk_size:
+			#var world_coords: Vector2i= Vector2i(x, chunk_size + 1) + world_offset
+			#var terrain_id: int= tile_map_terrain_ids.get_cell_source_id(world_coords)
+			#tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[GameData.terrains[terrain_id]], false)
 
 	var seed: int= get_chunk_rng_seed(chunk_coords)
 	var rng:= RandomNumberGenerator.new()
@@ -181,6 +190,11 @@ func clear_tilemaps():
 	tile_map_terrain.clear()
 	tile_map_terrain_features.clear()
 	tile_map_units.clear()
+
+
+func on_player_unit_move_finished(unit: UnitInstance):
+	var rect:= Rect2i(unit.tile_pos - Vector2i.ONE * generator_min_distance, Vector2i.ONE * generator_min_distance * 2)
+	generate_rect(rect)
 
 
 func get_tile(global_pos: Vector2)-> Vector2i:

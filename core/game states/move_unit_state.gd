@@ -36,6 +36,31 @@ func on_unhandled_input(event: InputEvent) -> void:
 			unit.moves_left= 0
 			finished.emit()
 			SignalManager.player_unit_move_finished.emit(unit)
+		else:
+			var move_vec: Vector2i
+			if event.is_action("unit_move_up"):
+				move_vec.y= -1
+			elif event.is_action("unit_move_up_right"):
+				move_vec.x= 1
+				move_vec.y= 1
+			elif event.is_action("unit_move_right"):
+				move_vec.x= 1
+			elif event.is_action("unit_move_down_right"):
+				move_vec.x= 1
+				move_vec.y= 1
+			elif event.is_action("unit_move_down"):
+				move_vec.y= 1
+			elif event.is_action("unit_move_down_left"):
+				move_vec.x= -1
+				move_vec.y= 1
+			elif event.is_action("unit_move_left"):
+				move_vec.x= -1
+			elif event.is_action("unit_move_up_left"):
+				move_vec.x= -1
+				move_vec.y= -1
+
+			if move_vec:
+				try_to_move_to(unit.tile_pos + move_vec)
 
 
 func try_to_move_to(target_pos: Vector2i):
