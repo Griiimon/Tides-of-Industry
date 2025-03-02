@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://dv1ssg5ak36ro" path="res://data/buildings/harbor.tres" id="11_ot1wp"]
 [ext_resource type="Resource" uid="uid://ct0pnk2v4lhmh" path="res://data/terrain features/boulder.tres" id="12_0p5ue"]
 [ext_resource type="Resource" uid="uid://cxd4dr0x5vqw2" path="res://data/buildings/factory.tres" id="12_7tm4u"]
-[ext_resource type="Resource" uid="uid://cgkayum1fm8nb" path="res://data/buildings/power_plant.tres" id="13_7tmc8"]
+[ext_resource type="Resource" uid="uid://cgkayum1fm8nb" path="res://data/buildings/coal_power_plant.tres" id="13_7tmc8"]
 [ext_resource type="Resource" uid="uid://krhupyuxsmfo" path="res://data/terrain features/deer.tres" id="13_fou44"]
 [ext_resource type="Resource" uid="uid://dicp2fwadfdlv" path="res://data/buildings/wind_turbine.tres" id="14_bnyoc"]
 [ext_resource type="Resource" uid="uid://frwusdxqq5yf" path="res://data/terrain features/fish.tres" id="14_uicyi"]

@@ -27,7 +27,8 @@ func _ready() -> void:
 		terrain_feature_atlas_lookup[terrain_feature.atlas_coords]= terrain_feature
 
 	for building in buildings:
-		building_atlas_lookup[building.atlas_coords]= building
+		for atlas_coords in building.atlas_coords:
+			building_atlas_lookup[atlas_coords]= building
 
 	for raw_material in raw_materials:
 		raw_material_atlas_lookup[raw_material.atlas_coords]= raw_material

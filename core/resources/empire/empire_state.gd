@@ -2,7 +2,7 @@ class_name EmpireState
 extends Resource
 
 @export var money: float= 100
-@export var construction_points: float= 250
+@export var construction_points: float= 1000
 @export var stability: float= 80
 
 @export var production_yields: ProductionYields= ProductionYields.new()
@@ -37,9 +37,17 @@ func apply_modifiers(type: BaseEmpireModifierEffect.Type, base_value: int)-> int
 	return final_value
 
 
+func pay(amount: int):
+	money-= amount
+
+
+func spend_construction_points(cost: int):
+	construction_points-= cost
+
+
 func can_afford(cost: int)-> bool:
 	return money >= cost
 
 
-func pay(amount: int):
-	money-= amount
+func has_construction_points(cost: int)-> bool:
+	return construction_points >= cost

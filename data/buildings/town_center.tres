@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("2_1gk1e")
 radii = Array[int]([5, 10, 15])
-atlas_coords = Array[Vector2i]([Vector2i(2, 0)])
+atlas_coords = Array[Vector2i]([Vector2i(2, 0), Vector2i(2, 3), Vector2i(2, 5)])
 build_costs = Array[int]([1000, 5000, 10000])
 category = ExtResource("1_rph07")
 placement_conditions = Array[ExtResource("2_piwfs")]([ExtResource("3_ushdd")])

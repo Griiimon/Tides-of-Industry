@@ -1,15 +1,24 @@
-[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://dxuvjpfakvf54"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://dxuvjpfakvf54"]
 
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="1_bghem"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_dpaov"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_3s5ce"]
+[ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_vc01m"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="4_q76go"]
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/terrain_placement_condition.gd" id="4_rlhfi"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="5_5di8k"]
+[ext_resource type="Resource" uid="uid://b2c02ee8f5x0o" path="res://data/terrain/grasslands.tres" id="6_27awv"]
+
+[sub_resource type="Resource" id="Resource_fb4in"]
+script = ExtResource("4_rlhfi")
+terrain_whitelist = Array[ExtResource("5_5di8k")]([ExtResource("6_27awv")])
+terrain_blacklist = Array[ExtResource("5_5di8k")]([])
 
 [resource]
 script = ExtResource("1_dpaov")
-atlas_coords = Vector2i(0, 0)
+atlas_coords = Array[Vector2i]([Vector2i(2, 1)])
 build_costs = Array[int]([250])
-placement_conditions = Array[ExtResource("2_3s5ce")]([])
+placement_conditions = Array[ExtResource("2_3s5ce")]([ExtResource("3_vc01m"), SubResource("Resource_fb4in")])
 stat_modifiers = Array[ExtResource("4_q76go")]([])
 empire_modifiers = Array[ExtResource("1_bghem")]([])
 production = Array[int]([])

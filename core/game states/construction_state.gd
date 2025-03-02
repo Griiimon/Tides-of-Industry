@@ -43,7 +43,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					if is_valid_position and GameData.get_empire_state().can_afford(cost):
+					if is_valid_position and GameData.get_empire_state().has_construction_points(cost):
 						build()
 						if not event.shift_pressed:
 							finished.emit()
@@ -67,7 +67,8 @@ func build():
 		assert(island)
 
 	island.build(building, tier, current_tile)
-	GameData.get_empire_state().pay(cost)
+	GameData.get_empire_state().spend_construction_points(cost)
+	SignalManager.building_constructed.emit(current_tile)
 
 
 func update_current_tile(force_update: bool= false):

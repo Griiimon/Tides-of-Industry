@@ -35,6 +35,7 @@ func _ready() -> void:
 	SignalManager.hide_tile_info.connect(hide_tile_info)
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)
 	SignalManager.empire_stats_updated.connect(update_top_bar)
+	SignalManager.building_constructed.connect(on_building_constructed)
 
 	if FLOATING_TILE_INFO_CONTAINER:
 		tile_info_container.queue_free()
@@ -89,6 +90,10 @@ func on_toggle_build_list(b: bool):
 	else:
 		building_list_container.hide()
 		production_yield_container.show()
+
+
+func on_building_constructed(tile: Vector2i):
+	update_top_bar()
 
 
 func get_island_in_view()-> IslandInstance:

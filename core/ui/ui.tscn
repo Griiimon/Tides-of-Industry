@@ -17,6 +17,7 @@ tile_info_container_scene = ExtResource("2_o5sdk")
 [node name="Action Bar PanelContainer" parent="." instance=ExtResource("4_hr0vf")]
 
 [node name="Building List PanelContainer" parent="." instance=ExtResource("5_3qdws")]
+visible = false
 
 [node name="Production Yield PanelContainer" parent="." instance=ExtResource("6_xqd2v")]
 anchors_preset = -1
