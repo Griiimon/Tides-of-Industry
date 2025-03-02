@@ -21,8 +21,9 @@ func _ready() -> void:
 	move_unit_state.finished.connect(change_state.bind(idle_state))
 
 
-func build(building: Building):
+func build(building: Building, tier: int= 0):
 	construction_state.building= building
+	construction_state.tier= tier
 	change_state(construction_state)
 
 

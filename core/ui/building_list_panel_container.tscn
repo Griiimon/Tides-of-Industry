@@ -6,7 +6,6 @@
 bg_color = Color(0.215686, 0.215686, 0.215686, 0.529412)
 
 [node name="Building List PanelContainer" type="PanelContainer"]
-visible = false
 anchors_preset = -1
 anchor_top = 0.2
 anchor_bottom = 0.85
@@ -23,6 +22,8 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 2
 
-[node name="Content VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Content GridContainer" type="GridContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 4

@@ -24,6 +24,13 @@ SignalManager="*res://core/global/signal_manager.gd"
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://core/": "red",
+"res://data/": "green"
+}
+
 [input]
 
 build_mode={

@@ -12,6 +12,7 @@ const FLOATING_TILE_INFO_CONTAINER= false
 @onready var action_bar_container: ActionBarPanelContainer = $"Action Bar PanelContainer"
 @onready var building_list_container: BuildingListPanelContainer = $"Building List PanelContainer"
 @onready var research_popup: ResearchPopupPanel = $"Research Popup"
+@onready var production_yield_container: ProductionYieldPanelContainer = $"Production Yield PanelContainer"
 
 @onready var tile_info_container: TileInfoPanelContainer = $"Tile Info PanelContainer"
 
@@ -21,8 +22,8 @@ func _ready() -> void:
 	assert(world)
 	assert(tile_info_container_scene)
 
-	action_bar_container.open_build_list.connect(building_list_container.show)
-	action_bar_container.close_build_list.connect(building_list_container.hide)
+	action_bar_container.open_build_list.connect(on_toggle_build_list.bind(true))
+	action_bar_container.close_build_list.connect(on_toggle_build_list.bind(false))
 	action_bar_container.open_research_list.connect(research_popup.open)
 	action_bar_container.close_research_list.connect(research_popup.hide)
 
@@ -66,10 +67,10 @@ func update_top_bar():
 	top_bar_container.update(get_island_in_view())
 
 
-func on_build(building: Building):
+func on_build(building: Building, tier: int):
 	building_list_container.hide()
 	action_bar_container.untoggle_build_button()
-	game_states.build(building)
+	game_states.build(building, tier)
 
 
 func on_island_stats_updated(island: IslandInstance):
@@ -79,6 +80,15 @@ func on_island_stats_updated(island: IslandInstance):
 
 func on_player_unit_moved(unit: UnitInstance):
 	show_tile_info(unit.tile_pos)
+
+
+func on_toggle_build_list(b: bool):
+	if b:
+		building_list_container.show()
+		production_yield_container.hide()
+	else:
+		building_list_container.hide()
+		production_yield_container.show()
 
 
 func get_island_in_view()-> IslandInstance:

@@ -34,7 +34,7 @@ modifier = SubResource("Resource_j24sk")
 
 [resource]
 script = ExtResource("1_fhsnp")
-atlas_coords = Vector2i(5, 0)
+atlas_coords = Array[Vector2i]([Vector2i(5, 0)])
 build_costs = Array[int]([5000])
 category = ExtResource("1_wgm41")
 placement_conditions = Array[ExtResource("2_46gi7")]([ExtResource("3_c5sqn"), ExtResource("4_iup3q")])

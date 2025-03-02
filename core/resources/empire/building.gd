@@ -3,7 +3,7 @@ extends NamedResource
 
 enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 
-@export var atlas_coords: Vector2i
+@export var atlas_coords: Array[Vector2i]
 @export var build_costs: Array[int]
 @export var category: BuildingCategory
 @export var placement_conditions: Array[BaseBuildingPlacementCondition]
@@ -55,7 +55,7 @@ func get_cost(level: int)-> int:
 	return build_costs[level]
 
 
-func get_max_level(level: int)-> int:
+func get_max_level()-> int:
 	return build_costs.size()
 
 

@@ -2,7 +2,8 @@ class_name GameStateConstruction
 extends GameStateMachineState
 
 @export var building: Building
-var level: int
+@export var tier: int
+
 var cost: int
 
 var is_valid_position: bool= false:
@@ -25,13 +26,13 @@ var current_tile: Vector2i:
 
 func on_enter():
 	update_current_tile()
-	cost= building.get_cost(level)
+	cost= building.get_cost(tier)
 
 
 func on_exit():
 	state_machine.world.tile_map_buildings_ghost.clear()
 	building= null
-	level= 0
+	tier= 0
 
 
 func on_unhandled_input(event: InputEvent) -> void:
@@ -65,7 +66,7 @@ func build():
 		island= state_machine.world.get_island(current_tile)
 		assert(island)
 
-	island.build(building, current_tile)
+	island.build(building, tier, current_tile)
 	GameData.get_empire_state().pay(cost)
 
 
@@ -73,4 +74,4 @@ func update_current_tile(force_update: bool= false):
 	var new_tile: Vector2i= state_machine.world.get_mouse_tile()
 	if new_tile != current_tile or force_update:
 		current_tile= new_tile
-		state_machine.world.draw_ghost_building(current_tile, building)
+		state_machine.world.draw_ghost_building(building, tier, current_tile)

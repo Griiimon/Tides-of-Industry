@@ -124,14 +124,14 @@ func generate_radius(center: Vector2i, radius: int):
 	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius * 2))
 
 
-func spawn_building(building: Building, tile: Vector2i):
-	tile_map_buildings.set_cell(tile, 0, building.atlas_coords)
-	tile_map_building_levels.set_cell(tile, 0, Vector2i.ZERO)
+func spawn_building(building: Building, tier: int, tile: Vector2i):
+	tile_map_buildings.set_cell(tile, 0, building.atlas_coords[tier])
+	tile_map_building_levels.set_cell(tile, tier, Vector2i.ZERO)
 
 
-func draw_ghost_building(tile: Vector2i, building: Building):
+func draw_ghost_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_buildings_ghost.clear()
-	tile_map_buildings_ghost.set_cell(tile, 0, building.atlas_coords)
+	tile_map_buildings_ghost.set_cell(tile, 0, building.atlas_coords[tier])
 
 
 func settle_island(town_center_pos: Vector2i)-> IslandInstance:

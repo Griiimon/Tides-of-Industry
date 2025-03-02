@@ -18,7 +18,7 @@ tile_info_container_scene = ExtResource("2_o5sdk")
 
 [node name="Building List PanelContainer" parent="." instance=ExtResource("5_3qdws")]
 
-[node name="ProductionYield PanelContainer" parent="." instance=ExtResource("6_xqd2v")]
+[node name="Production Yield PanelContainer" parent="." instance=ExtResource("6_xqd2v")]
 anchors_preset = -1
 anchor_top = 0.05
 anchor_bottom = 0.1

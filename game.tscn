@@ -334,6 +334,8 @@ town_center = ExtResource("10_vrar1")
 [node name="World" type="Node" parent="."]
 script = ExtResource("1_bd8if")
 generator = ExtResource("5_flgqw")
+chunk_size = null
+initial_radius = null
 coast_terrain = ExtResource("6_twfgy")
 sea_terrain = ExtResource("7_477d5")
 
@@ -395,6 +397,7 @@ script = ExtResource("5_t57mi")
 [node name="Construction" type="Node" parent="Game States"]
 script = ExtResource("6_nea45")
 building = ExtResource("10_vrar1")
+tier = null
 
 [node name="Move Unit" type="Node" parent="Game States"]
 script = ExtResource("7_xeex4")

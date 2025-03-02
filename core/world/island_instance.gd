@@ -26,8 +26,8 @@ func update_stats():
 	SignalManager.island_stats_updated.emit(self)
 
 
-func build(building: Building, tile: Vector2i):
-	world.spawn_building(building, tile)
+func build(building: Building, tier: int, tile: Vector2i):
+	world.spawn_building(building, tier, tile)
 	buildings.append(tile)
 	
 	if building.is_town_center():
