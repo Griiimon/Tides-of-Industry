@@ -169,6 +169,19 @@ func spawn_unit(type: Unit, tile: Vector2i, player_unit: bool= true)-> UnitInsta
 	return unit
 
 
+func remove_unit(unit: UnitInstance):
+	if unit.is_ai:
+		ai_units.erase(unit)
+	else:
+		empire.units.erase(unit)
+	all_units.erase(unit)
+
+	tile_map_units.set_cell(unit.tile_pos, -1)
+	tile_to_unit[unit.tile_pos]= null
+
+	#assert(unit.get_reference_count() == 0)
+
+
 func update_unit_pos(unit: UnitInstance, tile: Vector2i, previous_tile: Vector2i= Vector2i.ZERO, remove_previous: bool= false):
 	tile_map_units.set_cell(tile, 0, unit.get_atlas_coords())
 	tile_to_unit[tile]= unit

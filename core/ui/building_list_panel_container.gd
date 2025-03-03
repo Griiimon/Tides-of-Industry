@@ -15,6 +15,7 @@ func populate():
 	UIUtils.free_children(content)
 	
 	for building in GameData.buildings:
+		if not building.available_in_build_menu: continue
 		var label: Label= UIUtils.add_label(content, building.get_display_name())
 
 		for tier in 3:

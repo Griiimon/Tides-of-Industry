@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5bx5j6l2s084"]
+
+[ext_resource type="Script" path="res://core/ui/unit_action_bar_panel_container.gd" id="1_7yooa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaqmo"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 0.513726)
+
+[node name="Unit Action Bar PanelContainer" type="PanelContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vaqmo")
+script = ExtResource("1_7yooa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Kill Button" type="Button" parent="MarginContainer/Button HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 30
+text = "Kill"
+
+[connection signal="pressed" from="MarginContainer/Button HBoxContainer/Kill Button" to="." method="_on_kill_button_pressed"]

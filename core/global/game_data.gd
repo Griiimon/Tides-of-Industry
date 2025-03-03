@@ -7,6 +7,8 @@ extends Node
 @export var raw_materials: Array[RawMaterial]
 @export var units: Array[Unit]
 
+@export var town_center: TownCenter
+
 
 var world_state: WorldState= WorldState.new()
 var user_settings: UserSettings= UserSettings.new()

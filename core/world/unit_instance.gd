@@ -2,12 +2,14 @@ class_name UnitInstance
 extends Resource
 
 @export_storage var type: Unit
-var world: World
 
 @export_storage var is_ai: bool
 @export_storage var tile_pos: Vector2i
 @export_storage var moves_left: int
 @export_storage var amphibious_state_ship: bool= false
+@export_storage var action_points_left: int
+
+var world: World
 
 
 
@@ -18,6 +20,7 @@ func _init(_type: Unit= null, _tile_pos: Vector2i= Vector2i.ZERO, player_unit: b
 	is_ai= not player_unit
 	world= _world
 	moves_left= get_actual_type().moves_per_turn
+	action_points_left= get_actual_type().action_points
 
 
 func move_to(new_tile_pos: Vector2i):
@@ -51,6 +54,11 @@ func can_move_to(new_tile_pos: Vector2i):
 	
 	#var feature: TerrainFeature= world.get_feature(new_tile_pos)
 	return true
+
+
+func kill():
+	SignalManager.player_unit_deselected.emit(self)
+	world.remove_unit(self)
 
 
 func can_move(dir: Vector2i):

@@ -10,6 +10,7 @@ const FLOATING_TILE_INFO_CONTAINER= false
 
 @onready var top_bar_container: TopBarPanelContainer = $"Top Bar PanelContainer"
 @onready var action_bar_container: ActionBarPanelContainer = $"Action Bar PanelContainer"
+@onready var unit_action_bar_container: UnitActionBarPanelContainer = $"Unit Action Bar PanelContainer"
 @onready var building_list_container: BuildingListPanelContainer = $"Building List PanelContainer"
 @onready var research_popup: ResearchPopupPanel = $"Research Popup"
 @onready var production_yield_container: ProductionYieldPanelContainer = $"Production Yield PanelContainer"
@@ -36,6 +37,8 @@ func _ready() -> void:
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)
 	SignalManager.empire_stats_updated.connect(update_top_bar)
 	SignalManager.building_constructed.connect(on_building_constructed)
+	SignalManager.player_unit_selected.connect(on_player_unit_selected)
+	SignalManager.player_unit_deselected.connect(on_player_unit_deselected)
 
 	if FLOATING_TILE_INFO_CONTAINER:
 		tile_info_container.queue_free()
@@ -94,6 +97,17 @@ func on_toggle_build_list(b: bool):
 
 func on_building_constructed(tile: Vector2i):
 	update_top_bar()
+
+
+func on_player_unit_selected(unit: UnitInstance):
+	action_bar_container.hide()
+	unit_action_bar_container.show()
+	unit_action_bar_container.activate(unit)
+
+
+func on_player_unit_deselected(unit: UnitInstance):
+	unit_action_bar_container.hide()
+	action_bar_container.show()
 
 
 func get_island_in_view()-> IslandInstance:

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="UnitActionSettle" load_steps=2 format=3 uid="uid://du5dkw18wpmxx"]
+
+[ext_resource type="Script" path="res://core/resources/units/unit_action_settle.gd" id="1_e1e1l"]
+
+[resource]
+script = ExtResource("1_e1e1l")
+name = ""

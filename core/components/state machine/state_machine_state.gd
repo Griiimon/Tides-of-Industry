@@ -6,6 +6,8 @@ signal state_entered
 signal state_exited
 signal finished
 
+var is_exiting: bool= false
+
 
 
 func on_enter():

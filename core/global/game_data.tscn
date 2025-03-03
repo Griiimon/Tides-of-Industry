@@ -42,3 +42,4 @@ buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("
 technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o")])
 raw_materials = Array[ExtResource("28_qnjjw")]([ExtResource("29_fonl1"), ExtResource("30_paqvd"), ExtResource("31_tfk34")])
 units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])
+town_center = ExtResource("3_ge107")

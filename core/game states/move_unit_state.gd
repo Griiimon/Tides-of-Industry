@@ -7,14 +7,21 @@ var unit: UnitInstance
 
 
 
+func _ready() -> void:
+	super()
+	SignalManager.player_unit_deselected.connect(on_unit_deselected)
+
+
 func on_enter():
 	state_machine.camera.scroll_to(state_machine.world.get_global_pos(unit.tile_pos))
 	state_machine.world.set_unit_selection_box(unit.tile_pos)
+	SignalManager.player_unit_selected.emit(unit)
 	SignalManager.show_tile_info.emit(unit.tile_pos)
 	
 
 func on_exit():
 	state_machine.world.reset_unit_selection_boxes()
+	SignalManager.player_unit_deselected.emit(unit)
 
 
 func on_unhandled_input(event: InputEvent) -> void:
@@ -42,7 +49,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 				move_vec.y= -1
 			elif event.is_action("unit_move_up_right"):
 				move_vec.x= 1
-				move_vec.y= 1
+				move_vec.y= -1
 			elif event.is_action("unit_move_right"):
 				move_vec.x= 1
 			elif event.is_action("unit_move_down_right"):
@@ -70,5 +77,11 @@ func try_to_move_to(target_pos: Vector2i):
 		if unit.moves_left == 0:
 			finished.emit()
 			SignalManager.player_unit_move_finished.emit(unit)
+			UnitActionMove.new().execute(unit)
 		else:
 			state_machine.world.set_unit_selection_box(unit.tile_pos)
+
+
+func on_unit_deselected(unit: UnitInstance):
+	if is_current_state() and not is_exiting:
+		finished.emit()

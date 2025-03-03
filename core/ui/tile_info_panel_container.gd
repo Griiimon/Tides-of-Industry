@@ -6,6 +6,7 @@ extends PanelContainer
 @onready var feature_label: Label = %"Feature Label"
 @onready var unit_label: Label = %"Unit Label"
 @onready var unit_moves_label: Label = %"Unit Moves Label"
+@onready var unit_ap_label: Label = %"Unit AP Label"
 
 
 
@@ -30,8 +31,11 @@ func update(building: Building, terrain: Terrain, feature: TerrainFeature, unit:
 	if unit:
 		unit_label.text= unit.type.get_display_name()
 		unit_moves_label.text= str(unit.moves_left, " move(s)")
+		unit_ap_label.text= str(unit.action_points_left, "/", unit.type.action_points, " AP")
 		unit_label.show()
 		unit_moves_label.show()
+		unit_ap_label.show()
 	else:
 		unit_label.hide()
 		unit_moves_label.hide()
+		unit_ap_label.hide()
