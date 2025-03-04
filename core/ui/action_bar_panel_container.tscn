@@ -42,6 +42,7 @@ text = "Build"
 [node name="Upgrade Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
 text = "Upgrade"
 
 [node name="Remove Button" type="Button" parent="MarginContainer/HBoxContainer"]
@@ -71,4 +72,5 @@ theme_override_font_sizes/font_size = 30
 text = "Policies"
 
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Build Button" to="." method="_on_build_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/Upgrade Button" to="." method="_on_upgrade_button_toggled"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Research Button" to="." method="_on_research_button_toggled"]

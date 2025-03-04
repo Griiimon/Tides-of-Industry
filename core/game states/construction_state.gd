@@ -66,9 +66,8 @@ func build():
 		island= state_machine.world.get_island(current_tile)
 		assert(island)
 
-	island.build(building, tier, current_tile)
 	GameData.get_empire_state().spend_construction_points(cost)
-	SignalManager.building_constructed.emit(current_tile)
+	island.build(building, tier, current_tile)
 
 
 func update_current_tile(force_update: bool= false):

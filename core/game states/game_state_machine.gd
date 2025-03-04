@@ -8,6 +8,7 @@ extends FiniteStateMachine
 @onready var idle_state: GameStateIdle = $Idle
 @onready var construction_state: GameStateConstruction = $Construction
 @onready var move_unit_state: GameStateMoveUnit = $"Move Unit"
+@onready var upgrade_state: GameStateUpgrade = $Upgrade
 
 
 
@@ -25,6 +26,10 @@ func build(building: Building, tier: int= 0):
 	construction_state.building= building
 	construction_state.tier= tier
 	change_state(construction_state)
+
+
+func upgrade():
+	change_state(upgrade_state)
 
 
 func select_unit(unit: UnitInstance):

@@ -26,23 +26,23 @@ func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandI
 	return true
 
 
-func get_stat(stat: Stat, level: int, tile: Vector2i, world: World, island: IslandInstance)-> int:
+func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: IslandInstance)-> int:
 	var result: int
 	match stat:
 		Stat.POPULATION:
-			result= population[level] if level < population.size() else 0
+			result= population[tier] if tier < population.size() else 0
 		Stat.PRODUCTION:
-			result= production[level] if level < production.size() else 0
+			result= production[tier] if tier < production.size() else 0
 		Stat.POWER:
-			result= power[level] if level < power.size() else 0
+			result= power[tier] if tier < power.size() else 0
 		Stat.POLLUTION:
-			result= pollution[level] if level < pollution.size() else 0
+			result= pollution[tier] if tier < pollution.size() else 0
 		Stat.RESEARCH:
-			result= research[level] if level < research.size() else 0
+			result= research[tier] if tier < research.size() else 0
 
 	for modifier in stat_modifiers:
 		if modifier.type == stat:
-			var modifier_result= modifier.apply(result, tile, world, island)
+			var modifier_result= modifier.apply(result, tile, tier, world, island)
 			if result > 0:
 				modifier_result= max(0, modifier_result)
 			elif result < 0:
@@ -58,6 +58,14 @@ func get_cost(level: int)-> int:
 
 func get_max_level()-> int:
 	return build_costs.size()
+
+
+func can_upgrade_from(tier: int):
+	return tier < get_max_level()
+ 
+
+func get_upgrade_cost(tier: int):
+	return build_costs[tier + 1]
 
 
 func is_town_center()-> bool:

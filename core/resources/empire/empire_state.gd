@@ -1,17 +1,17 @@
 class_name EmpireState
 extends Resource
 
-@export var money: float= 100
-@export var construction_points: float= 1000
-@export var stability: float= 80
+@export_storage var money: float= 100
+@export_storage var construction_points: float= 1000
+@export_storage var stability: float= 80
 
-@export var production_yields: ProductionYields= ProductionYields.new()
+@export_storage var production_yields: ProductionYields= ProductionYields.new()
 
-@export var current_research: TechnologyLevel
-@export var research_progress: float
-@export var unlocked_technologies: Array[TechnologyLevel]
+@export_storage var current_research: TechnologyLevel
+@export_storage var research_progress: float
+@export_storage var unlocked_technologies: Array[TechnologyLevel]
 
-@export var active_modifiers: Array[ActiveEmpireModifierEffect]
+@export_storage var active_modifiers: Array[ActiveEmpireModifierEffect]
 
 
 

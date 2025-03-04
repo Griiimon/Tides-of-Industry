@@ -34,6 +34,7 @@ func build(building: Building, tier: int, tile: Vector2i):
 		definition.add_town_center_position(tile)
 
 	update_stats()
+	SignalManager.building_constructed.emit(tile)
 
 
 func update_pollution():

@@ -27,6 +27,8 @@ func _ready() -> void:
 	action_bar_container.close_build_list.connect(on_toggle_build_list.bind(false))
 	action_bar_container.open_research_list.connect(research_popup.open)
 	action_bar_container.close_research_list.connect(research_popup.hide)
+	action_bar_container.upgrade.connect(on_upgrade)
+	action_bar_container.cancel_upgrade.connect(on_cancel_upgrade)
 
 	building_list_container.selected.connect(on_build)
 	
@@ -37,6 +39,7 @@ func _ready() -> void:
 	SignalManager.island_stats_updated.connect(on_island_stats_updated)
 	SignalManager.empire_stats_updated.connect(update_top_bar)
 	SignalManager.building_constructed.connect(on_building_constructed)
+	SignalManager.building_upgraded.connect(on_building_constructed)
 	SignalManager.player_unit_selected.connect(on_player_unit_selected)
 	SignalManager.player_unit_deselected.connect(on_player_unit_deselected)
 
@@ -75,6 +78,14 @@ func on_build(building: Building, tier: int):
 	building_list_container.hide()
 	action_bar_container.untoggle_build_button()
 	game_states.build(building, tier)
+
+
+func on_upgrade():
+	game_states.upgrade()
+
+
+func on_cancel_upgrade():
+	game_states.reset()
 
 
 func on_island_stats_updated(island: IslandInstance):

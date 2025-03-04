@@ -5,7 +5,8 @@ signal open_build_list
 signal close_build_list
 signal open_research_list
 signal close_research_list
-
+signal upgrade
+signal cancel_upgrade
 
 @onready var build_button: Button = %"Build Button"
 @onready var research_button: Button = %"Research Button"
@@ -32,3 +33,10 @@ func _on_research_button_toggled(toggled_on: bool) -> void:
 		open_research_list.emit()
 	else:
 		close_research_list.emit()
+
+
+func _on_upgrade_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		upgrade.emit()
+	else:
+		cancel_upgrade.emit()

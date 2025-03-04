@@ -138,6 +138,15 @@ func spawn_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_building_levels.set_cell(tile, tier, Vector2i.ZERO)
 
 
+func upgrade_building(tile: Vector2i):
+	var building: Building= get_building(tile)
+	var tier: int= get_building_level(tile)
+	tile_map_buildings.set_cell(tile, 0, building.atlas_coords[tier + 1])
+	tile_map_building_levels.set_cell(tile, tier + 1, Vector2i.ZERO)
+	get_island(tile).update_stats()
+	SignalManager.building_upgraded.emit(tile)
+	
+
 func draw_ghost_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_buildings_ghost.clear()
 	tile_map_buildings_ghost.set_cell(tile, 0, building.atlas_coords[tier])
