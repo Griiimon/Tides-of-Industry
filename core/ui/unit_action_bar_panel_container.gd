@@ -38,5 +38,5 @@ func on_action_button_pressed(action: BaseUnitAction):
 
 
 func _on_kill_button_pressed() -> void:
-	SignalManager.player_unit_deselected.emit()
+	SignalManager.player_unit_deselected.emit(unit)
 	unit.kill()

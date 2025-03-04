@@ -9,13 +9,11 @@ Build Info: Shows building name/level/CP cost/tile validity warning
 building radius resource boni
 
 
-Choose building level in menu
+rename building levels => tiers
 
 Upgrade Buildings
 
 
-
-unit actions and action points
 
 oasis
 
@@ -38,6 +36,11 @@ Add construction preview resource ( renders/show ui stuff that helps with placem
 
 
 
+use bigger images for Tier III buildings ( Highrise, Cathedral etc ). possible to add custom tile sizes to the buildings sheet?
+
+
+
+
 
 
 
@@ -55,7 +58,6 @@ Bank ( Gain interest on money, yearly? )
 FEATURES
 ----------
 
-Pond
 Deer, Production ( gets removed when buildings/road placed next to )
 Forest Production (bonus with road), -Pollution(remove with road)
 Work camp, required for deer/forest/etc to provide production?

@@ -5,6 +5,7 @@ enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 
 @export var atlas_coords: Array[Vector2i]
 @export var build_costs: Array[int]
+@export var available_in_build_menu: bool= true
 @export var category: BuildingCategory
 @export var placement_conditions: Array[BaseBuildingPlacementCondition]
 @export var stat_modifiers: Array[BaseBuildingStatModifier]
