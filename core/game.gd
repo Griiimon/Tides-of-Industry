@@ -16,6 +16,12 @@ var is_paused: bool= true:
 func _ready() -> void:
 	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
 	turn_cooldown.timeout.connect(on_turn_cooldown_timeout)
+	
+	late_ready.call_deferred()
+
+
+func late_ready():
+	pre_turn()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -33,6 +39,14 @@ func next_turn():
 	var last_unit: UnitInstance= world.empire.last_used_unit
 	if last_unit:
 		game_states.select_unit(last_unit)
+
+	pre_turn()
+
+
+func pre_turn():
+	if not game_states.is_unit_selected():
+		if world.empire.has_moves_left():
+			game_states.select_unit(world.empire.units[0])
 
 
 func toggle_pause():

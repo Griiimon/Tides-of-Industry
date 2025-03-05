@@ -15,13 +15,13 @@
 [sub_resource type="Resource" id="Resource_njswm"]
 script = ExtResource("7_ku7k3")
 percentage = 50.0
-tier_factor = null
-type = null
+tier_factor = 1.0
+type = 0
 
 [sub_resource type="Resource" id="Resource_j24sk"]
 script = ExtResource("7_ku7k3")
 percentage = 50.0
-tier_factor = null
+tier_factor = 1.0
 type = 1
 
 [sub_resource type="Resource" id="Resource_dlwbs"]

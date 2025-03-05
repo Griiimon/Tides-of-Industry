@@ -345,6 +345,9 @@ town_center = ExtResource("10_vrar1")
 [node name="World" type="Node" parent="."]
 script = ExtResource("1_bd8if")
 generator = ExtResource("5_wrj6f")
+chunk_size = null
+initial_radius = null
+generator_min_distance = null
 coast_terrain = ExtResource("6_twfgy")
 sea_terrain = ExtResource("7_477d5")
 

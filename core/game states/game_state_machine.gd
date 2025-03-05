@@ -39,3 +39,7 @@ func select_unit(unit: UnitInstance):
 
 func reset():
 	change_state(idle_state)
+
+
+func is_unit_selected()-> bool:
+	return current_state == move_unit_state

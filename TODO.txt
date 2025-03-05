@@ -171,4 +171,5 @@ random campaigns?
 MISC
 -----------------
 
-Image prompts: ", video game sprite sheet pixel art"
+Image prompts: 	", video game sprite sheet pixel art"
+				", black and white icons"

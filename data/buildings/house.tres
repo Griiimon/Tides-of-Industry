@@ -15,14 +15,14 @@
 [sub_resource type="Resource" id="Resource_omj8f"]
 script = ExtResource("7_bkdl7")
 percentage = 20.0
-tier_factor = 1.0
+tier_factor = 0.0
 type = 0
 
 [sub_resource type="Resource" id="Resource_4fqgy"]
 script = ExtResource("8_m3bem")
 terrains = Array[ExtResource("9_jt4m7")]([ExtResource("10_sjsfm")])
 percentage = -50.0
-tier_factor = 1.0
+tier_factor = 0.0
 type = 2
 
 [resource]

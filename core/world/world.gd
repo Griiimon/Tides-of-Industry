@@ -214,6 +214,14 @@ func clear_tilemaps():
 	tile_map_units.clear()
 
 
+func clear_building_stat(tile: Vector2i, stat: Building.Stat):
+	pass
+
+
+func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: int):
+	prints("Log Stat", get_building(tile).get_display_name(), Building.Stat.keys()[stat], prefix, Utils.signed_number(value))
+
+
 func on_player_unit_move_finished(unit: UnitInstance):
 	var rect:= Rect2i(unit.tile_pos - Vector2i.ONE * generator_min_distance, Vector2i.ONE * generator_min_distance * 2)
 	generate_rect(rect)

@@ -40,6 +40,10 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 		Stat.RESEARCH:
 			result= research[tier] if tier < research.size() else 0
 
+	world.clear_building_stat(tile, stat)
+	if result != 0:
+		world.log_building_stat(tile, stat, "base", result) 
+
 	for modifier in stat_modifiers:
 		if modifier.type == stat:
 			var modifier_result= modifier.apply(result, tile, tier, world, island)
@@ -47,6 +51,10 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 				modifier_result= max(0, modifier_result)
 			elif result < 0:
 				modifier_result= min(0, modifier_result)
+
+			var delta: int= modifier_result - result
+			if delta != 0:
+				world.log_building_stat(tile, stat, modifier.get_short_desc(), delta) 
 				
 			result= modifier_result
 	return result
