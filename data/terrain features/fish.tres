@@ -19,7 +19,7 @@ multiply = true
 [resource]
 script = ExtResource("1_30ahe")
 atlas_coords = Vector2i(3, 0)
-base_production = 0
+base_production = 3
 remove_cost = 0
 occurrence = SubResource("Resource_c1vmb")
 name = ""

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TownCenter" load_steps=7 format=3 uid="uid://416y2yuxhu1u"]
+[gd_resource type="Resource" script_class="TownCenter" load_steps=8 format=3 uid="uid://416y2yuxhu1u"]
 
 [ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_rph07"]
 [ext_resource type="Script" path="res://core/resources/empire/town_center.gd" id="2_1gk1e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_rjinl"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="3_ushdd"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="5_ymlca"]
+[ext_resource type="Resource" uid="uid://clbfkqshh05vm" path="res://data/buildings/sub resources/town center/tile_production_stat.tres" id="7_u3043"]
 
 [resource]
 script = ExtResource("2_1gk1e")
@@ -15,7 +16,7 @@ build_costs = Array[int]([1000, 5000, 10000])
 available_in_build_menu = false
 category = ExtResource("1_rph07")
 placement_conditions = Array[ExtResource("2_piwfs")]([ExtResource("3_ushdd")])
-stat_modifiers = Array[ExtResource("5_ymlca")]([])
+stat_modifiers = Array[ExtResource("5_ymlca")]([ExtResource("7_u3043")])
 empire_modifiers = Array[ExtResource("2_rjinl")]([])
 production = Array[int]([1])
 pollution = Array[int]([])

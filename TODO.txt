@@ -1,3 +1,5 @@
+max_workers: island pop / max_workers = final output factor ( production/power/etc ). town center max 30 workers, comes with initial 10 pop
+
 unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
 
 add farms, fertility from flower grasslands or muddy grassland

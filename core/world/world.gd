@@ -347,5 +347,30 @@ func get_move_cost(tile: Vector2i)-> int:
 	return get_terrain(tile).move_cost
 
 
+func get_neighbor_tiles(tile: Vector2i)-> Array[Vector2i]:
+	return tile_map_terrain.get_surrounding_cells(tile)
+
+
+func get_tiles_in_radius(center: Vector2i, radius: int, include_center: bool= true)-> Array[Vector2i]:
+	var result: Array[Vector2i]= []
+	for x in range(center.x - radius, center.x + radius + 1):
+		for y in range(center.y - radius, center.y + radius + 1):
+			var tile= Vector2i(x, y)
+			if not include_center and tile == center: continue
+			if center.distance_to(tile) <= radius:
+				result.append(tile)
+	return result
+
+
+func get_raw_material(tile: Vector2i, only_raw: bool= false, only_discovered: bool= true)-> RawMaterial:
+	if tile_map_resources.get_cell_source_id(tile) == -1:
+		return null
+	if tile_map_resources_discovered.get_cell_source_id(tile) == -1 and only_discovered:
+		return null
+	if has_building(tile) and only_raw:
+		return null
+	return GameData.raw_material_atlas_lookup[tile_map_resources.get_cell_atlas_coords(tile)]
+
+
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1

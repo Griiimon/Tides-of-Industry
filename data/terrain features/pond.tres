@@ -22,7 +22,7 @@ multiply = true
 [resource]
 script = ExtResource("1_s67am")
 atlas_coords = Vector2i(1, 0)
-base_production = 0
+base_production = 1
 remove_cost = 0
 occurrence = SubResource("Resource_swyf3")
 name = ""

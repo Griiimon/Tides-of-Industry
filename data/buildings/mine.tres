@@ -19,6 +19,7 @@ terrain_blacklist = Array[ExtResource("6_868np")]([])
 script = ExtResource("3_ce8x6")
 atlas_coords = Array[Vector2i]([Vector2i(7, 0), Vector2i(7, 3)])
 build_costs = Array[int]([500, 2000])
+available_in_build_menu = true
 category = ExtResource("1_j80tk")
 placement_conditions = Array[ExtResource("2_eg603")]([ExtResource("4_h5bh6"), SubResource("Resource_layy7")])
 stat_modifiers = Array[ExtResource("4_6vhns")]([])

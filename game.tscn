@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b5cgqw27uhbp3" path="res://textures/buildings.png" id="3_2b7uq"]
 [ext_resource type="Script" path="res://core/game states/game_state_machine.gd" id="4_7s3ma"]
 [ext_resource type="Script" path="res://core/my_camera.gd" id="5_8nmma"]
-[ext_resource type="Resource" uid="uid://dwyajv3mqqdd1" path="res://data/world generators/classic.tres" id="5_flgqw"]
 [ext_resource type="Script" path="res://core/game states/idle_state.gd" id="5_t57mi"]
+[ext_resource type="Resource" uid="uid://tyckeb38n02b" path="res://data/world generators/classic_archipelago.tres" id="5_wrj6f"]
 [ext_resource type="Script" path="res://core/game states/construction_state.gd" id="6_nea45"]
 [ext_resource type="Resource" uid="uid://j756207jehvn" path="res://data/terrain/coast.tres" id="6_twfgy"]
 [ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="7_477d5"]
@@ -344,7 +344,7 @@ town_center = ExtResource("10_vrar1")
 
 [node name="World" type="Node" parent="."]
 script = ExtResource("1_bd8if")
-generator = ExtResource("5_flgqw")
+generator = ExtResource("5_wrj6f")
 coast_terrain = ExtResource("6_twfgy")
 sea_terrain = ExtResource("7_477d5")
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://dln74k8chwa4x"]
+[gd_resource type="Resource" script_class="Building" load_steps=11 format=3 uid="uid://dln74k8chwa4x"]
 
 [ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_f120o"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="1_ttmry"]
@@ -7,6 +7,15 @@
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="3_lbgpu"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_qdt67"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_beqqx"]
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="8_lhhut"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_neighbor_feature_list_percentage_modifier.gd" id="9_hq7jp"]
+
+[sub_resource type="Resource" id="Resource_qss42"]
+script = ExtResource("9_hq7jp")
+features = Array[ExtResource("8_lhhut")]([])
+percentage = 0.0
+tier_factor = 1.0
+type = 1
 
 [resource]
 script = ExtResource("2_6b5gv")
@@ -15,7 +24,7 @@ build_costs = Array[int]([400])
 available_in_build_menu = true
 category = ExtResource("1_f120o")
 placement_conditions = Array[ExtResource("1_ttmry")]([ExtResource("3_qdt67"), ExtResource("4_beqqx")])
-stat_modifiers = Array[ExtResource("3_lbgpu")]([])
+stat_modifiers = Array[ExtResource("3_lbgpu")]([SubResource("Resource_qss42")])
 empire_modifiers = Array[ExtResource("2_2w77r")]([])
 production = Array[int]([])
 pollution = Array[int]([])

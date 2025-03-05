@@ -30,6 +30,9 @@ func update(island: IslandInstance):
 		power_label.text= str("Pow: ", island.power)
 		research_label.text= str("Res: ", island.research)
 	
+		island_container.show()
+		
+		
 	var empire_state: EmpireState= GameData.get_empire_state()
 	
 	stability_label.text= str("Stab: ", int(empire_state.stability), "%")

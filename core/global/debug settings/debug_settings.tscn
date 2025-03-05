@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3el08t5qa7r5"]
+
+[ext_resource type="Script" path="res://core/global/debug settings/debug_settings.gd" id="1_kvhga"]
+
+[node name="Debug Settings" type="Node"]
+script = ExtResource("1_kvhga")
+enable = true
+initial_construction_points = 100000
+only_allow_buildings_in_list = false
