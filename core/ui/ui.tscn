@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://idc6uwm0cuky"]
+[gd_scene load_steps=10 format=3 uid="uid://idc6uwm0cuky"]
 
 [ext_resource type="Script" path="res://core/ui/ui.gd" id="1_rdvyd"]
 [ext_resource type="PackedScene" uid="uid://b0va4hhlw1rl6" path="res://core/ui/tile_info_panel_container.tscn" id="2_o5sdk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5bx5j6l2s084" path="res://core/ui/unit_action_bar_panel_container.tscn" id="5_ul8r1"]
 [ext_resource type="PackedScene" uid="uid://dch1agyv3d815" path="res://core/ui/production_yield_panel_container.tscn" id="6_xqd2v"]
 [ext_resource type="PackedScene" uid="uid://dd4s5vamnrms6" path="res://core/ui/research_popup.tscn" id="7_613m4"]
+[ext_resource type="PackedScene" uid="uid://bv0jtj0212heq" path="res://core/ui/building_info_panel_container.tscn" id="9_wu640"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_rdvyd")
@@ -44,3 +45,5 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Building Info PanelContainer" parent="." instance=ExtResource("9_wu640")]

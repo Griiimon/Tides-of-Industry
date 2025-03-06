@@ -32,6 +32,9 @@ var terrain_index_lookup: Dictionary
 
 var generated_chunks: Array
 
+var building_logs: Dictionary
+var temp_building_log: BuildingLog
+
 
 
 func _ready() -> void:
@@ -214,12 +217,22 @@ func clear_tilemaps():
 	tile_map_units.clear()
 
 
-func clear_building_stat(tile: Vector2i, stat: Building.Stat):
-	pass
+func clear_building_stat(tile: Vector2i, stat: Building.Stat, temp_log: bool):
+	if temp_log:
+		temp_building_log.clear_stat(stat)
+	else:
+		if not building_logs.has(tile):
+			building_logs[tile]= BuildingLog.new()
+		building_logs[tile].clear_stat(stat)
 
 
-func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: int):
+func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: int, temp_log: bool):
 	prints("Log Stat", get_building(tile).get_display_name(), Building.Stat.keys()[stat], prefix, Utils.signed_number(value))
+	if temp_log:
+		temp_building_log.log_stat(stat, prefix, value)
+	else:
+		assert(building_logs.has(tile))
+		building_logs[tile].log_stat(stat, prefix, value)
 
 
 func on_player_unit_move_finished(unit: UnitInstance):

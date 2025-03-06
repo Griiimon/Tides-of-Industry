@@ -1,25 +1,23 @@
-[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://cgkayum1fm8nb"]
+[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://cgkayum1fm8nb"]
 
 [ext_resource type="Resource" uid="uid://8tbgo4wuwg0u" path="res://data/building categories/power.tres" id="1_ejpn6"]
-[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_unld2"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="3_t0mxe"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="4_02lch"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="5_jb0g1"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="6_g2wms"]
-[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="7_eiivv"]
 
 [resource]
 script = ExtResource("6_g2wms")
 atlas_coords = Array[Vector2i]([Vector2i(4, 0), Vector2i(4, 3)])
 build_costs = Array[int]([800, 3000])
-available_in_build_menu = true
+available_in_build_menu = null
 category = ExtResource("1_ejpn6")
 placement_conditions = Array[ExtResource("3_t0mxe")]([ExtResource("4_02lch"), ExtResource("5_jb0g1")])
-stat_modifiers = Array[ExtResource("7_eiivv")]([])
-empire_modifiers = Array[ExtResource("2_unld2")]([])
-production = Array[int]([])
-pollution = Array[int]([])
-population = Array[int]([])
-power = Array[int]([])
-research = Array[int]([])
-name = ""
+stat_modifiers = null
+empire_modifiers = null
+production = null
+pollution = null
+population = null
+power = null
+research = null
+name = null

@@ -30,7 +30,8 @@ func on_unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseButton:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					handle_tile_click()
+					if handle_tile_click():
+						get_viewport().set_input_as_handled()
 					return
 		
 		elif event.is_action("build_mode"):
@@ -47,9 +48,19 @@ func on_unhandled_input(event: InputEvent) -> void:
 				state_machine.game.next_turn()
 
 
-func handle_tile_click():
+func handle_tile_click()-> bool:
 	if handle_unit_click(unit_selected):
-		return
+		return true
+	if handle_building_click():
+		return true
+	return false
+
+
+func handle_building_click()-> bool:
+	if state_machine.world.has_building(current_tile):
+		SignalManager.display_building_log.emit(state_machine.world.building_logs[current_tile])
+		return true
+	return false
 
 
 func update_current_tile_check():

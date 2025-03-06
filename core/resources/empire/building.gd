@@ -26,7 +26,7 @@ func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandI
 	return true
 
 
-func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: IslandInstance)-> int:
+func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: IslandInstance, temp_log: bool= false)-> int:
 	var result: int
 	match stat:
 		Stat.POPULATION:
@@ -40,9 +40,9 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 		Stat.RESEARCH:
 			result= research[tier] if tier < research.size() else 0
 
-	world.clear_building_stat(tile, stat)
+	world.clear_building_stat(tile, stat, temp_log)
 	if result != 0:
-		world.log_building_stat(tile, stat, "base", result) 
+		world.log_building_stat(tile, stat, "Base", result, temp_log) 
 
 	for modifier in stat_modifiers:
 		if modifier.type == stat:
@@ -54,7 +54,7 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 
 			var delta: int= modifier_result - result
 			if delta != 0:
-				world.log_building_stat(tile, stat, modifier.get_short_desc(), delta) 
+				world.log_building_stat(tile, stat, modifier.get_short_desc(), delta, temp_log) 
 				
 			result= modifier_result
 	return result

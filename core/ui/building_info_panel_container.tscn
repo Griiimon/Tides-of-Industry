@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv0jtj0212heq"]
+
+[ext_resource type="Script" path="res://core/ui/building_info_panel_container.gd" id="1_88aj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o36d"]
+bg_color = Color(0.776471, 0.776471, 0.776471, 0.713726)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Building Info PanelContainer" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.05
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2o36d")
+script = ExtResource("1_88aj4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2

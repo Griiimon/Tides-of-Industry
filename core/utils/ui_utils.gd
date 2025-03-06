@@ -2,9 +2,10 @@ class_name UIUtils
 
 
 
-static func add_label(control: Control, text: String, horizontal= HORIZONTAL_ALIGNMENT_LEFT, min_size: Vector2= Vector2.ZERO)-> Label:
+static func add_label(control: Control, text: String, color: Color= Color.WHITE, horizontal= HORIZONTAL_ALIGNMENT_LEFT, min_size: Vector2= Vector2.ZERO)-> Label:
 	var label= Label.new()
 	label.text= text
+	label.add_theme_color_override("font_color", color)
 	label.horizontal_alignment= horizontal
 	label.custom_minimum_size= min_size
 	control.add_child(label)

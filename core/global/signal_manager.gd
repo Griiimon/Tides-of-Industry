@@ -19,3 +19,4 @@ signal player_unit_move_finished(unit: UnitInstance)
 
 signal building_constructed(tile: Vector2i)
 signal building_upgraded(tile: Vector2i)
+signal display_building_log(building_log: BuildingLog)
