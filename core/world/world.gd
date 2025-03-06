@@ -314,7 +314,7 @@ func get_islands()-> Array[IslandInstance]:
 
 func get_neighbor_buildings(tile: Vector2i, whitelist: Array[Building]= [])-> Array[Vector2i]:
 	var result: Array[Vector2i]
-	for neighbor in tile_map_buildings.get_surrounding_cells(tile):
+	for neighbor in get_surrounding_cells(tile):
 		var building: Building= get_building(neighbor)
 		if building:
 			if whitelist.is_empty() or building in whitelist:
@@ -324,7 +324,7 @@ func get_neighbor_buildings(tile: Vector2i, whitelist: Array[Building]= [])-> Ar
 
 func get_neighbor_terrains(tile: Vector2i, whitelist: Array[Terrain]= [])-> Array[Vector2i]:
 	var result: Array[Vector2i]
-	for neighbor in tile_map_terrain.get_surrounding_cells(tile):
+	for neighbor in get_surrounding_cells(tile):
 		var terrain: Terrain= get_terrain(neighbor)
 		if terrain:
 			if whitelist.is_empty() or terrain in whitelist:
@@ -334,7 +334,7 @@ func get_neighbor_terrains(tile: Vector2i, whitelist: Array[Terrain]= [])-> Arra
 
 func get_neighbor_features(tile: Vector2i, whitelist: Array[TerrainFeature]= [])-> Array[Vector2i]:
 	var result: Array[Vector2i]
-	for neighbor in tile_map_terrain_features.get_surrounding_cells(tile):
+	for neighbor in get_surrounding_cells(tile):
 		var feature: TerrainFeature= get_feature(neighbor)
 		if feature:
 			if whitelist.is_empty() or feature in whitelist:
@@ -368,10 +368,6 @@ func get_move_cost(tile: Vector2i)-> int:
 	return get_terrain(tile).move_cost
 
 
-func get_neighbor_tiles(tile: Vector2i)-> Array[Vector2i]:
-	return tile_map_terrain.get_surrounding_cells(tile)
-
-
 func get_tiles_in_radius(center: Vector2i, radius: int, include_center: bool= true)-> Array[Vector2i]:
 	var result: Array[Vector2i]= []
 	for x in range(center.x - radius, center.x + radius + 1):
@@ -395,3 +391,13 @@ func get_raw_material(tile: Vector2i, only_raw: bool= false, only_discovered: bo
 
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1
+
+
+static func get_surrounding_cells(tile: Vector2i)-> Array[Vector2i]:
+	var result: Array[Vector2i]= []
+	for x in range(-1, 2):
+		for y in range(-1, 2):
+			var neighbor:= Vector2i(x, y)
+			if neighbor == Vector2i.ZERO: continue
+			result.append(tile + neighbor)
+	return result
