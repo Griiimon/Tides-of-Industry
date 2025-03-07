@@ -1,28 +1,20 @@
-show required tech in research popup
-
-untoggle Research Button when popup is closed ( due to click outside )
-
-show move cost in TileInfo
-
-initial building unlocks: Town Center, House, Workstead (?)
-
-max_workers: island pop / max_workers = final output factor ( production/power/etc ). town center max 30 workers, comes with initial 10 pop
-
-unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
+Build Info: Shows building name/level/CP cost/tile validity warning
+	+ live stats!
 
 add farms, fertility from flower grasslands or muddy grassland
 
 Policy slider UI
 
-Build Info: Shows building name/level/CP cost/tile validity warning
+untoggle Research Button when popup is closed ( due to click outside )
 
-building radius resource boni
+show move cost in TileInfo
+
+unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
+
 
 
 rename building levels => tiers
 	TechnologyLevel=> Tier
-
-
 
 
 oasis
@@ -137,9 +129,10 @@ CORE MECHANICS
 	Expansion: Explorer visibility range, Explorer unit chance
 	Spirituality: Religious buildings stability benefits
 	Militarism: General chance
-	Industrialization: Productivity bonus, Enginner chance
+	Industrialization: Productivity bonus, Enginner chance, worker_ratio bonus can exceed 1.0 if additional worker available
 	Creativity: Chance to get regular Research events
 	Progress: generates more progress points
+	Overtime
 	
 OTHER MECHANICS
 -----------------
@@ -154,11 +147,15 @@ OTHER MECHANICS
 - Building Removal Effects?
 	- Church Stability - 20, House 1/2/3 Stab - 5/10/15, University + 10 
 
+- Island floodfill, every towncenter built here will added to the island
+
+
 EVENTS
 ---------------
 
 - Gain x research points when switching to Research y ( other research gets lost )
-
+- Stability penalty -x% when continuing current research
+- Fire/etc damaged building: pay x so it doesnt get removed
 
 
 META

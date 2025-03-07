@@ -7,6 +7,7 @@ extends Node
 @export var raw_materials: Array[RawMaterial]
 @export var units: Array[Unit]
 
+@export var initial_building_unlocks: Array[Building]
 @export var town_center: TownCenter
 
 
@@ -37,6 +38,8 @@ func _ready() -> void:
 
 	for unit in units:
 		unit_atlas_lookup[unit.atlas_coords]= unit
+
+	get_empire_state().initialize()
 
 
 func get_empire_state()-> EmpireState:

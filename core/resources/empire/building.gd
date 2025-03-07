@@ -16,6 +16,7 @@ enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 @export var population: Array[int]
 @export var power: Array[int]
 @export var research: Array[int]
+@export var max_workers: Array[int]
 
 
 

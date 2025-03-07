@@ -28,7 +28,7 @@ func process_tile(tile: Vector2i, building_tier: int, world: World, island: Isla
 				if terrain in terrains:
 					production= terrain.base_production
 
-	return production * tier_factors[mini(building_tier, tier_factors.size())]
+	return production * (1 if tier_factors.is_empty() else tier_factors[mini(building_tier, tier_factors.size())])
 
 
 func get_short_desc()-> String:

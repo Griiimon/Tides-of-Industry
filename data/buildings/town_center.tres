@@ -23,4 +23,5 @@ pollution = Array[int]([])
 population = Array[int]([10])
 power = Array[int]([])
 research = Array[int]([])
+max_workers = Array[int]([20, 50, 100])
 name = ""

@@ -32,7 +32,8 @@ func populate():
 
 	for technology in unavailable_techs:
 		UIUtils.add_label(content_container, get_tech_label(technology, empire_state)).modulate= Color.INDIAN_RED
-		UIUtils.add_button(content_container, "Research").disabled= true
+		#UIUtils.add_button(content_container, "Research").disabled= true
+		UIUtils.add_button(content_container, str("Req. ", technology.required_tech.technology.get_display_name())).disabled= true
 
 
 func on_research_pressed(technology: Technology):

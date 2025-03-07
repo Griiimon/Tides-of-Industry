@@ -16,6 +16,11 @@ extends Resource
 
 
 
+func initialize():
+	for building in GameData.initial_building_unlocks:
+		unlocked_buildings.append(BuildingTier.new(building, 0))
+
+
 func has_technology_level(tech_level: TechnologyLevel)-> bool:
 	for unlocked in unlocked_technologies:
 		if unlocked.is_at_least(tech_level):

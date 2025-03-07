@@ -7,18 +7,25 @@ var world: World
 var buildings: Array[Vector2i]
 var features: Array[Vector2i]
 
-
 var pollution: int
 var population: int
+var base_production: int
 var production: int
 var power: int
 var research: int
 
+var max_workers: int
+var workers_ratio: float
+
 
 
 func update_stats():
-	update_pollution()
+
 	update_population()
+
+	update_workers_ratio()
+
+	update_pollution()
 	update_production()
 	update_power()
 	update_research()
@@ -35,6 +42,17 @@ func build(building: Building, tier: int, tile: Vector2i):
 
 	update_stats()
 	SignalManager.building_constructed.emit(tile)
+
+
+func update_workers_ratio():
+	max_workers= 0
+	
+	for building_pos in buildings:
+		var building: Building= world.get_building(building_pos)
+		if building.max_workers.is_empty(): continue
+		max_workers+= building.max_workers[world.get_building_level(building_pos)]
+
+	workers_ratio= clampf(population / float(max_workers), 0.0, 1.0)
 
 
 func update_pollution():
@@ -54,11 +72,12 @@ func update_population():
 
 
 func update_production():
-	production= 0
+	base_production= 0
 	for building_pos in buildings:
-		production+= world.get_building_stat(Building.Stat.PRODUCTION, building_pos)
+		base_production+= world.get_building_stat(Building.Stat.PRODUCTION, building_pos)
 
-	production= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.PRODUCTION, production)
+	base_production= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.PRODUCTION, base_production)
+	production= floor(base_production * workers_ratio)
 
 
 func update_power():

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Technology" load_steps=7 format=3 uid="uid://cotu2nsxm3w7p"]
+[gd_resource type="Resource" script_class="Technology" load_steps=8 format=3 uid="uid://cotu2nsxm3w7p"]
 
 [ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_ggetx"]
 [ext_resource type="Script" path="res://core/resources/empire/technology_level.gd" id="2_3254s"]
 [ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_mvyp6"]
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="2_qatvt"]
 [ext_resource type="Resource" uid="uid://dpw1pu7p4whwy" path="res://data/technologies/factories.tres" id="3_b87d2"]
+[ext_resource type="Script" path="res://core/resources/empire/building_tier_collection.gd" id="6_43rwr"]
 
 [sub_resource type="Resource" id="Resource_xqug0"]
 script = ExtResource("2_3254s")
@@ -16,6 +17,7 @@ script = ExtResource("2_mvyp6")
 costs = Array[int]([])
 required_tech = SubResource("Resource_xqug0")
 passive_modifiers = Array[ExtResource("2_qatvt")]([])
+unlocks_buildings = Array[ExtResource("6_43rwr")]([])
 enables_political_views = Array[ExtResource("1_ggetx")]([])
 desc = ""
 name = ""

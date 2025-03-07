@@ -1,33 +1,44 @@
-[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://dln74k8chwa4x"]
+[gd_resource type="Resource" script_class="Building" load_steps=18 format=3 uid="uid://dln74k8chwa4x"]
 
 [ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_f120o"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="1_ttmry"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_0brnh"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_6b5gv"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="3_lbgpu"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="3_qdt67"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="4_beqqx"]
 [ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="8_lhhut"]
-[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_neighbor_feature_list_percentage_modifier.gd" id="9_hq7jp"]
+[ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="9_sxa6n"]
+[ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="10_id4ik"]
+[ext_resource type="Resource" uid="uid://bde357srjk4qd" path="res://data/terrain/mountains.tres" id="11_ojp76"]
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="12_lved7"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_neighbor_tile_production.gd" id="13_3opq5"]
+[ext_resource type="Resource" uid="uid://krhupyuxsmfo" path="res://data/terrain features/deer.tres" id="13_hls44"]
+[ext_resource type="Resource" uid="uid://frwusdxqq5yf" path="res://data/terrain features/fish.tres" id="14_oh1jn"]
+[ext_resource type="Resource" uid="uid://dg0u76uow1ktd" path="res://data/terrain features/pond.tres" id="15_vjjt8"]
 
-[sub_resource type="Resource" id="Resource_qss42"]
-script = ExtResource("9_hq7jp")
-features = Array[ExtResource("8_lhhut")]([])
-percentage = 0.0
-tier_factor = 1.0
+[sub_resource type="Resource" id="Resource_obvun"]
+script = ExtResource("13_3opq5")
+tier_factors = Array[int]([])
+buildings = Array[ExtResource("2_6b5gv")]([])
+terrains = Array[ExtResource("9_sxa6n")]([ExtResource("10_id4ik"), ExtResource("11_ojp76")])
+features = Array[ExtResource("8_lhhut")]([ExtResource("13_hls44"), ExtResource("14_oh1jn"), ExtResource("15_vjjt8")])
+raw_materials = Array[ExtResource("12_lved7")]([])
 type = 1
 
 [resource]
 script = ExtResource("2_6b5gv")
 atlas_coords = Array[Vector2i]([Vector2i(3, 0)])
 build_costs = Array[int]([400])
-available_in_build_menu = null
+available_in_build_menu = true
 category = ExtResource("1_f120o")
 placement_conditions = Array[ExtResource("1_ttmry")]([ExtResource("3_qdt67"), ExtResource("4_beqqx")])
-stat_modifiers = Array[ExtResource("3_lbgpu")]([SubResource("Resource_qss42")])
-empire_modifiers = null
-production = null
-pollution = null
-population = null
-power = null
-research = null
-name = null
+stat_modifiers = Array[ExtResource("3_lbgpu")]([SubResource("Resource_obvun")])
+empire_modifiers = Array[ExtResource("2_0brnh")]([])
+production = Array[int]([])
+pollution = Array[int]([])
+population = Array[int]([])
+power = Array[int]([])
+research = Array[int]([])
+max_workers = Array[int]([15])
+name = ""
