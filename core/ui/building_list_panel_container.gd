@@ -8,6 +8,9 @@ signal selected(building: Building, tier: int)
 
 
 func _ready() -> void:
+	# TODO unbind correct use?
+	SignalManager.technology_researched.connect(populate.unbind(1))
+	
 	populate()
 
 
@@ -22,7 +25,8 @@ func populate():
 
 		for tier in 3:
 			if tier < building.get_max_level():
-				UIUtils.add_button(content, str("Tier ", tier + 1), on_build.bind(building, tier))
+				var button: Button= UIUtils.add_button(content, str("Tier ", tier + 1), on_build.bind(building, tier))
+				button.disabled= not GameData.get_empire_state().is_building_unlocked(BuildingTier.new(building, tier))
 			else:
 				UIUtils.add_empty(content)
 

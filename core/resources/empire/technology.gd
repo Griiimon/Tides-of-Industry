@@ -5,6 +5,7 @@ extends NamedResource
 @export var required_tech: TechnologyLevel
 
 @export var passive_modifiers: Array[EmpireModifierEffectCollection] 
+@export var unlocks_buildings: Array[BuildingTierCollection]
 @export var enables_political_views: Array[PoliticalView]
 
 @export var desc: String

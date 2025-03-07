@@ -52,7 +52,7 @@ func _ready() -> void:
 
 	clear_tilemaps()
 	#generate_chunk(Vector2i.ZERO)
-	generate_radius(Vector2i.ZERO, initial_radius)
+	generate_radius(Vector2i.ZERO, initial_radius, false)
 
 
 func tick():
@@ -65,8 +65,10 @@ func tick():
 	for unit in all_units:
 		unit.reset_moves()
 
+	SignalManager.world_ticked.emit()
 
-func generate_chunk(chunk_coords: Vector2i):
+
+func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 	var coast_id: int= GameData.terrains.find(coast_terrain)
 	var sea_id: int= GameData.terrains.find(sea_terrain)
 	var world_offset: Vector2i= chunk_coords * chunk_size
@@ -97,7 +99,9 @@ func generate_chunk(chunk_coords: Vector2i):
 						if id == -1 or id == sea_id:
 							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
 							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
-
+		if non_blocking:
+			await get_tree().process_frame
+			
 	#if has_chunk(chunk_coords + Vector2i.DOWN):
 		#for x in chunk_size:
 			#var world_coords: Vector2i= Vector2i(x, chunk_size + 1) + world_offset
@@ -119,21 +123,23 @@ func generate_chunk(chunk_coords: Vector2i):
 			if raw_material:
 				tile_map_resources.set_cell(world_coords, 0, raw_material.atlas_coords)
 				tile_map_resources_discovered.set_cell(world_coords, 0, Vector2i.ZERO)
-				
-			
+		
+		if non_blocking:
+			await get_tree().process_frame
+
 	generated_chunks.append(chunk_coords)
 
 
-func generate_rect(rect: Rect2i):
+func generate_rect(rect: Rect2i, non_blocking: bool= true):
 	for x in range(rect.position.x, rect.position.x + rect.size.x, chunk_size):
 		for y in range(rect.position.y, rect.position.y + rect.size.y, chunk_size):
 			var chunk_coords: Vector2i= get_chunk_coords(Vector2i(x, y))
 			if not has_chunk(chunk_coords):
-				generate_chunk(chunk_coords)
+				generate_chunk(chunk_coords, non_blocking)
 
 
-func generate_radius(center: Vector2i, radius: int):
-	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius * 2))
+func generate_radius(center: Vector2i, radius: int, non_blocking: bool= true):
+	generate_rect(Rect2i(center - Vector2i.ONE * radius, center + Vector2i.ONE * radius * 2), non_blocking)
 
 
 func spawn_building(building: Building, tier: int, tile: Vector2i):
@@ -388,6 +394,18 @@ func get_raw_material(tile: Vector2i, only_raw: bool= false, only_discovered: bo
 		return null
 	return GameData.raw_material_atlas_lookup[tile_map_resources.get_cell_atlas_coords(tile)]
 
+
+func get_tile_base_production(tile: Vector2i)-> int:
+	var terrain: Terrain= get_terrain(tile)
+	if not terrain: return 0
+	var result: int= get_terrain(tile).base_production
+	var feature: TerrainFeature= get_feature(tile)
+	if feature:
+		result+= feature.base_production
+	var raw_material: RawMaterial= get_raw_material(tile)
+	if raw_material:
+		result+= raw_material.base_production
+	return result 
 
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1

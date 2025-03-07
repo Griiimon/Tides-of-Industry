@@ -4,13 +4,15 @@ extends PanelContainer
 @onready var building_label: Label = %"Building Label"
 @onready var terrain_label: Label = %"Terrain Label"
 @onready var feature_label: Label = %"Feature Label"
+@onready var raw_material_label: Label = %"Raw Material Label"
+@onready var production_label: Label = %"Production Label"
 @onready var unit_label: Label = %"Unit Label"
 @onready var unit_moves_label: Label = %"Unit Moves Label"
 @onready var unit_ap_label: Label = %"Unit AP Label"
 
 
 
-func update(building: Building, terrain: Terrain, feature: TerrainFeature, unit: UnitInstance):
+func update(building: Building, terrain: Terrain, feature: TerrainFeature, raw_material: RawMaterial, total_production: int, unit: UnitInstance):
 	if building:
 		building_label.text= building.get_display_name()
 		building_label.show()
@@ -27,6 +29,14 @@ func update(building: Building, terrain: Terrain, feature: TerrainFeature, unit:
 		feature_label.show()
 	else:
 		feature_label.hide()
+
+	if raw_material:
+		raw_material_label.text= raw_material.get_display_name()
+		raw_material_label.show()
+	else:
+		raw_material_label.hide()
+
+	production_label.text= str("Base Production: ", total_production)
 
 	if unit:
 		unit_label.text= unit.type.get_display_name()

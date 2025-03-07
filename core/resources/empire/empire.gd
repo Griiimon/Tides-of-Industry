@@ -26,7 +26,7 @@ func tick(world: World):
 		state.research_progress+= yields.calculate(ProductionYields.Type.RESEARCH, total_production)
 	
 		if state.research_progress >= state.current_research.get_research_cost():
-			state.research_finished()
+			state.research_finished(state.current_research)
 			state.current_research= null
 	else:
 		SignalManager.no_research_selected.emit()

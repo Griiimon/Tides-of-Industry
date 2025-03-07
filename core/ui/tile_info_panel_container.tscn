@@ -62,6 +62,17 @@ visible = false
 layout_mode = 2
 label_settings = SubResource("LabelSettings_aevw6")
 
+[node name="Raw Material Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aevw6")
+
+[node name="Production Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aevw6")
+
 [node name="Unit Label" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false

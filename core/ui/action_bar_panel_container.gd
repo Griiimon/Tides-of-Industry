@@ -10,7 +10,13 @@ signal cancel_upgrade
 
 @onready var build_button: Button = %"Build Button"
 @onready var research_button: Button = %"Research Button"
+@onready var research_progress_bar: ProgressBar = %"Research ProgressBar"
 
+
+
+func _ready() -> void:
+	SignalManager.start_research.connect(update_research_progress.unbind(1))
+	SignalManager.world_ticked.connect(update_research_progress)
 
 
 func untoggle_build_button():
@@ -19,6 +25,10 @@ func untoggle_build_button():
 
 func untoggle_research_button():
 	research_button.button_pressed= false
+
+
+func update_research_progress():
+	research_progress_bar.value= GameData.get_empire_state().get_research_progress_ratio()
 
 
 func _on_build_button_toggled(toggled_on: bool) -> void:

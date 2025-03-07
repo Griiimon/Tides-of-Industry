@@ -23,8 +23,12 @@ func populate():
 			unavailable_techs.append(technology)
 			continue
 		
-		UIUtils.add_label(content_container, get_tech_label(technology, empire_state))
-		UIUtils.add_button(content_container, "Research", on_research_pressed, [ technology ])
+		var label: Label= UIUtils.add_label(content_container, get_tech_label(technology, empire_state))
+		if empire_state.current_research and empire_state.current_research.technology == technology:
+			label.add_theme_color_override("font_color", Color.GREEN)
+			UIUtils.add_button(content_container, "Researching").disabled= true
+		else:
+			UIUtils.add_button(content_container, "Research", on_research_pressed, [ technology ])
 
 	for technology in unavailable_techs:
 		UIUtils.add_label(content_container, get_tech_label(technology, empire_state)).modulate= Color.INDIAN_RED
@@ -32,7 +36,8 @@ func populate():
 
 
 func on_research_pressed(technology: Technology):
-	SignalManager.start_research.emit(technology)
+	GameData.get_empire_state().start_research(technology)
+	request_close.emit()
 	
 
 func get_tech_label(technology: Technology, empire_state: EmpireState)-> String:

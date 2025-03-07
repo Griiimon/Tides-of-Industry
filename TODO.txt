@@ -1,3 +1,11 @@
+show required tech in research popup
+
+untoggle Research Button when popup is closed ( due to click outside )
+
+show move cost in TileInfo
+
+initial building unlocks: Town Center, House, Workstead (?)
+
 max_workers: island pop / max_workers = final output factor ( production/power/etc ). town center max 30 workers, comes with initial 10 pop
 
 unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
@@ -12,8 +20,8 @@ building radius resource boni
 
 
 rename building levels => tiers
+	TechnologyLevel=> Tier
 
-Upgrade Buildings
 
 
 
@@ -28,7 +36,7 @@ implement ActiveEmpireModifierEffectFromPolicy ( apply with ratio )
 
 Destroy buildings costs CP
 
-Remove empire effect modifiers from buildings? ( if they stay make them Array Collection like techs? )
+? Remove empire effect modifiers from buildings? ( if they stay make them Array Collection like techs? )
 	=> at least make stability a default Array?
 	=> contra: how to make multiple bank levels provide interests?
 
@@ -170,6 +178,9 @@ random campaigns?
 
 MISC
 -----------------
+
+Game description:
+"Blending Civilization, Anno and Paradox Interactive mechanics with Roguelite elements into a semi-casual City Builder"
 
 Image prompts: 	", video game sprite sheet pixel art"
 				", black and white icons"

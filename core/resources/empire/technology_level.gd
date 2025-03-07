@@ -6,6 +6,11 @@ extends Resource
 
 
 
+func _init(_technology: Technology= null, _level: int= 0):
+	technology= _technology
+	level= _level
+
+
 func is_at_least(tech_level: TechnologyLevel)-> bool:
 	if technology != tech_level.technology: return false
 	return level >= tech_level.level
