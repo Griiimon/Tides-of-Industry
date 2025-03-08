@@ -14,6 +14,8 @@ const FLOATING_TILE_INFO_CONTAINER= false
 @onready var building_list_container: BuildingListPanelContainer = $"Building List PanelContainer"
 @onready var research_popup: ResearchPopupPanel = $"Research Popup"
 @onready var production_yield_container: ProductionYieldPanelContainer = $"Production Yield PanelContainer"
+@onready var policies_popup: PoliciesPopupPanel = $"Policies Popup"
+
 
 @onready var tile_info_container: TileInfoPanelContainer = $"Tile Info PanelContainer"
 
@@ -29,6 +31,8 @@ func _ready() -> void:
 	action_bar_container.close_research_list.connect(research_popup.hide)
 	action_bar_container.upgrade.connect(on_upgrade)
 	action_bar_container.cancel_upgrade.connect(on_cancel_upgrade)
+	action_bar_container.open_policies.connect(policies_popup.open)
+	action_bar_container.close_policies.connect(policies_popup.hide)
 
 	building_list_container.selected.connect(on_build)
 	

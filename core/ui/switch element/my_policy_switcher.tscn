@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdw51mgjpr5t"]
+
+[ext_resource type="PackedScene" uid="uid://b27arunfnga2d" path="res://core/ui/switch element/my_number_switcher.tscn" id="1_g65nn"]
+[ext_resource type="Script" path="res://core/ui/switch element/my_policy_switcher.gd" id="2_a2fgp"]
+
+[node name="My Policy Switcher" instance=ExtResource("1_g65nn")]
+theme_override_constants/separation = 25
+script = ExtResource("2_a2fgp")
+policy = null
+number_range = Vector2i(0, 9)
+min_size = 50
+wrap_around = false

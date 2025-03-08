@@ -20,4 +20,5 @@ pollution = null
 population = null
 power = null
 research = null
+max_workers = Array[int]([])
 name = null

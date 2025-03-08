@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WelfarePolicy" load_steps=2 format=3 uid="uid://d3rwicbd1kvpc"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/welfare_policy.gd" id="1_dul75"]
+
+[resource]
+script = ExtResource("1_dul75")
+level = 0

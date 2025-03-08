@@ -7,10 +7,13 @@ signal open_research_list
 signal close_research_list
 signal upgrade
 signal cancel_upgrade
+signal open_policies
+signal close_policies
 
 @onready var build_button: Button = %"Build Button"
 @onready var research_button: Button = %"Research Button"
 @onready var research_progress_bar: ProgressBar = %"Research ProgressBar"
+@onready var policies_button: Button = %"Policies Button"
 
 
 
@@ -50,3 +53,10 @@ func _on_upgrade_button_toggled(toggled_on: bool) -> void:
 		upgrade.emit()
 	else:
 		cancel_upgrade.emit()
+
+
+func _on_policies_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		open_policies.emit()
+	else:
+		close_policies.emit()

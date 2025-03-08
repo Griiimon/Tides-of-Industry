@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://nj04vd0jdv36"]
+
+[ext_resource type="PackedScene" uid="uid://dbxkt58r1d0sq" path="res://core/ui/switch element/my_base_switcher.tscn" id="1_01e5k"]
+[ext_resource type="Script" path="res://core/ui/switch element/my_option_switcher.gd" id="2_7oboj"]
+
+[node name="My Option Switcher" instance=ExtResource("1_01e5k")]
+script = ExtResource("2_7oboj")
+options = Array[String]([])

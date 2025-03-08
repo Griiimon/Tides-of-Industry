@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://iavwu0hw23ri"]
+[gd_scene load_steps=6 format=3 uid="uid://iavwu0hw23ri"]
 
 [ext_resource type="Script" path="res://core/ui/action_bar_panel_container.gd" id="1_qdcb5"]
+[ext_resource type="ButtonGroup" uid="uid://bjdf754xu51fy" path="res://core/ui/action_bar_button_group.tres" id="2_g2xsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaqmo"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 0.513726)
@@ -40,17 +41,21 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Build"
 
 [node name="Upgrade Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Upgrade"
 
 [node name="Remove Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Remove"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
@@ -62,6 +67,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Research"
 
 [node name="Research ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/Research Button"]
@@ -81,13 +87,19 @@ show_percentage = false
 [node name="Factions Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Factions"
 
 [node name="Policies Button" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_group = ExtResource("2_g2xsr")
 text = "Policies"
 
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Build Button" to="." method="_on_build_button_toggled"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Upgrade Button" to="." method="_on_upgrade_button_toggled"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/Research Button" to="." method="_on_research_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/Policies Button" to="." method="_on_policies_button_toggled"]

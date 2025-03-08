@@ -38,4 +38,5 @@ pollution = Array[int]([2, 6, 12])
 population = Array[int]([10, 25, 50])
 power = null
 research = null
+max_workers = Array[int]([])
 name = null

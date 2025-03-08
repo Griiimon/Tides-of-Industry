@@ -1,9 +1,12 @@
+pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
+
+finish Policy slider
+
 Build Info: Shows building name/level/CP cost/tile validity warning
 	+ live stats!
 
 add farms, fertility from flower grasslands or muddy grassland
 
-Policy slider UI
 
 untoggle Research Button when popup is closed ( due to click outside )
 
@@ -129,9 +132,9 @@ CORE MECHANICS
 	Expansion: Explorer visibility range, Explorer unit chance
 	Spirituality: Religious buildings stability benefits
 	Militarism: General chance
-	Industrialization: Productivity bonus, Enginner chance, worker_ratio bonus can exceed 1.0 if additional worker available
+	Industrialization: Factory Productivity bonus, Engineer chance, worker_ratio bonus can exceed 1.0 if additional worker available
 	Creativity: Chance to get regular Research events
-	Progress: generates more progress points
+	Progressiveness: generates more progress points
 	Overtime
 	
 OTHER MECHANICS

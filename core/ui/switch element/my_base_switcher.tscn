@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbxkt58r1d0sq"]
+
+[ext_resource type="Script" path="res://core/ui/switch element/my_base_switcher.gd" id="1_m38cd"]
+[ext_resource type="Texture2D" uid="uid://c0aof84jxrvcg" path="res://core/ui/switch element/arrow_basic_e.png" id="2_1eohm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1j60"]
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djhap"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.582956, 0.422306, 0.175519, 0.729412)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="My Base Switcher" type="HBoxContainer"]
+theme_override_constants/separation = 14
+script = ExtResource("1_m38cd")
+
+[node name="Prefix Label" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_d1j60")
+vertical_alignment = 1
+
+[node name="TextureButton Left" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_1eohm")
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_djhap")
+label_settings = SubResource("LabelSettings_d1j60")
+horizontal_alignment = 1
+
+[node name="TextureButton Right" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_1eohm")
+
+[connection signal="pressed" from="TextureButton Left" to="." method="_on_texture_button_pressed" binds= [-1]]
+[connection signal="gui_input" from="MarginContainer" to="." method="_on_margin_container_gui_input"]
+[connection signal="pressed" from="TextureButton Right" to="." method="_on_texture_button_pressed" binds= [1]]
