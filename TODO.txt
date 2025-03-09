@@ -1,6 +1,8 @@
-pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
+finish Policy slider: Progress Points + functionality
 
-finish Policy slider
+pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
+	also while popups are open
+
 
 Build Info: Shows building name/level/CP cost/tile validity warning
 	+ live stats!
@@ -159,6 +161,7 @@ EVENTS
 - Gain x research points when switching to Research y ( other research gets lost )
 - Stability penalty -x% when continuing current research
 - Fire/etc damaged building: pay x so it doesnt get removed
+- minus x Reform Points for stability boost / money
 
 
 META

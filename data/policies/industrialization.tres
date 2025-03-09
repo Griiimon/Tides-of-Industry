@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IndustrializationPolicy" load_steps=2 format=3 uid="uid://b36myybfe5puu"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/industrialization_policy.gd" id="1_18oil"]
+
+[resource]
+script = ExtResource("1_18oil")
+description = ""
+cap_level = 2
+level = 0
+name = ""

@@ -8,7 +8,7 @@ extends MyBaseSwitcher
 
 func _ready() -> void:
 	super()
-	prefix_label.text= title
+	suffix_label.text= title
 
 
 func update_label():

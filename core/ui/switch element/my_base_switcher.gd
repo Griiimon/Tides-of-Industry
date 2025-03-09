@@ -8,8 +8,10 @@ signal switched()
 
 @onready var label: Label = %Label
 @onready var prefix_label: Label = $"Prefix Label"
+@onready var suffix_label: Label = $"Suffix Label"
 
 var index: int
+var disabled: bool= false
 
 
 
@@ -19,6 +21,8 @@ func _ready() -> void:
 
 
 func _on_texture_button_pressed(delta: int) -> void:
+	if disabled: return
+	
 	if wrap_around:
 		index= wrapi(index + delta, 0, get_range())
 	else:

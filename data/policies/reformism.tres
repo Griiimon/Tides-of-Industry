@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ReformismPolicy" load_steps=2 format=3 uid="uid://d31lp62mx8t3x"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/reformism_policy.gd" id="1_bw75e"]
+
+[resource]
+script = ExtResource("1_bw75e")
+description = ""
+cap_level = 2
+level = 0
+name = ""

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ExpansionPolicy" load_steps=2 format=3 uid="uid://tclj27ne7el3"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/expansion_policy.gd" id="1_17cr0"]
+
+[resource]
+script = ExtResource("1_17cr0")
+description = ""
+cap_level = 5
+level = 0
+name = ""

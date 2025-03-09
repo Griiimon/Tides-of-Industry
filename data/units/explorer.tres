@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="AmphibiousUnit" load_steps=5 format=3 uid="uid://dh7fwnvip37y1"]
+[gd_resource type="Resource" script_class="ExplorerUnit" load_steps=5 format=3 uid="uid://dh7fwnvip37y1"]
 
 [ext_resource type="Script" path="res://core/resources/units/base_unit_action.gd" id="1_61mf2"]
-[ext_resource type="Script" path="res://core/resources/empire/amphibious_unit.gd" id="1_w03aa"]
 [ext_resource type="Resource" uid="uid://q4krrs52b22k" path="res://data/units/ship.tres" id="2_oca01"]
 [ext_resource type="Resource" uid="uid://du5dkw18wpmxx" path="res://data/unit actions/settle.tres" id="2_x741n"]
+[ext_resource type="Script" path="res://core/resources/units/explorer_unit.gd" id="3_bajrl"]
 
 [resource]
-script = ExtResource("1_w03aa")
+script = ExtResource("3_bajrl")
 ship_reference = ExtResource("2_oca01")
 atlas_coords = Vector2i(1, 0)
 is_ship = false

@@ -2,15 +2,16 @@ class_name Empire
 
 var units: Array[UnitInstance]
 var last_used_unit: UnitInstance= null
+var state: EmpireState
 
 
 
 func _init():
 	SignalManager.player_unit_move_finished.connect(on_unit_move_finished)
+	state= GameData.get_empire_state()
 
-	
+
 func tick(world: World):
-	var state: EmpireState= GameData.get_empire_state()
 	
 	var total_production: int
 	
@@ -38,11 +39,17 @@ func tick(world: World):
 				state.active_modifiers.erase(modifier)
 
 
+	state.reform_points+= state.reform_points_increase
+
 	SignalManager.empire_stats_updated.emit()
 
 
 func on_unit_move_finished(unit: UnitInstance):
 	last_used_unit= unit
+
+
+func get_policy_modifier(modifier: BasePolicy.Modifier)-> Variant:
+	return state.get_policy_modifier(modifier)
 
 
 func has_moves_left()-> bool:

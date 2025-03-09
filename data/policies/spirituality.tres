@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpiritualityPolicy" load_steps=2 format=3 uid="uid://fno57xkrrjg2"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/spirituality_policy.gd" id="1_7euvx"]
+
+[resource]
+script = ExtResource("1_7euvx")
+description = ""
+cap_level = 5
+level = 0
+name = ""

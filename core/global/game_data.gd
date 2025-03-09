@@ -6,6 +6,7 @@ extends Node
 @export var technologies: Array[Technology]
 @export var raw_materials: Array[RawMaterial]
 @export var units: Array[Unit]
+@export var policies: Array[BasePolicy]
 
 @export var initial_building_unlocks: Array[Building]
 @export var town_center: TownCenter

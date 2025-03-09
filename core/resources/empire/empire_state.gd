@@ -4,6 +4,8 @@ extends Resource
 @export_storage var money: float= 100
 @export_storage var construction_points: float= 1000
 @export_storage var stability: float= 80
+@export_storage var reform_points: float= 5.0
+@export_storage var reform_points_increase: float= 0.005
 
 @export_storage var production_yields: ProductionYields= ProductionYields.new()
 
@@ -11,6 +13,8 @@ extends Resource
 @export_storage var research_progress: float
 @export_storage var unlocked_technologies: Array[TechnologyLevel]
 @export_storage var unlocked_buildings: Array[BuildingTier]
+
+@export_storage var policies: Array[BasePolicy]
 
 @export_storage var active_modifiers: Array[ActiveEmpireModifierEffect]
 
@@ -20,6 +24,9 @@ func initialize():
 	for building in GameData.initial_building_unlocks:
 		unlocked_buildings.append(BuildingTier.new(building, 0))
 
+	for policy in GameData.policies:
+		policies.append(policy.duplicate())
+	
 
 func has_technology_level(tech_level: TechnologyLevel)-> bool:
 	for unlocked in unlocked_technologies:
@@ -85,6 +92,16 @@ func unlock_building(building_tier: BuildingTier):
 			unlocked.tier= max(unlocked.tier, building_tier.tier)
 			return
 	unlocked_buildings.append(building_tier)
+
+
+func get_policy_modifier(modifier: BasePolicy.Modifier)-> Variant:
+	var result= null
+	for policy in policies:
+		if not result:
+			result= policy.get_modifier(modifier)
+		else:
+			result+= policy.get_modifier(modifier)
+	return result
 
 
 func can_afford(cost: int)-> bool:

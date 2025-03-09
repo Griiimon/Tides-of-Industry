@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhdw51mgjpr5t"]
+[gd_scene load_steps=4 format=3 uid="uid://dhdw51mgjpr5t"]
 
 [ext_resource type="PackedScene" uid="uid://b27arunfnga2d" path="res://core/ui/switch element/my_number_switcher.tscn" id="1_g65nn"]
 [ext_resource type="Script" path="res://core/ui/switch element/my_policy_switcher.gd" id="2_a2fgp"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_w3m2x"]
+font_size = 24
+
 [node name="My Policy Switcher" instance=ExtResource("1_g65nn")]
 theme_override_constants/separation = 25
 script = ExtResource("2_a2fgp")
-policy = null
 number_range = Vector2i(0, 9)
 min_size = 50
 wrap_around = false
+
+[node name="Prefix Label" parent="." index="0"]
+label_settings = SubResource("LabelSettings_w3m2x")
+
+[node name="Label" parent="MarginContainer" index="0"]
+label_settings = SubResource("LabelSettings_w3m2x")
+
+[node name="Suffix Label" parent="." index="4"]
+label_settings = SubResource("LabelSettings_w3m2x")

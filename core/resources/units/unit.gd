@@ -14,3 +14,7 @@ extends NamedResource
 
 func can_enter_terrain(terrain: Terrain)-> bool:
 	return (is_ship and terrain.is_sea) or (is_land_unit and not terrain.is_sea)
+
+
+func get_los()-> int:
+	return 2

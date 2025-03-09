@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dhdw51mgjpr5t" path="res://core/ui/switch element/my_policy_switcher.tscn" id="1_2uf4x"]
 [ext_resource type="Script" path="res://core/ui/policies_popup.gd" id="1_6hitr"]
-[ext_resource type="Resource" uid="uid://d3rwicbd1kvpc" path="res://data/policies/welfare.tres" id="2_mc5ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mvyj"]
 bg_color = Color(0.314316, 0.314316, 0.314316, 1)
@@ -12,19 +11,23 @@ border_width_right = 2
 border_width_bottom = 2
 border_blend = true
 
+[sub_resource type="LabelSettings" id="LabelSettings_dv3jv"]
+font_size = 24
+
 [node name="Policies Popup" type="PopupPanel"]
 initial_position = 2
-size = Vector2i(209, 100)
+size = Vector2i(231, 321)
 visible = true
 always_on_top = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_5mvyj")
 script = ExtResource("1_6hitr")
+policy_switcher_scene = ExtResource("1_2uf4x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 207.0
-offset_bottom = 98.0
+offset_right = 229.0
+offset_bottom = 319.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -32,7 +35,13 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
-[node name="My Policy Switcher" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_2uf4x")]
+[node name="Content VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-policy = ExtResource("2_mc5ui")
+
+[node name="Reform Points Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_dv3jv")

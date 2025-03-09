@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CreativityPolicy" load_steps=2 format=3 uid="uid://vc514knmdni2"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/creativity_policy.gd" id="1_ys2g8"]
+
+[resource]
+script = ExtResource("1_ys2g8")
+description = ""
+cap_level = 5
+level = 0
+name = ""

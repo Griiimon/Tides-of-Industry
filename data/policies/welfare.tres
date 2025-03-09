@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_dul75")
-level = 0
+description = ""
+cap_level = 0
+level = null
+name = ""
