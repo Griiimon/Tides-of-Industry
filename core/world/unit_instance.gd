@@ -21,6 +21,7 @@ func _init(_type: Unit= null, _tile_pos: Vector2i= Vector2i.ZERO, player_unit: b
 	world= _world
 	moves_left= get_actual_type().moves_per_turn
 	action_points_left= get_actual_type().action_points
+	discover()
 
 
 func move_to(new_tile_pos: Vector2i):
@@ -30,6 +31,7 @@ func move_to(new_tile_pos: Vector2i):
 	var prev_pos: Vector2i= tile_pos
 	tile_pos= new_tile_pos
 	world.update_unit_pos(self, tile_pos, prev_pos, true)
+	discover()
 
 
 func move(dir: Vector2i):
@@ -54,6 +56,11 @@ func can_move_to(new_tile_pos: Vector2i):
 	
 	#var feature: TerrainFeature= world.get_feature(new_tile_pos)
 	return true
+
+
+func discover():
+	var los: int= type.get_los()
+	world.discover(Rect2i(tile_pos - Vector2i.ONE * los, Vector2i.ONE * ( los * 2 + 1 )))
 
 
 func kill():

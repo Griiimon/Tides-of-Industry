@@ -1,6 +1,9 @@
 class_name World
 extends Node
 
+const UNKNOWN_TERRAIN_ATLAS_X= 0
+const FOG_OF_WAR_ATLAS_X= 1
+
 @export var generator: WorldGenerator
 @export var chunk_size: int= 16
 @export var initial_radius: int= 20
@@ -19,6 +22,7 @@ extends Node
 @onready var tile_map_unit_selection: TileMapLayer = $"TileMap Unit Selection"
 @onready var tile_map_resources: TileMapLayer = $"TileMap Resources"
 @onready var tile_map_resources_discovered: TileMapLayer = $"TileMap Resources Discovered"
+@onready var tile_map_boundaries: TileMapLayer = $"TileMap Boundaries"
 
 @onready var islands: Node = $Islands
 
@@ -79,6 +83,9 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 		for y in chunk_size:
 			var world_coords: Vector2i= Vector2i(x, y) + world_offset
 			var terrain: Terrain= generator.get_terrain(world_coords)
+			
+			tile_map_boundaries.set_cell(world_coords, 0, Vector2i(UNKNOWN_TERRAIN_ATLAS_X, 0))
+			
 			if terrain.is_sea and terrain != coast_terrain and tile_map_terrain_ids.get_cell_source_id(world_coords) == coast_id:
 				terrain= coast_terrain
 				
@@ -101,6 +108,7 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 						if id == -1 or id == sea_id:
 							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
 							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
+		
 		if non_blocking:
 			await get_tree().process_frame
 			
@@ -241,6 +249,12 @@ func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, valu
 	else:
 		assert(building_logs.has(tile))
 		building_logs[tile].log_stat(stat, prefix, value)
+
+
+func discover(rect: Rect2i):
+	for x in range(rect.position.x, rect.position.x + rect.size.x):
+		for y in range(rect.position.y, rect.position.y + rect.size.y):
+			tile_map_boundaries.erase_cell(Vector2i(x, y))
 
 
 func on_player_unit_move_finished(unit: UnitInstance):
