@@ -6,7 +6,7 @@
 script = ExtResource("1_45cqr")
 title = "New idea"
 description = ""
-chance = 100.0
+chance = 1.0
 has_choice = true
 confirm_cancel_button = "No"
 option_button = "Change"

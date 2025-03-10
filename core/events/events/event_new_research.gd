@@ -2,7 +2,7 @@ class_name EventNewResearch
 extends BaseEvent
 
 var research: TechnologyLevel
-var progress_ratio: float
+var progress_ratio: float= 0.5
 
 
 

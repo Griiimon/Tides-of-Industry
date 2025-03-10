@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Technology" load_steps=10 format=3 uid="uid://bimat280ntdos"]
+[gd_resource type="Resource" script_class="Technology" load_steps=12 format=3 uid="uid://bimat280ntdos"]
 
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="1_ctydu"]
 [ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_eglo6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="2_xiw15"]
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_yk2iq"]
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_percentage.gd" id="3_sp88d"]
+[ext_resource type="Script" path="res://core/events/base_event.gd" id="6_41mud"]
+[ext_resource type="Script" path="res://core/resources/empire/building_tier_collection.gd" id="8_rbfi0"]
 
 [sub_resource type="Resource" id="Resource_xpl66"]
 script = ExtResource("3_sp88d")
@@ -31,6 +33,9 @@ effects = Array[ExtResource("2_yk2iq")]([SubResource("Resource_xpl66"), SubResou
 script = ExtResource("2_xiw15")
 costs = Array[int]([1000, 2000, 5000])
 passive_modifiers = Array[ExtResource("1_ctydu")]([SubResource("Resource_0c76x")])
+unlocks_buildings = Array[ExtResource("8_rbfi0")]([])
 enables_political_views = Array[ExtResource("1_eglo6")]([ExtResource("2_7vi4j")])
+unlocks_event = Array[ExtResource("6_41mud")]([])
+removes_event = Array[ExtResource("6_41mud")]([])
 desc = ""
 name = ""

@@ -12,6 +12,11 @@ static func add_label(control: Control, text: String, color: Color= Color.WHITE,
 	return label
 
 
+static func add_labels(control: Control, texts: Array[String], color: Color= Color.WHITE, horizontal= HORIZONTAL_ALIGNMENT_LEFT, min_size: Vector2= Vector2.ZERO):
+	for text in texts:
+		add_label(control, text, color, horizontal, min_size)
+
+
 static func add_empty(control: Control):
 	var label= Label.new()
 	control.add_child(label)

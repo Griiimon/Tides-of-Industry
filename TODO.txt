@@ -1,11 +1,13 @@
-finish Policy slider: Progress Points + functionality
+live BuildInfo stats: same neighbor modifier for house not showing
 
-pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
+advance research should immediately update action bar
+
+research popup: show active research on top with progress and turns remaining. dont show active research in list
+
+disable closing of event popups
+
+(force pause?) pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
 	also while popups are open
-
-
-Build Info: Shows building name/level/CP cost/tile validity warning
-	+ live stats!
 
 add farms, fertility from flower grasslands or muddy grassland
 
@@ -14,8 +16,9 @@ untoggle Research Button when popup is closed ( due to click outside )
 
 show move cost in TileInfo
 
-unit los + undiscoverd terrain + fog of war + building los ( town center high, other buildings low, outpost max)
+fog of war + building los ( town center high, other buildings low, outpost max)
 
+tooltips
 
 
 rename building levels => tiers

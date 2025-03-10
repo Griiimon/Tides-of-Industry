@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Technology" load_steps=6 format=3 uid="uid://vybd5pa71cs5"]
+
+[ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_avhtc"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="2_sej2y"]
+[ext_resource type="Script" path="res://core/events/base_event.gd" id="3_lusth"]
+[ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="4_7rktj"]
+[ext_resource type="Script" path="res://core/resources/empire/building_tier_collection.gd" id="5_ljw0b"]
+
+[resource]
+script = ExtResource("4_7rktj")
+costs = Array[int]([2500])
+passive_modifiers = Array[ExtResource("2_sej2y")]([])
+unlocks_buildings = Array[ExtResource("5_ljw0b")]([])
+enables_political_views = Array[ExtResource("1_avhtc")]([])
+unlocks_event = Array[ExtResource("3_lusth")]([])
+removes_event = Array[ExtResource("3_lusth")]([])
+desc = ""
+name = ""
