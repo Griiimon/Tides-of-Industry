@@ -11,10 +11,14 @@ var is_paused: bool= true:
 		if not is_inside_tree(): return
 		update_turn_cooldown()
 
+var is_forcing_pause: bool= false: set= set_is_forcing_pause
+
 
 
 func _ready() -> void:
 	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
+	SignalManager.force_pause.connect(set_is_forcing_pause.bind(true))
+	SignalManager.cancel_forced_pause.connect(set_is_forcing_pause.bind(false))
 	turn_cooldown.timeout.connect(on_turn_cooldown_timeout)
 	
 	late_ready.call_deferred()
@@ -61,6 +65,13 @@ func update_turn_cooldown():
 	else:
 		turn_cooldown.stop()
 
+
+func set_is_forcing_pause(b):
+	if is_forcing_pause == b: return
+	if not is_inside_tree(): return
+	is_forcing_pause= b
+	turn_cooldown.paused= is_forcing_pause
+	
 
 func on_player_unit_move_finished(_unit: UnitInstance):
 	for unit in world.empire.units:

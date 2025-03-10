@@ -15,6 +15,7 @@ const FLOATING_TILE_INFO_CONTAINER= false
 @onready var research_popup: ResearchPopupPanel = $"Research Popup"
 @onready var production_yield_container: ProductionYieldPanelContainer = $"Production Yield PanelContainer"
 @onready var policies_popup: PoliciesPopupPanel = $"Policies Popup"
+@onready var event_popup: EventPopup = $"Event Popup"
 
 
 @onready var tile_info_container: TileInfoPanelContainer = $"Tile Info PanelContainer"
@@ -46,6 +47,7 @@ func _ready() -> void:
 	SignalManager.building_upgraded.connect(on_building_constructed)
 	SignalManager.player_unit_selected.connect(on_player_unit_selected)
 	SignalManager.player_unit_deselected.connect(on_player_unit_deselected)
+	SignalManager.triggered_event.connect(on_event_triggered)
 
 	if FLOATING_TILE_INFO_CONTAINER:
 		tile_info_container.queue_free()
@@ -125,6 +127,10 @@ func on_player_unit_selected(unit: UnitInstance):
 func on_player_unit_deselected(unit: UnitInstance):
 	unit_action_bar_container.hide()
 	action_bar_container.show()
+
+
+func on_event_triggered(event: BaseEvent):
+	event_popup.open(event)
 
 
 func get_island_in_view()-> IslandInstance:

@@ -19,6 +19,8 @@ func populate():
 	
 	var unavailable_techs: Array[Technology]
 	for technology in GameData.technologies:
+		if empire_state.has_max_technology_level(technology): continue
+		
 		if not technology.can_research(empire_state):
 			unavailable_techs.append(technology)
 			continue

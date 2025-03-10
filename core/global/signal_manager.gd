@@ -12,6 +12,7 @@ signal production_yields_updated(yields: ProductionYields)
 signal start_research(technology: Technology)
 signal technology_researched(technology: Technology)
 signal no_research_selected
+signal advance_research_to_ratio(ratio: float)
 
 signal player_unit_selected(unit: UnitInstance)
 signal player_unit_deselected(unit: UnitInstance)
@@ -23,3 +24,9 @@ signal building_upgraded(tile: Vector2i)
 signal display_building_log(building_log: BuildingLog)
 
 signal world_ticked
+
+signal triggered_event(event: BaseEvent)
+signal closed_event_popup(default_option: bool)
+
+signal force_pause
+signal cancel_forced_pause

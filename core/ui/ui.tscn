@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://idc6uwm0cuky"]
+[gd_scene load_steps=12 format=3 uid="uid://idc6uwm0cuky"]
 
 [ext_resource type="Script" path="res://core/ui/ui.gd" id="1_rdvyd"]
 [ext_resource type="PackedScene" uid="uid://b0va4hhlw1rl6" path="res://core/ui/tile_info_panel_container.tscn" id="2_o5sdk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dd4s5vamnrms6" path="res://core/ui/research_popup.tscn" id="7_613m4"]
 [ext_resource type="PackedScene" uid="uid://bv0jtj0212heq" path="res://core/ui/building_info_panel_container.tscn" id="9_wu640"]
 [ext_resource type="PackedScene" uid="uid://ch32vsl0hx06k" path="res://core/ui/policies_popup.tscn" id="10_8ch8y"]
+[ext_resource type="PackedScene" uid="uid://b2eq4h2nwxyjm" path="res://core/ui/event_popup.tscn" id="11_2kefa"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_rdvyd")
@@ -51,3 +52,5 @@ grow_vertical = 0
 
 [node name="Policies Popup" parent="." instance=ExtResource("10_8ch8y")]
 visible = false
+
+[node name="Event Popup" parent="." instance=ExtResource("11_2kefa")]

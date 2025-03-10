@@ -42,6 +42,7 @@ func on_unhandled_input(event: InputEvent) -> void:
 			state_machine.game.toggle_pause()
 		elif event.is_action("next_turn"):
 			get_viewport().set_input_as_handled()
+			if state_machine.game.is_forcing_pause: return
 			if not state_machine.game.is_paused:
 				state_machine.game.is_paused= true
 			else:

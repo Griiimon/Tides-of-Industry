@@ -18,3 +18,9 @@ func is_at_least(tech_level: TechnologyLevel)-> bool:
 
 func get_research_cost()-> int:
 	return technology.costs[level]
+
+
+func get_as_string()-> String:
+	if not technology.has_levels():
+		return technology.get_display_name()
+	return "%s Lvl %d" % [ technology.get_display_name(), level + 1 ]

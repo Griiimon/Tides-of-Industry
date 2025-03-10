@@ -62,6 +62,8 @@ func tick():
 
 	empire.tick(self)
 
+	state.event_manager.tick()
+	
 	for unit in all_units:
 		unit.reset_moves()
 

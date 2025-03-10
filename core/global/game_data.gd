@@ -9,6 +9,7 @@ extends Node
 @export var policies: Array[BasePolicy]
 
 @export var initial_building_unlocks: Array[Building]
+@export var initial_events: Array[BaseEvent]
 @export var town_center: TownCenter
 
 
@@ -40,7 +41,7 @@ func _ready() -> void:
 	for unit in units:
 		unit_atlas_lookup[unit.atlas_coords]= unit
 
-	get_empire_state().initialize()
+	world_state.initialize()
 
 
 func get_empire_state()-> EmpireState:

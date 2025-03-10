@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EventNewResearch" load_steps=2 format=3 uid="uid://doowk5r80rqbq"]
+
+[ext_resource type="Script" path="res://core/events/events/event_new_research.gd" id="1_45cqr"]
+
+[resource]
+script = ExtResource("1_45cqr")
+title = "New idea"
+description = ""
+chance = 100.0
+has_choice = true
+confirm_cancel_button = "No"
+option_button = "Change"

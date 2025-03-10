@@ -7,6 +7,8 @@ extends NamedResource
 @export var passive_modifiers: Array[EmpireModifierEffectCollection] 
 @export var unlocks_buildings: Array[BuildingTierCollection]
 @export var enables_political_views: Array[PoliticalView]
+@export var unlocks_event: Array[BaseEvent]
+@export var removes_event: Array[BaseEvent]
 
 @export var desc: String
 

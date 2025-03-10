@@ -62,6 +62,10 @@ func research_finished(research: TechnologyLevel):
 	SignalManager.technology_researched.emit(research)
 
 
+func advance_research_to_ratio(ratio: float):
+	research_progress= current_research.get_research_cost() * ratio
+	
+
 func add_modifier(modifier: BaseEmpireModifierEffect):
 	active_modifiers.append(modifier)
 
@@ -112,6 +116,14 @@ func has_construction_points(cost: int)-> bool:
 	return construction_points >= cost
 
 
+func has_available_research()-> bool:
+	for technology in GameData.technologies:
+		if is_researching(technology): continue
+		if can_research(technology):
+			return true
+	return false
+
+
 func is_building_unlocked(building_tier: BuildingTier)-> bool:
 	for unlocked in unlocked_buildings:
 		if unlocked.is_at_least(building_tier):
@@ -119,11 +131,25 @@ func is_building_unlocked(building_tier: BuildingTier)-> bool:
 	return false
 
 
+func can_research(technology: Technology)-> bool:
+	if not technology.can_research(self): return false
+	if has_max_technology_level(technology): return false
+	return true
+
+
+func is_researching(technology: Technology):
+	return current_research and current_research.technology == technology
+
+
+func has_max_technology_level(technology: Technology)-> bool:
+	return has_technology_level(TechnologyLevel.new(technology, technology.get_max_level()))
+
+
 func get_technology_level(technology: Technology)-> int:
 	for tech_level in unlocked_technologies:
 		if tech_level.technology == technology:
 			return tech_level.level
-	return 0
+	return -1
 
 
 func get_research_cost()-> int:
