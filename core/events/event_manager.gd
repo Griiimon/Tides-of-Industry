@@ -1,7 +1,7 @@
 class_name EventManager
 extends Resource
 
-const BASE_EVENT_CHANCE= 100
+const BASE_EVENT_CHANCE= 1
 
 @export var unlocked_events: Array[BaseEvent]
 
@@ -17,9 +17,10 @@ func initialize(seed: int):
 	rng.seed= seed
 
 
-
 func tick():
-	if RngUtils.chance100_rng(BASE_EVENT_CHANCE, rng):
+	if unlocked_events.is_empty(): return
+	
+	if RngUtils.chance100_rng(BASE_EVENT_CHANCE + unlocked_events.size(), rng):
 		var event: BaseEvent
 		for i in 10:
 			event= RngUtils.pick_random_rng(unlocked_events, rng)
