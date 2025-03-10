@@ -22,6 +22,8 @@ signal player_unit_move_finished(unit: UnitInstance)
 signal building_constructed(tile: Vector2i)
 signal building_upgraded(tile: Vector2i)
 signal display_building_log(building_log: BuildingLog)
+signal display_construction_info(info: ConstructionInfo)
+signal hide_building_panel
 
 signal world_ticked
 

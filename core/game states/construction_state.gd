@@ -22,17 +22,25 @@ var current_tile: Vector2i:
 		else:
 			is_valid_position= building.evaluate_placement_conditions(tile, world, world.get_island(tile)) 
 
+var info: ConstructionInfo
+
 
 
 func on_enter():
-	update_current_tile()
 	cost= building.get_cost(tier)
+	info= ConstructionInfo.new()
+	info.building= building
+	info.building_tier= tier
+	info.cost= cost
+	info.is_valid_position= false
+	update_current_tile()
 
 
 func on_exit():
 	state_machine.world.tile_map_buildings_ghost.clear()
 	building= null
 	tier= 0
+	info= null
 
 
 func on_unhandled_input(event: InputEvent) -> void:
@@ -75,3 +83,8 @@ func update_current_tile(force_update: bool= false):
 	if new_tile != current_tile or force_update:
 		current_tile= new_tile
 		state_machine.world.draw_ghost_building(building, tier, current_tile)
+
+		building.update_stats(tier, current_tile, state_machine.world, state_machine.world.get_island(current_tile))
+		info.is_valid_position= is_valid_position
+		info.stats= state_machine.world.temp_building_log
+		SignalManager.display_construction_info.emit(info)

@@ -37,7 +37,7 @@ var terrain_index_lookup: Dictionary
 var generated_chunks: Array
 
 var building_logs: Dictionary
-var temp_building_log: BuildingLog
+var temp_building_log:= BuildingLog.new()
 
 
 
@@ -243,7 +243,7 @@ func clear_building_stat(tile: Vector2i, stat: Building.Stat, temp_log: bool):
 
 
 func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: int, temp_log: bool):
-	prints("Log Stat", get_building(tile).get_display_name(), Building.Stat.keys()[stat], prefix, Utils.signed_number(value))
+	#prints("Log Stat", get_building(tile).get_display_name(), Building.Stat.keys()[stat], prefix, Utils.signed_number(value))
 	if temp_log:
 		temp_building_log.log_stat(stat, prefix, value)
 	else:

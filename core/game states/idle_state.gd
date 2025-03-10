@@ -16,6 +16,7 @@ func _ready() -> void:
 func on_enter():
 	current_tile= state_machine.world.get_mouse_tile()
 	SignalManager.show_tile_info.emit(current_tile)
+	SignalManager.hide_building_panel.emit()
 
 
 func on_exit():

@@ -61,6 +61,11 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 	return result
 
 
+func update_stats(tier: int, tile: Vector2i, world: World, island: IslandInstance):
+	for stat in Stat.values():
+		get_stat(stat, tier, tile, world, island, true)
+
+
 func get_cost(level: int)-> int:
 	return build_costs[level]
 
