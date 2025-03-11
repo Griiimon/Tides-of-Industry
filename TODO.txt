@@ -1,4 +1,4 @@
-live BuildInfo stats: same neighbor modifier for house not showing
+discover() should trigger terrain generator
 
 advance research should immediately update action bar
 

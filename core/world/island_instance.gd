@@ -41,6 +41,8 @@ func build(building: Building, tier: int, tile: Vector2i):
 		definition.add_town_center_position(tile)
 
 	update_stats()
+	var los: int= building.get_los(tier)
+	world.discover_los(tile, los)
 	SignalManager.building_constructed.emit(tile)
 
 

@@ -24,4 +24,5 @@ population = Array[int]([10])
 power = Array[int]([])
 research = Array[int]([])
 max_workers = Array[int]([20, 50, 100])
+custom_los = Array[int]([7, 12, 17])
 name = ""

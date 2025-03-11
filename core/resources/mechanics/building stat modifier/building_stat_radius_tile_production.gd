@@ -5,7 +5,7 @@ extends BuildingStatTileProduction
 
 
 
-func apply(base_value: int, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
+func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
 	var result: int= base_value
 	for worked_tile in world.get_tiles_in_radius(tile, radius, false):
 		

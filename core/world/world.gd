@@ -257,6 +257,10 @@ func discover(rect: Rect2i):
 			tile_map_boundaries.erase_cell(Vector2i(x, y))
 
 
+func discover_los(tile: Vector2i, los: int):
+	discover(Rect2i(tile - Vector2i.ONE * los, Vector2i.ONE * ( los * 2 + 1 ))	)
+
+
 func on_player_unit_move_finished(unit: UnitInstance):
 	var rect:= Rect2i(unit.tile_pos - Vector2i.ONE * generator_min_distance, Vector2i.ONE * generator_min_distance * 2)
 	generate_rect(rect)

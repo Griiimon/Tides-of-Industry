@@ -60,7 +60,7 @@ func can_move_to(new_tile_pos: Vector2i):
 
 func discover():
 	var los: int= type.get_los()
-	world.discover(Rect2i(tile_pos - Vector2i.ONE * los, Vector2i.ONE * ( los * 2 + 1 )))
+	world.discover_los(tile_pos, los)
 
 
 func kill():

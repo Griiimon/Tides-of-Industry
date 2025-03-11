@@ -5,9 +5,9 @@ extends BaseBuildingStatModifier
 
 
 
-func apply(base_value: int, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
+func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
 	if is_condition_met(tile, world, island):
-		return modifier.apply(base_value, tile, building_tier, world, island)
+		return modifier.apply(base_value, building, tile, building_tier, world, island)
 	return 0
 
 

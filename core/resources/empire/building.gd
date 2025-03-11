@@ -3,6 +3,8 @@ extends NamedResource
 
 enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 
+const DEFAULT_LOS= 5
+
 @export var atlas_coords: Array[Vector2i]
 @export var build_costs: Array[int]
 @export var available_in_build_menu: bool= true
@@ -17,6 +19,8 @@ enum Stat { POPULATION, PRODUCTION, POLLUTION, POWER, RESEARCH }
 @export var power: Array[int]
 @export var research: Array[int]
 @export var max_workers: Array[int]
+
+@export var custom_los: Array[int]
 
 
 
@@ -47,7 +51,7 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 
 	for modifier in stat_modifiers:
 		if modifier.type == stat:
-			var modifier_result= modifier.apply(result, tile, tier, world, island)
+			var modifier_result= modifier.apply(result, self, tile, tier, world, island)
 			if result > 0:
 				modifier_result= max(0, modifier_result)
 			elif result < 0:
@@ -80,6 +84,12 @@ func can_upgrade_from(tier: int):
 
 func get_upgrade_cost(tier: int):
 	return build_costs[tier + 1]
+
+
+func get_los(tier: int)-> int:
+	if custom_los.is_empty():
+		return DEFAULT_LOS
+	return custom_los[min(tier, custom_los.size() - 1)]
 
 
 func is_town_center()-> bool:
