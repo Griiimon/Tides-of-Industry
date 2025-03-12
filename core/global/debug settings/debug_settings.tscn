@@ -7,3 +7,4 @@ script = ExtResource("1_kvhga")
 enable = true
 initial_construction_points = 100000
 only_allow_buildings_in_list = false
+unlock_all_buildings = true

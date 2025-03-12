@@ -24,7 +24,7 @@ func populate():
 		var label: Label= UIUtils.add_label(content, building.get_display_name())
 
 		for tier in 3:
-			if tier < building.get_max_level():
+			if tier <= building.get_max_level():
 				var button: Button= UIUtils.add_button(content, str("Tier ", tier + 1), on_build.bind(building, tier))
 				button.disabled= not GameData.get_empire_state().is_building_unlocked(BuildingTier.new(building, tier))
 			else:

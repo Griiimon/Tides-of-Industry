@@ -17,7 +17,7 @@ func get_label(idx: int)-> String:
 		for entry: Array in entries[stat]:
 			if ctr == idx:
 				var label: String= entry[0]
-				return str(Building.Stat.keys()[stat].to_pascal_case(), " ", label)
+				return str(Building.Stat.keys()[stat].to_pascal_case(), " (", label, ")")
 			ctr+= 1
 	assert(false)
 	return ""

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainFeaturePlacementCondition" load_steps=5 format=3 uid="uid://c6vtwha86myql"]
+
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="1_g2c8h"]
+[ext_resource type="Resource" uid="uid://ct0pnk2v4lhmh" path="res://data/terrain features/boulder.tres" id="2_x6t8g"]
+[ext_resource type="Resource" uid="uid://dg0u76uow1ktd" path="res://data/terrain features/pond.tres" id="3_awui6"]
+[ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/terrain_feature_placement_condition.gd" id="4_b7gtw"]
+
+[resource]
+script = ExtResource("4_b7gtw")
+feature_whitelist = Array[ExtResource("1_g2c8h")]([])
+feature_blacklist = Array[ExtResource("1_g2c8h")]([ExtResource("2_x6t8g"), ExtResource("3_awui6")])

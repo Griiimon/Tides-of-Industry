@@ -1,10 +1,18 @@
+reform points generation decreases with amount of accumulated, unspent points
+
+building list scroll
+
+workstead not next to same, factory. factory not next to workstead
+
+feature.on_neighbor_building_constructed() => deer will disappear
+
+specialization policy => specialists points
+
 discover() should trigger terrain generator
 
 disable closing of event popups => make plain PanelContainer
 
 force pause? while popups are open
-
-add farms, fertility from flower grasslands or muddy grassland
 
 use icons in top bar
 
@@ -135,11 +143,11 @@ CORE MECHANICS
 	[ Some will increase research speed when Tech is same category ]
 	Welfare: Money yield turns into stability
 	Expansion: Explorer visibility range, Explorer unit chance
-	Spirituality: Religious buildings stability benefits
-	Militarism: General chance
-	Industrialization: Factory Productivity bonus, Engineer chance, worker_ratio bonus can exceed 1.0 if additional worker available
+	Spirituality: Religious buildings stability benefits, -reform points
+	Militarism: General chance, -reform points
+	Industrialization: Factory Productivity bonus, Engineer chance, +x pollution per workstead / factory [ worker_ratio bonus can exceed 1.0 if additional worker available ]
 	Creativity: Chance to get regular Research events
-	Progressiveness: generates more progress points
+	Progressiveness: generates more progress points, less stability
 	Overtime
 	
 OTHER MECHANICS

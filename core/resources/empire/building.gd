@@ -32,18 +32,7 @@ func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandI
 
 
 func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: IslandInstance, temp_log: bool= false)-> int:
-	var result: int
-	match stat:
-		Stat.POPULATION:
-			result= population[tier] if tier < population.size() else 0
-		Stat.PRODUCTION:
-			result= production[tier] if tier < production.size() else 0
-		Stat.POWER:
-			result= power[tier] if tier < power.size() else 0
-		Stat.POLLUTION:
-			result= pollution[tier] if tier < pollution.size() else 0
-		Stat.RESEARCH:
-			result= research[tier] if tier < research.size() else 0
+	var result: int= get_base_stat(stat, tier)
 
 	world.clear_building_stat(tile, stat, temp_log)
 	if result != 0:
@@ -65,6 +54,22 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 	return result
 
 
+func get_base_stat(stat: Stat, tier: int)-> int:
+	match stat:
+		Stat.POPULATION:
+			return population[tier] if tier < population.size() else 0
+		Stat.PRODUCTION:
+			return production[tier] if tier < production.size() else 0
+		Stat.POWER:
+			return power[tier] if tier < power.size() else 0
+		Stat.POLLUTION:
+			return pollution[tier] if tier < pollution.size() else 0
+		Stat.RESEARCH:
+			return research[tier] if tier < research.size() else 0
+	assert(false, str(stat, " ", tier))
+	return 0
+
+
 func update_stats(tier: int, tile: Vector2i, world: World, island: IslandInstance):
 	for stat in Stat.values():
 		get_stat(stat, tier, tile, world, island, true)
@@ -75,7 +80,7 @@ func get_cost(level: int)-> int:
 
 
 func get_max_level()-> int:
-	return build_costs.size()
+	return build_costs.size() - 1
 
 
 func can_upgrade_from(tier: int):

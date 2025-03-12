@@ -9,5 +9,5 @@ func apply(base_value: int, building: Building, tile: Vector2i, building_tier: i
 	var result: int= base_value
 	for worked_tile in world.get_tiles_in_radius(tile, radius, false):
 		
-		result+= process_tile(worked_tile, building_tier, world, island)
+		result+= process_tile(worked_tile, building, building_tier, world, island)
 	return result

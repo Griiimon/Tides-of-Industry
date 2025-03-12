@@ -1,6 +1,8 @@
 class_name BuildingStatTileProduction
 extends BaseBuildingStatModifierWithStat
 
+@export var override: bool= true
+@export var replace_with_own_base_stat: bool= false
 @export var tier_factors: Array[int]
 @export var buildings: Array[Building]
 @export var terrains: Array[Terrain]
@@ -9,12 +11,20 @@ extends BaseBuildingStatModifierWithStat
 
 
 
-func process_tile(tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
-	var production: int= 0
+func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
+	assert(type == Building.Stat.PRODUCTION)
+	var result: int= process_tile(tile, building, building_tier, world, island)
+	if result == 0 and not override:
+		return base_value
+	return result
+
+
+func process_tile(tile: Vector2i, building: Building, building_tier: int, world: World, island: IslandInstance)-> int:
+	var production= null
 	
-	var building: Building= world.get_building(tile)
-	if building and building in buildings:
-		production= building.get_stat(Building.Stat.PRODUCTION, building_tier, tile, world, island)
+	var other_building: Building= world.get_building(tile)
+	if other_building and other_building in buildings:
+		production= other_building.get_stat(Building.Stat.PRODUCTION, building_tier, tile, world, island)
 	else:
 		var raw_material: RawMaterial= world.get_raw_material(tile, true)
 		if raw_material in raw_materials:
@@ -27,7 +37,13 @@ func process_tile(tile: Vector2i, building_tier: int, world: World, island: Isla
 				var terrain: Terrain= world.get_terrain(tile)
 				if terrain in terrains:
 					production= terrain.base_production
-
+	
+	if production != null and replace_with_own_base_stat:
+		production= building.get_base_stat(type, building_tier)
+	
+	if production == null:
+		production= 0
+	
 	return production * (1 if tier_factors.is_empty() else tier_factors[mini(building_tier, tier_factors.size())])
 
 

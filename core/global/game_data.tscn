@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=50 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://cotu2nsxm3w7p" path="res://data/technologies/industrial_complex.tres" id="17_vhu8o"]
 [ext_resource type="Script" path="res://core/resources/units/unit.gd" id="18_7rd6n"]
 [ext_resource type="Resource" uid="uid://dh7fwnvip37y1" path="res://data/units/explorer.tres" id="19_m8m46"]
+[ext_resource type="Resource" uid="uid://dxuvjpfakvf54" path="res://data/buildings/farm.tres" id="26_n0rt4"]
 [ext_resource type="Resource" uid="uid://bimat280ntdos" path="res://data/technologies/environmentalism.tres" id="28_mv7if"]
 [ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="28_qnjjw"]
 [ext_resource type="Resource" uid="uid://vybd5pa71cs5" path="res://data/technologies/socialism.tres" id="29_0flbj"]
@@ -53,7 +54,7 @@
 script = ExtResource("1_xq1md")
 terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r"), ExtResource("11_2qyk2"), ExtResource("12_d35bu")])
 terrain_features = Array[ExtResource("11_jsqfy")]([ExtResource("12_0p5ue"), ExtResource("13_fou44"), ExtResource("14_uicyi"), ExtResource("15_esuin")])
-buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc")])
+buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc"), ExtResource("26_n0rt4")])
 technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o"), ExtResource("28_mv7if"), ExtResource("29_0flbj"), ExtResource("30_mfi2e"), ExtResource("31_rgsg3")])
 raw_materials = Array[ExtResource("28_qnjjw")]([ExtResource("29_fonl1"), ExtResource("30_paqvd"), ExtResource("31_tfk34")])
 units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])

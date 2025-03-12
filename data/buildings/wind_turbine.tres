@@ -1,23 +1,26 @@
-[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://dicp2fwadfdlv"]
+[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://dicp2fwadfdlv"]
 
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="1_4a3oy"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="1_qfag8"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="1_sqelh"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="2_fvu8b"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="3_da83w"]
+[ext_resource type="Resource" uid="uid://c6vtwha86myql" path="res://data/building placement conditions/default_feature_list.tres" id="5_aqgvm"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="7_gwbwy"]
 
 [resource]
 script = ExtResource("1_qfag8")
 atlas_coords = Array[Vector2i]([Vector2i(1, 1)])
 build_costs = Array[int]([500])
-available_in_build_menu = null
-placement_conditions = Array[ExtResource("1_sqelh")]([ExtResource("2_fvu8b"), ExtResource("3_da83w")])
-stat_modifiers = null
-empire_modifiers = null
-production = null
-pollution = null
-population = null
-power = null
-research = null
+available_in_build_menu = true
+placement_conditions = Array[ExtResource("1_sqelh")]([ExtResource("2_fvu8b"), ExtResource("3_da83w"), ExtResource("5_aqgvm")])
+stat_modifiers = Array[ExtResource("7_gwbwy")]([])
+empire_modifiers = Array[ExtResource("1_4a3oy")]([])
+production = Array[int]([])
+pollution = Array[int]([])
+population = Array[int]([])
+power = Array[int]([])
+research = Array[int]([])
 max_workers = Array[int]([])
 custom_los = Array[int]([])
-name = null
+name = ""

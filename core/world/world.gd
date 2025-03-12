@@ -157,6 +157,7 @@ func generate_radius(center: Vector2i, radius: int, non_blocking: bool= true):
 func spawn_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_buildings.set_cell(tile, 0, building.atlas_coords[tier])
 	tile_map_building_levels.set_cell(tile, tier, Vector2i.ZERO)
+	remove_feature(tile)
 
 
 func upgrade_building(tile: Vector2i):
@@ -185,6 +186,10 @@ func settle_island(town_center_pos: Vector2i)-> IslandInstance:
 func set_building_ghost_layer_valid(flag: bool):
 	tile_map_buildings_ghost.modulate.g= 1.0 if flag else 0.0
 	tile_map_buildings_ghost.modulate.b= 1.0 if flag else 0.0
+
+
+func remove_feature(tile: Vector2i):
+	tile_map_terrain_features.erase_cell(tile)
 
 
 func spawn_unit(type: Unit, tile: Vector2i, player_unit: bool= true)-> UnitInstance:
