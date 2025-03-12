@@ -19,6 +19,11 @@ extends WorldGenerator
 @export var marsh_humidity_threshold: float
 @export var desert_humidity_threshold: float
 
+@export var fertile_humidity_threshold: float
+@export var fertile_noise: FastNoiseLite
+@export var fertile_noise_threshold: float
+
+
 @export_subgroup("Terrain assignments")
 @export var grass: Terrain
 @export var sea: Terrain
@@ -28,6 +33,7 @@ extends WorldGenerator
 @export var marsh: Terrain
 @export var forest: Terrain
 @export var deep_sea: Terrain
+@export var fertile_ground: Terrain
 
 
 
@@ -47,6 +53,10 @@ func get_terrain(coords: Vector2i)-> Terrain:
 		var humidity: float= humidity_noise.get_noise_2dv(coords)
 		if humidity > marsh_humidity_threshold:
 			return marsh
+		elif humidity > fertile_humidity_threshold:
+			print(fertile_noise.get_noise_2dv(coords))
+			if fertile_noise.get_noise_2dv(coords) > fertile_noise_threshold:
+				return fertile_ground
 		elif humidity < desert_humidity_threshold:
 			return desert
 		

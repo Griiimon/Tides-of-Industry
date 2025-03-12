@@ -81,10 +81,12 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 
 	for x in chunk_size:
 		for y in chunk_size:
+			tile_map_boundaries.set_cell(Vector2i(x, y) + world_offset, 0, Vector2i(UNKNOWN_TERRAIN_ATLAS_X, 0))
+
+	for x in chunk_size:
+		for y in chunk_size:
 			var world_coords: Vector2i= Vector2i(x, y) + world_offset
 			var terrain: Terrain= generator.get_terrain(world_coords)
-			
-			tile_map_boundaries.set_cell(world_coords, 0, Vector2i(UNKNOWN_TERRAIN_ATLAS_X, 0))
 			
 			if terrain.is_sea and terrain != coast_terrain and tile_map_terrain_ids.get_cell_source_id(world_coords) == coast_id:
 				terrain= coast_terrain

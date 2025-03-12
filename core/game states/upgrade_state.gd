@@ -3,6 +3,14 @@ extends GameStateMachineState
 
 
 
+func on_enter():
+	SignalManager.force_pause.emit()
+
+
+func on_exit():
+	SignalManager.cancel_forced_pause.emit()
+
+
 func on_unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event is InputEventMouseButton:

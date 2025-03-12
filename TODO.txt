@@ -1,16 +1,16 @@
 discover() should trigger terrain generator
 
-advance research should immediately update action bar
+disable closing of event popups => make plain PanelContainer
 
-research popup: show active research on top with progress and turns remaining. dont show active research in list
-
-disable closing of event popups
-
-(force pause?) pause while building, upgrading, removing if in auto-run mode ( resume once finished ? )
-	also while popups are open
+force pause? while popups are open
 
 add farms, fertility from flower grasslands or muddy grassland
 
+use icons in top bar
+
+implement power
+
+implement stability
 
 untoggle Research Button when popup is closed ( due to click outside )
 
@@ -120,10 +120,10 @@ CORE MECHANICS
 
 - Stability
 	total party satisfaction
-	low stability can cause random events that destroy, disable buildings, cost money etc
+	low stability can cause random events that destroy, disable buildings, cost money/progress points, spawn rebel camps
 
 - Research
-	from population, tech, university, features?
+	from tech, university
 	
 - Pollution
 	from factory, power plant, features?

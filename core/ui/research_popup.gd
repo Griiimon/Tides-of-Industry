@@ -4,6 +4,8 @@ extends PopupPanel
 signal request_close
 
 @onready var content_container: GridContainer = %"Content GridContainer"
+@onready var current_research_label: Label = %"Current Research Label"
+@onready var current_research_progress_bar: ProgressBar = %"Current Research ProgressBar"
 
 
 
@@ -16,6 +18,14 @@ func populate():
 	UIUtils.free_children(content_container)
 	
 	var empire_state: EmpireState= GameData.get_empire_state()
+	
+	if empire_state.current_research:
+		current_research_label.text= empire_state.current_research.get_as_string()
+		current_research_progress_bar.value= empire_state.get_research_progress_ratio()
+		current_research_progress_bar.show()
+	else:
+		current_research_label.text= "No research"
+		current_research_progress_bar.hide()
 	
 	var unavailable_techs: Array[Technology]
 	for technology in GameData.technologies:

@@ -13,6 +13,7 @@ signal start_research(technology: Technology)
 signal technology_researched(technology: Technology)
 signal no_research_selected
 signal advance_research_to_ratio(ratio: float)
+signal updated_research_progress()
 
 signal player_unit_selected(unit: UnitInstance)
 signal player_unit_deselected(unit: UnitInstance)

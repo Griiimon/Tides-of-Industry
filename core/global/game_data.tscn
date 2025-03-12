@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=49 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://dv1ssg5ak36ro" path="res://data/buildings/harbor.tres" id="11_ot1wp"]
 [ext_resource type="Resource" uid="uid://ct0pnk2v4lhmh" path="res://data/terrain features/boulder.tres" id="12_0p5ue"]
 [ext_resource type="Resource" uid="uid://cxd4dr0x5vqw2" path="res://data/buildings/factory.tres" id="12_7tm4u"]
+[ext_resource type="Resource" uid="uid://c6nhsjtnjrn46" path="res://data/terrain/fertile_ground.tres" id="12_d35bu"]
 [ext_resource type="Resource" uid="uid://cgkayum1fm8nb" path="res://data/buildings/coal_power_plant.tres" id="13_7tmc8"]
 [ext_resource type="Resource" uid="uid://krhupyuxsmfo" path="res://data/terrain features/deer.tres" id="13_fou44"]
 [ext_resource type="Resource" uid="uid://dicp2fwadfdlv" path="res://data/buildings/wind_turbine.tres" id="14_bnyoc"]
@@ -33,7 +34,9 @@
 [ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="28_qnjjw"]
 [ext_resource type="Resource" uid="uid://vybd5pa71cs5" path="res://data/technologies/socialism.tres" id="29_0flbj"]
 [ext_resource type="Resource" uid="uid://boldx1o1xn5y2" path="res://data/raw materials/coal.tres" id="29_fonl1"]
+[ext_resource type="Resource" uid="uid://3pq37jc1fc7y" path="res://data/technologies/agriculture.tres" id="30_mfi2e"]
 [ext_resource type="Resource" uid="uid://cji0xytrrc2am" path="res://data/raw materials/iron_ore.tres" id="30_paqvd"]
+[ext_resource type="Resource" uid="uid://ie0ob4lbwiay" path="res://data/technologies/workforce.tres" id="31_rgsg3"]
 [ext_resource type="Resource" uid="uid://cwennvw0rc1rt" path="res://data/raw materials/oil.tres" id="31_tfk34"]
 [ext_resource type="Script" path="res://core/resources/empire/policies/base_policy.gd" id="34_6faj6"]
 [ext_resource type="Resource" uid="uid://vc514knmdni2" path="res://data/policies/creativity.tres" id="35_ab8ks"]
@@ -48,13 +51,13 @@
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_xq1md")
-terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r"), ExtResource("11_2qyk2")])
+terrains = Array[ExtResource("2_fdkgq")]([ExtResource("3_m04ym"), ExtResource("4_bhox0"), ExtResource("5_87nd6"), ExtResource("6_b75e3"), ExtResource("7_84xsw"), ExtResource("8_7tjvf"), ExtResource("9_rsnw8"), ExtResource("10_33o1r"), ExtResource("11_2qyk2"), ExtResource("12_d35bu")])
 terrain_features = Array[ExtResource("11_jsqfy")]([ExtResource("12_0p5ue"), ExtResource("13_fou44"), ExtResource("14_uicyi"), ExtResource("15_esuin")])
 buildings = Array[ExtResource("2_67we0")]([ExtResource("3_ge107"), ExtResource("3_y316n"), ExtResource("10_1orlr"), ExtResource("11_ot1wp"), ExtResource("12_7tm4u"), ExtResource("13_7tmc8"), ExtResource("14_bnyoc")])
-technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o"), ExtResource("28_mv7if"), ExtResource("29_0flbj")])
+technologies = Array[ExtResource("15_8i0tv")]([ExtResource("16_qvaga"), ExtResource("17_vhu8o"), ExtResource("28_mv7if"), ExtResource("29_0flbj"), ExtResource("30_mfi2e"), ExtResource("31_rgsg3")])
 raw_materials = Array[ExtResource("28_qnjjw")]([ExtResource("29_fonl1"), ExtResource("30_paqvd"), ExtResource("31_tfk34")])
 units = Array[ExtResource("18_7rd6n")]([ExtResource("19_m8m46")])
 policies = Array[ExtResource("34_6faj6")]([ExtResource("35_ab8ks"), ExtResource("36_dyiyo"), ExtResource("37_bswm3"), ExtResource("38_ee0e2"), ExtResource("39_sr8qv"), ExtResource("40_p3lyh"), ExtResource("41_vgqcr")])
-initial_building_unlocks = Array[ExtResource("2_67we0")]([ExtResource("3_y316n"), ExtResource("10_1orlr")])
+initial_building_unlocks = Array[ExtResource("2_67we0")]([ExtResource("3_y316n")])
 initial_events = Array[ExtResource("42_i6skf")]([ExtResource("43_kgsln")])
 town_center = ExtResource("3_ge107")

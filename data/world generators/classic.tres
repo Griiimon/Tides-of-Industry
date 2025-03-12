@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=15 format=3 uid="uid://dwyajv3mqqdd1"]
+[gd_resource type="Resource" script_class="WorldGeneratorClassic" load_steps=17 format=3 uid="uid://dwyajv3mqqdd1"]
 
 [ext_resource type="Resource" uid="uid://bkd0s0gjtbyy" path="res://data/terrain/desert.tres" id="1_8v14v"]
 [ext_resource type="Resource" uid="uid://dq00ggjsl27ip" path="res://data/terrain/deep_sea.tres" id="1_a5klq"]
@@ -6,9 +6,17 @@
 [ext_resource type="Script" path="res://data/world generators/world_generator_classic.gd" id="2_af3pd"]
 [ext_resource type="Resource" uid="uid://dq8gr3nrw1rs4" path="res://data/terrain/forest.tres" id="2_op2tq"]
 [ext_resource type="Resource" uid="uid://ntnwkcxxmguq" path="res://data/terrain/sea.tres" id="3_8avsj"]
+[ext_resource type="Resource" uid="uid://c6nhsjtnjrn46" path="res://data/terrain/fertile_ground.tres" id="3_gbntf"]
 [ext_resource type="Resource" uid="uid://bpbexsgaw04kt" path="res://data/terrain/hills.tres" id="4_unbso"]
 [ext_resource type="Resource" uid="uid://dktqjcvqafqgc" path="res://data/terrain/marsh.tres" id="5_ersex"]
 [ext_resource type="Resource" uid="uid://bde357srjk4qd" path="res://data/terrain/mountains.tres" id="6_n2os7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_apn4b"]
+noise_type = 2
+frequency = 0.1
+fractal_octaves = 4
+fractal_lacunarity = 1.995
+fractal_gain = 1.4
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fonl6"]
 frequency = 0.1585
@@ -50,6 +58,9 @@ mountains_height_threshold = 0.4
 humidity_noise = SubResource("FastNoiseLite_pbh6k")
 marsh_humidity_threshold = 0.4
 desert_humidity_threshold = -0.35
+fertile_humidity_threshold = 0.15
+fertile_noise = SubResource("FastNoiseLite_apn4b")
+fertile_noise_threshold = -0.3
 grass = ExtResource("1_d3abn")
 sea = ExtResource("3_8avsj")
 hills = ExtResource("4_unbso")
@@ -58,3 +69,4 @@ desert = ExtResource("1_8v14v")
 marsh = ExtResource("5_ersex")
 forest = ExtResource("2_op2tq")
 deep_sea = ExtResource("1_a5klq")
+fertile_ground = ExtResource("3_gbntf")

@@ -1,6 +1,9 @@
 class_name Game
 extends Node2D
 
+const DEFAULT_GAME_SPEED_INTERVAL= 1.0
+const FAST_GAME_SPEED_INTERVAL= 0.2
+
 @onready var world: World = $World
 @onready var game_states: GameStateMachine = $"Game States"
 @onready var turn_cooldown: Timer = $"Turn Cooldown Timer"
@@ -32,7 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action("ui_cancel"):
 			get_tree().quit()
-
+		elif event.is_action("toggle_game_speed"):
+			turn_cooldown.wait_time= FAST_GAME_SPEED_INTERVAL if is_equal_approx(turn_cooldown.wait_time, DEFAULT_GAME_SPEED_INTERVAL) else FAST_GAME_SPEED_INTERVAL
 
 func next_turn():
 	game_states.reset()

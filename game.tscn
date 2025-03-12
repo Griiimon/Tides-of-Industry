@@ -136,6 +136,8 @@ texture_region_size = Vector2i(32, 32)
 1:4/0/terrain_set = 0
 1:4/0/terrain = 0
 2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 8
 3:4/0 = 0
 4:4/0 = 0
 5:4/0 = 0
@@ -167,6 +169,8 @@ terrain_set_0/terrain_6/name = "Marsh"
 terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 terrain_set_0/terrain_7/name = "Desert"
 terrain_set_0/terrain_7/color = Color(0.639216, 0.65098, 0, 1)
+terrain_set_0/terrain_8/name = "Fertile Ground"
+terrain_set_0/terrain_8/color = Color(0.541545, 0.326461, 0.119885, 1)
 sources/0 = SubResource("TileSetAtlasSource_xeqwy")
 
 [sub_resource type="TileSet" id="TileSet_ko4q6"]

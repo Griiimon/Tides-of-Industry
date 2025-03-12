@@ -27,6 +27,7 @@ var info: ConstructionInfo
 
 
 func on_enter():
+	SignalManager.force_pause.emit()
 	cost= building.get_cost(tier)
 	info= ConstructionInfo.new()
 	info.building= building
@@ -41,6 +42,7 @@ func on_exit():
 	building= null
 	tier= 0
 	info= null
+	SignalManager.cancel_forced_pause.emit()
 
 
 func on_unhandled_input(event: InputEvent) -> void:

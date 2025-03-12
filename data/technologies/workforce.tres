@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Technology" load_steps=10 format=3 uid="uid://ie0ob4lbwiay"]
+
+[ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_nkm3g"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/empire_modifier_effect_collection.gd" id="2_l71tk"]
+[ext_resource type="Script" path="res://core/events/base_event.gd" id="3_cu256"]
+[ext_resource type="Script" path="res://core/resources/empire/technology.gd" id="4_yjspm"]
+[ext_resource type="Script" path="res://core/resources/empire/building_tier_collection.gd" id="5_okgq1"]
+[ext_resource type="Script" path="res://core/resources/empire/building_tier.gd" id="6_ubqhr"]
+[ext_resource type="Resource" uid="uid://dln74k8chwa4x" path="res://data/buildings/workstead.tres" id="7_8ec43"]
+
+[sub_resource type="Resource" id="Resource_17myo"]
+script = ExtResource("6_ubqhr")
+building = ExtResource("7_8ec43")
+tier = 0
+
+[sub_resource type="Resource" id="Resource_k0ine"]
+script = ExtResource("5_okgq1")
+building_tiers = Array[ExtResource("6_ubqhr")]([SubResource("Resource_17myo")])
+
+[resource]
+script = ExtResource("4_yjspm")
+costs = Array[int]([500])
+passive_modifiers = Array[ExtResource("2_l71tk")]([])
+unlocks_buildings = Array[ExtResource("5_okgq1")]([SubResource("Resource_k0ine")])
+enables_political_views = Array[ExtResource("1_nkm3g")]([])
+unlocks_event = Array[ExtResource("3_cu256")]([])
+removes_event = Array[ExtResource("3_cu256")]([])
+desc = ""
+name = ""

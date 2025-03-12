@@ -20,6 +20,7 @@ signal close_policies
 func _ready() -> void:
 	SignalManager.start_research.connect(update_research_progress.unbind(1))
 	SignalManager.world_ticked.connect(update_research_progress)
+	SignalManager.updated_research_progress.connect(update_research_progress)
 
 
 func untoggle_build_button():

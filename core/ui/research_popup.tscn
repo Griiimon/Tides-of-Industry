@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd4s5vamnrms6"]
+[gd_scene load_steps=3 format=3 uid="uid://dd4s5vamnrms6"]
 
 [ext_resource type="Script" path="res://core/ui/research_popup.gd" id="1_5jeyg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5hwp"]
+bg_color = Color(0.127029, 0.575281, 0.0325651, 1)
 
 [node name="Research Popup" type="PopupPanel"]
 auto_translate_mode = 1
 title = "Research"
 initial_position = 2
-size = Vector2i(428, 428)
+size = Vector2i(478, 479)
 visible = true
 always_on_top = true
 script = ExtResource("1_5jeyg")
@@ -14,19 +17,44 @@ script = ExtResource("1_5jeyg")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 424.0
-offset_bottom = 424.0
+offset_right = 474.0
+offset_bottom = 475.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Current Research Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Factories Lvl 1"
+
+[node name="Current Research ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/fill = SubResource("StyleBoxFlat_q5hwp")
+max_value = 1.0
+value = 0.57
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="Content GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+[node name="Content GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2

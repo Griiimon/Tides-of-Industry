@@ -21,4 +21,5 @@ population = null
 power = null
 research = null
 max_workers = Array[int]([])
+custom_los = Array[int]([])
 name = null
