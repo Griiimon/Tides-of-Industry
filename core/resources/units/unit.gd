@@ -1,7 +1,10 @@
 class_name Unit
 extends NamedResource
 
+enum Specialist { NONE= -1, EXPLORER, ENGINEER, GENERAL, PROPHET }
+
 @export var atlas_coords: Vector2i
+@export var specialist: Specialist= Specialist.NONE
 @export var is_ship: bool= false
 @export var is_land_unit: bool= true
 @export var moves_per_turn: int= 1

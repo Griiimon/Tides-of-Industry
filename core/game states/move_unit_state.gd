@@ -10,6 +10,7 @@ var unit: UnitInstance
 func _ready() -> void:
 	super()
 	SignalManager.player_unit_deselected.connect(on_unit_deselected)
+	SignalManager.unit_removed.connect(on_unit_removed)
 
 
 func on_enter():
@@ -22,6 +23,7 @@ func on_enter():
 func on_exit():
 	state_machine.world.reset_unit_selection_boxes()
 	SignalManager.player_unit_deselected.emit(unit)
+	unit= null
 
 
 func on_unhandled_input(event: InputEvent) -> void:
@@ -84,4 +86,9 @@ func try_to_move_to(target_pos: Vector2i):
 
 func on_unit_deselected(unit: UnitInstance):
 	if is_current_state() and not is_exiting:
+		finished.emit()
+
+
+func on_unit_removed(removed_unit: UnitInstance):
+	if is_current_state() and unit == removed_unit:
 		finished.emit()

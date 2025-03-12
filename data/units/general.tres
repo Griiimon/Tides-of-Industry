@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ExplorerUnit" load_steps=4 format=3 uid="uid://bqesu0qigjp1l"]
+
+[ext_resource type="Script" path="res://core/resources/units/base_unit_action.gd" id="1_sgj4w"]
+[ext_resource type="Script" path="res://core/resources/units/explorer_unit.gd" id="3_8s2wp"]
+[ext_resource type="Resource" uid="uid://q4krrs52b22k" path="res://data/units/ship.tres" id="4_vawut"]
+
+[resource]
+script = ExtResource("3_8s2wp")
+ship_reference = ExtResource("4_vawut")
+atlas_coords = Vector2i(4, 0)
+specialist = 2
+is_ship = false
+is_land_unit = true
+moves_per_turn = 1
+action_points = 100
+moves_cost_ap = false
+available_actions = Array[ExtResource("1_sgj4w")]([])
+name = ""

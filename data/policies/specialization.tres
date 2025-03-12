@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpecializationPolicy" load_steps=2 format=3 uid="uid://bpx3ojfntyerl"]
+
+[ext_resource type="Script" path="res://core/resources/empire/policies/specialization_policy.gd" id="1_0cef3"]
+
+[resource]
+script = ExtResource("1_0cef3")
+description = ""
+cap_level = 2
+level = 0
+name = ""

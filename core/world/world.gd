@@ -27,6 +27,7 @@ const FOG_OF_WAR_ATLAS_X= 1
 @onready var islands: Node = $Islands
 
 var empire: Empire= Empire.new()
+var rng: RandomNumberGenerator
 
 var ai_units: Array[UnitInstance]
 var all_units: Array[UnitInstance]
@@ -51,6 +52,9 @@ func _ready() -> void:
 			if terrain.terrain_set_name == tile_set.get_terrain_name(0, i):
 				terrain_index_lookup[terrain]= i
 				break
+	
+	rng= RandomNumberGenerator.new()
+	rng.seed= GameData.world_state.get_seed_hash() 
 	
 	if not generator: return
 
@@ -121,17 +125,17 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 			#tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[GameData.terrains[terrain_id]], false)
 
 	var seed: int= get_chunk_rng_seed(chunk_coords)
-	var rng:= RandomNumberGenerator.new()
-	rng.seed= seed
+	var chunk_rng:= RandomNumberGenerator.new()
+	chunk_rng.seed= seed
 	
 	for x in chunk_size:
 		for y in chunk_size:
 			var world_coords: Vector2i= Vector2i(x, y) + world_offset
 			var terrain: Terrain= get_terrain(world_coords)
-			var feature: TerrainFeature= generator.get_terrain_feature(world_coords, terrain, rng)
+			var feature: TerrainFeature= generator.get_terrain_feature(world_coords, terrain, chunk_rng)
 			if feature:
 				tile_map_terrain_features.set_cell(world_coords, 0, feature.atlas_coords)
-			var raw_material: RawMaterial= generator.get_raw_material(world_coords, terrain, feature, rng)
+			var raw_material: RawMaterial= generator.get_raw_material(world_coords, terrain, feature, chunk_rng)
 			if raw_material:
 				tile_map_resources.set_cell(world_coords, 0, raw_material.atlas_coords)
 				tile_map_resources_discovered.set_cell(world_coords, 0, Vector2i.ZERO)
@@ -213,8 +217,11 @@ func remove_unit(unit: UnitInstance):
 
 	tile_map_units.set_cell(unit.tile_pos, -1)
 	tile_to_unit[unit.tile_pos]= null
-
+	
+	SignalManager.unit_removed.emit(unit)
+	
 	#assert(unit.get_reference_count() == 0)
+
 
 
 func update_unit_pos(unit: UnitInstance, tile: Vector2i, previous_tile: Vector2i= Vector2i.ZERO, remove_previous: bool= false):
@@ -436,6 +443,13 @@ func get_tile_base_production(tile: Vector2i)-> int:
 
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1
+
+
+func get_population()-> int:
+	var result: int= 0
+	for island in get_islands():
+		result+= island.population
+	return result
 
 
 static func get_surrounding_cells(tile: Vector2i)-> Array[Vector2i]:

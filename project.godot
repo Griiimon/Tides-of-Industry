@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameData="*res://core/global/game_data.tscn"
 SignalManager="*res://core/global/signal_manager.gd"
 DebugSettings="*res://core/global/debug settings/debug_settings.tscn"
+Helper="*res://core/global/helper.gd"
 
 [editor_plugins]
 

@@ -9,10 +9,11 @@
 script = ExtResource("3_bajrl")
 ship_reference = ExtResource("2_oca01")
 atlas_coords = Vector2i(1, 0)
+specialist = 0
 is_ship = false
 is_land_unit = true
 moves_per_turn = 1
 action_points = 100
-moves_cost_ap = false
+moves_cost_ap = true
 available_actions = Array[ExtResource("1_61mf2")]([ExtResource("2_x741n")])
 name = ""

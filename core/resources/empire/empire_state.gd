@@ -5,10 +5,10 @@ extends Resource
 @export_storage var construction_points: float= 1000
 @export_storage var stability: float= 80
 @export_storage var reform_points: float= 5.0
-@export_storage var reform_points_increase: float= 0.005
+@export_storage var reform_points_increase: float= 0.0
 
 @export_storage var specialist_points: float= 0.0
-@export_storage var specialist_points_increase: float= 0.1
+@export_storage var specialist_points_increase: float= 0.0
 @export_storage var specialist_points_required: float= 100.0
 
 @export_storage var production_yields: ProductionYields= ProductionYields.new()

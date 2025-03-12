@@ -21,6 +21,7 @@ var terrain_feature_atlas_lookup: Dictionary
 var building_atlas_lookup: Dictionary
 var raw_material_atlas_lookup: Dictionary
 var unit_atlas_lookup: Dictionary
+var specialist_unit_lookup: Dictionary
 
 
 
@@ -40,6 +41,8 @@ func _ready() -> void:
 
 	for unit in units:
 		unit_atlas_lookup[unit.atlas_coords]= unit
+		if unit.specialist != Unit.Specialist.NONE:
+			specialist_unit_lookup[unit.specialist]= unit
 
 	world_state.initialize()
 
