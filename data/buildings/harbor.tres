@@ -11,7 +11,7 @@
 [sub_resource type="Resource" id="Resource_05wox"]
 script = ExtResource("3_x3pse")
 terrain_whitelist = Array[ExtResource("4_cm0e2")]([ExtResource("5_ec3ip")])
-terrain_blacklist = Array[ExtResource("4_cm0e2")]([])
+terrain_blacklist = null
 
 [resource]
 script = ExtResource("1_8gnts")

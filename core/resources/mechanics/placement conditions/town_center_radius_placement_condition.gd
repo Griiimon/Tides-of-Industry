@@ -5,7 +5,7 @@ extends BaseBuildingPlacementCondition
 
 
 
-func evaluate(tile: Vector2i, world: World, island: IslandInstance)-> bool:
+func evaluate(tile: Vector2i, building: Building, world: World, island: IslandInstance)-> bool:
 	if not island:
 		return invert
 	

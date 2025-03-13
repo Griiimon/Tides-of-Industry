@@ -17,6 +17,9 @@ var research: int
 var max_workers: int
 var workers_ratio: float
 
+var power_required: int
+var available_power_ratio: float
+
 
 
 func update_stats():
@@ -25,9 +28,13 @@ func update_stats():
 
 	update_workers_ratio()
 
-	update_pollution()
-	update_production()
+	update_required_power()
 	update_power()
+	update_power_ratio()
+
+	update_pollution()
+	
+	update_production()
 	update_research()
 
 	SignalManager.island_stats_updated.emit(self)
@@ -57,6 +64,14 @@ func update_workers_ratio():
 	workers_ratio= clampf(population / float(max_workers), 0.0, 1.0)
 
 
+func update_required_power():
+	power_required= 0
+	
+	for building_pos in buildings:
+		var building: Building= world.get_building(building_pos)
+		power_required+= building.get_required_power(world.get_building_level(building_pos))
+
+
 func update_pollution():
 	pollution= 0
 	for building_pos in buildings:
@@ -76,7 +91,7 @@ func update_population():
 func update_production():
 	base_production= 0
 	for building_pos in buildings:
-		base_production+= world.get_building_stat(Building.Stat.PRODUCTION, building_pos)
+		base_production+= world.get_building_stat(Building.Stat.PRODUCTION, building_pos, available_power_ratio)
 
 	base_production= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.PRODUCTION, base_production)
 	production= floor(base_production * workers_ratio)
@@ -88,6 +103,10 @@ func update_power():
 		power+= world.get_building_stat(Building.Stat.POWER, building_pos)
 
 	power= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.POWER, power)
+
+
+func update_power_ratio():
+	available_power_ratio= clampf(float(power) / power_required, 0.0, 1.0)
 
 
 func update_research():

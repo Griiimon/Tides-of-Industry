@@ -77,9 +77,10 @@ func try_to_move_to(target_pos: Vector2i):
 		unit.move_to(target_pos)
 		SignalManager.player_unit_moved.emit(unit)
 		if unit.moves_left == 0:
+			var tmp_unit: UnitInstance= unit
 			finished.emit()
-			SignalManager.player_unit_move_finished.emit(unit)
-			UnitActionMove.new().execute(unit)
+			SignalManager.player_unit_move_finished.emit(tmp_unit)
+			UnitActionMove.new().execute(tmp_unit)
 		else:
 			state_machine.world.set_unit_selection_box(unit.tile_pos)
 

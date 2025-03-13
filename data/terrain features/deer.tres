@@ -25,5 +25,6 @@ script = ExtResource("1_k7qfb")
 atlas_coords = Vector2i(2, 0)
 base_production = 3
 remove_cost = 0
+destroy_on_neighbor_construction = true
 occurrence = SubResource("Resource_3og8w")
 name = ""

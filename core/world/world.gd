@@ -161,7 +161,13 @@ func generate_radius(center: Vector2i, radius: int, non_blocking: bool= true):
 func spawn_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_buildings.set_cell(tile, 0, building.atlas_coords[tier])
 	tile_map_building_levels.set_cell(tile, tier, Vector2i.ZERO)
+
 	remove_feature(tile)
+	if building.can_destroy_neighbor_features:
+		for neighbor_tile in get_surrounding_cells(tile):
+			var feature: TerrainFeature= get_feature(neighbor_tile)
+			if feature and feature.destroy_on_neighbor_construction:
+				remove_feature(neighbor_tile)
 
 
 func upgrade_building(tile: Vector2i):
@@ -288,13 +294,18 @@ func get_mouse_tile()-> Vector2i:
 	return get_tile(tile_map_terrain.get_global_mouse_position())
 
 
-func get_building_stat(stat: Building.Stat, tile: Vector2i)-> int:
+func get_building_stat(stat: Building.Stat, tile: Vector2i, power_ratio: float= 1.0)-> int:
 	var atlas_coords: Vector2i= tile_map_buildings.get_cell_atlas_coords(tile)
 	assert(GameData.building_atlas_lookup.has(atlas_coords))
 	var building: Building= GameData.building_atlas_lookup[atlas_coords]
 	var level: int= tile_map_building_levels.get_cell_source_id(tile)
 	assert(level >= 0, str(tile_map_building_levels.get_used_cells()))
-	return building.get_stat(stat, level, tile, self, get_island(tile))
+	var result: int= building.get_stat(stat, level, tile, self, get_island(tile))
+	
+	if stat == Building.Stat.PRODUCTION and building.does_require_power():
+		result*= power_ratio
+	
+	return result
 
 
 func has_building(tile: Vector2i)-> bool:

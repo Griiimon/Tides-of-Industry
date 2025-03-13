@@ -1,5 +1,5 @@
 class_name BuildingStatTileProduction
-extends BaseBuildingStatModifierWithStat
+extends BaseBuildingStatModifier
 
 @export var override: bool= true
 @export var replace_with_own_base_stat: bool= false
@@ -12,7 +12,6 @@ extends BaseBuildingStatModifierWithStat
 
 
 func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
-	assert(type == Building.Stat.PRODUCTION)
 	var result: int= process_tile(tile, building, building_tier, world, island)
 	if result == 0 and not override:
 		return base_value
@@ -39,12 +38,16 @@ func process_tile(tile: Vector2i, building: Building, building_tier: int, world:
 					production= terrain.base_production
 	
 	if production != null and replace_with_own_base_stat:
-		production= building.get_base_stat(type, building_tier)
+		production= building.get_base_stat(Building.Stat.PRODUCTION, building_tier)
 	
 	if production == null:
 		production= 0
 	
-	return production * (1 if tier_factors.is_empty() else tier_factors[mini(building_tier, tier_factors.size())])
+	return production * (1 if tier_factors.is_empty() else tier_factors[mini(building_tier, tier_factors.size() - 1)])
+
+
+func get_stat()-> Building.Stat:
+	return Building.Stat.PRODUCTION
 
 
 func get_short_desc()-> String:

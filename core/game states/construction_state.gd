@@ -39,8 +39,8 @@ func on_enter():
 
 func on_exit():
 	state_machine.world.tile_map_buildings_ghost.clear()
-	building= null
-	tier= 0
+	#building= null
+	#tier= 0
 	info= null
 	SignalManager.cancel_forced_pause.emit()
 

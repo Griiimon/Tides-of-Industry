@@ -7,5 +7,5 @@
 
 [resource]
 script = ExtResource("4_b7gtw")
-feature_whitelist = Array[ExtResource("1_g2c8h")]([])
+feature_whitelist = null
 feature_blacklist = Array[ExtResource("1_g2c8h")]([ExtResource("2_x6t8g"), ExtResource("3_awui6")])

@@ -1,10 +1,10 @@
+engineer actions
+
+finish + test coal plant
+
 reform points generation decreases with amount of accumulated, unspent points
 
 building list scroll
-
-workstead not next to same, factory. factory not next to workstead
-
-feature.on_neighbor_building_constructed() => deer will disappear
 
 discover() should trigger terrain generator
 
@@ -13,8 +13,6 @@ disable closing of event popups => make plain PanelContainer
 force pause? while popups are open
 
 use icons in top bar
-
-implement power
 
 implement stability
 
@@ -149,9 +147,13 @@ CORE MECHANICS
 	Progressiveness: generates more progress points, less stability
 	Specialization: +specialization points, -money yield% ( no effective penalty when money yield = 0, but may still be a good mechanic ) 
 	Overtime: worker_ratio bonus can exceed 1.0 if additional worker available, -stability
-	
+
+
 OTHER MECHANICS
 -----------------
+
+- Political Views
+	initial population: Adventurers/Persecuted ( just happy to have their own island )
 
 - Road System
 	factories/harbor/active power plants production increase for each other [factory/power provider/house/town center] connected

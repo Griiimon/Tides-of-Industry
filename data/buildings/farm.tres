@@ -17,7 +17,7 @@
 [sub_resource type="Resource" id="Resource_fb4in"]
 script = ExtResource("4_rlhfi")
 terrain_whitelist = Array[ExtResource("5_5di8k")]([ExtResource("6_27awv"), ExtResource("12_382hv")])
-terrain_blacklist = Array[ExtResource("5_5di8k")]([])
+terrain_blacklist = null
 
 [sub_resource type="Resource" id="Resource_wc3vj"]
 script = ExtResource("11_pmoh6")
@@ -28,13 +28,13 @@ buildings = Array[ExtResource("1_dpaov")]([])
 terrains = Array[ExtResource("5_5di8k")]([ExtResource("12_382hv")])
 features = Array[ExtResource("9_01fy0")]([])
 raw_materials = Array[ExtResource("10_7ah1f")]([])
-type = 1
 
 [resource]
 script = ExtResource("1_dpaov")
 atlas_coords = Array[Vector2i]([Vector2i(2, 1)])
 build_costs = Array[int]([250])
 available_in_build_menu = true
+can_destroy_neighbor_features = true
 placement_conditions = Array[ExtResource("2_3s5ce")]([ExtResource("3_vc01m"), SubResource("Resource_fb4in"), ExtResource("8_pp6hg")])
 stat_modifiers = Array[ExtResource("4_q76go")]([SubResource("Resource_wc3vj")])
 empire_modifiers = Array[ExtResource("1_bghem")]([])
@@ -43,6 +43,7 @@ pollution = Array[int]([])
 population = Array[int]([])
 power = Array[int]([])
 research = Array[int]([])
-max_workers = Array[int]([])
+max_workers = Array[int]([5])
+power_required = Array[int]([])
 custom_los = Array[int]([])
 name = ""

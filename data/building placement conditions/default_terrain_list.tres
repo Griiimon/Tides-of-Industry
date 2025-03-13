@@ -8,4 +8,4 @@
 [resource]
 script = ExtResource("1_d8vic")
 terrain_whitelist = Array[ExtResource("2_ek5si")]([ExtResource("3_exu5w"), ExtResource("4_k7stv")])
-terrain_blacklist = Array[ExtResource("2_ek5si")]([])
+terrain_blacklist = null

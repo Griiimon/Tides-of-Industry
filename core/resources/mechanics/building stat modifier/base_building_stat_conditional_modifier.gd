@@ -11,5 +11,9 @@ func apply(base_value: int, building: Building, tile: Vector2i, building_tier: i
 	return 0
 
 
+func get_stat()-> Building.Stat:
+	return modifier.get_stat()
+
+
 func is_condition_met(tile: Vector2i, world: World, island: IslandInstance)-> bool:
 	return false
