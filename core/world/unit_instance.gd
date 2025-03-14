@@ -94,3 +94,7 @@ func get_actual_type()-> Unit:
 
 func has_moves_left()-> bool:
 	return moves_left > 0
+
+
+func get_terrain()-> Terrain:
+	return world.get_terrain(tile_pos)

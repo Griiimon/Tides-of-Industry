@@ -21,5 +21,5 @@ script = ExtResource("1_g7s44")
 atlas_coords = Vector2i(0, 0)
 base_production = 2
 occurrence = SubResource("Resource_gf41g")
-initial_discovery_chance = 100.0
+initial_discovery_chance = 15.0
 name = ""

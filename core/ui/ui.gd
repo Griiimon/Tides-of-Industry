@@ -48,6 +48,7 @@ func _ready() -> void:
 	SignalManager.player_unit_selected.connect(on_player_unit_selected)
 	SignalManager.player_unit_deselected.connect(on_player_unit_deselected)
 	SignalManager.triggered_event.connect(on_event_triggered)
+	SignalManager.player_unit_action_executed.connect(on_player_unit_action_executed)
 
 	if FLOATING_TILE_INFO_CONTAINER:
 		tile_info_container.queue_free()
@@ -131,6 +132,10 @@ func on_player_unit_deselected(unit: UnitInstance):
 
 func on_event_triggered(event: BaseEvent):
 	event_popup.open(event)
+
+
+func on_player_unit_action_executed(unit: UnitInstance):
+	show_tile_info(unit.tile_pos)
 
 
 func get_island_in_view()-> IslandInstance:

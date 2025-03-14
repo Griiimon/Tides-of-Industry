@@ -37,12 +37,13 @@ func on_enter():
 	update_current_tile()
 
 
-func on_exit():
+func on_exit(re_enter_same_state: bool):
 	state_machine.world.tile_map_buildings_ghost.clear()
-	#building= null
-	#tier= 0
 	info= null
 	SignalManager.cancel_forced_pause.emit()
+	if not re_enter_same_state:
+		building= null
+		tier= 0
 
 
 func on_unhandled_input(event: InputEvent) -> void:

@@ -138,8 +138,9 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 			var raw_material: RawMaterial= generator.get_raw_material(world_coords, terrain, feature, chunk_rng)
 			if raw_material:
 				tile_map_resources.set_cell(world_coords, 0, raw_material.atlas_coords)
-				tile_map_resources_discovered.set_cell(world_coords, 0, Vector2i.ZERO)
-		
+				if RngUtils.chance100_rng(raw_material.initial_discovery_chance, rng):
+					tile_map_resources_discovered.set_cell(world_coords, 0, raw_material.atlas_coords)
+
 		if non_blocking:
 			await get_tree().process_frame
 
@@ -279,6 +280,10 @@ func discover(rect: Rect2i):
 
 func discover_los(tile: Vector2i, los: int):
 	discover(Rect2i(tile - Vector2i.ONE * los, Vector2i.ONE * ( los * 2 + 1 ))	)
+
+
+func discover_raw_material(tile: Vector2i):
+	tile_map_resources_discovered.set_cell(tile, tile_map_resources.get_cell_source_id(tile), tile_map_resources.get_cell_atlas_coords(tile))
 
 
 func on_player_unit_move_finished(unit: UnitInstance):
@@ -461,6 +466,10 @@ func get_population()-> int:
 	for island in get_islands():
 		result+= island.population
 	return result
+
+
+func has_undiscovered_raw_material(tile: Vector2i)-> bool:
+	return tile_map_resources.get_cell_source_id(tile) != tile_map_resources_discovered.get_cell_source_id(tile)
 
 
 static func get_surrounding_cells(tile: Vector2i)-> Array[Vector2i]:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://be5fso6j67b01"]
+[gd_scene load_steps=44 format=4 uid="uid://be5fso6j67b01"]
 
 [ext_resource type="Script" path="res://core/world/world.gd" id="1_bd8if"]
 [ext_resource type="Script" path="res://core/game.gd" id="1_n11ok"]
@@ -220,7 +220,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2gtqh")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1h6k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3eqs"]
 texture = ExtResource("10_2qnx0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -235,10 +235,24 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_1jrfm"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_d1h6k")
+sources/0 = SubResource("TileSetAtlasSource_i3eqs")
 
-[sub_resource type="TileSet" id="TileSet_6q0b5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_83f2p"]
+texture = ExtResource("10_2qnx0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d6bjk"]
 tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_83f2p")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp6is"]
 texture = ExtResource("3_2b7uq")
@@ -376,10 +390,11 @@ tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAQAAAABAAA
 tile_set = SubResource("TileSet_5tw1o")
 
 [node name="TileMap Resources" type="TileMapLayer" parent="World"]
+modulate = Color(0.94902, 0.329412, 0.329412, 0.654902)
 tile_set = SubResource("TileSet_1jrfm")
 
 [node name="TileMap Resources Discovered" type="TileMapLayer" parent="World"]
-tile_set = SubResource("TileSet_6q0b5")
+tile_set = SubResource("TileSet_d6bjk")
 
 [node name="TileMap Buildings" type="TileMapLayer" parent="World"]
 tile_set = SubResource("TileSet_oy6i8")
@@ -413,10 +428,12 @@ script = ExtResource("5_8nmma")
 
 [node name="Game States" type="Node" parent="." node_paths=PackedStringArray("world", "camera", "current_state")]
 script = ExtResource("4_7s3ma")
+allow_no_state = null
+debug = true
+paused = null
 world = NodePath("../World")
 camera = NodePath("../Camera2D")
 current_state = NodePath("Idle")
-debug = true
 
 [node name="Idle" type="Node" parent="Game States"]
 script = ExtResource("5_t57mi")

@@ -9,4 +9,5 @@ is_sea = false
 move_cost = 3
 base_production = 1
 terraforming_cost = 0
+can_prospect = true
 name = ""

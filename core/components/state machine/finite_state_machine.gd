@@ -56,7 +56,7 @@ func change_state(next_state: StateMachineState):
 		else:
 			if current_state:
 				current_state.is_exiting= true
-				current_state.on_exit()
+				current_state.on_exit(current_state == next_state)
 				current_state.is_exiting= false
 				current_state.state_exited.emit()
 				current_state= null
@@ -71,7 +71,7 @@ func set_current_state(next_state: StateMachineState):
 			var dbg_str: String= get_parent().name + " State Machine exiting state " + current_state.name
 			print(dbg_str)
 		current_state.is_exiting= true
-		current_state.on_exit()
+		current_state.on_exit(current_state == next_state)
 		current_state.is_exiting= false
 		current_state.state_exited.emit()
 	current_state = next_state

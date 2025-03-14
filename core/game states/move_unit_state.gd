@@ -20,10 +20,11 @@ func on_enter():
 	SignalManager.show_tile_info.emit(unit.tile_pos)
 	
 
-func on_exit():
+func on_exit(re_enter_same_state: bool):
 	state_machine.world.reset_unit_selection_boxes()
 	SignalManager.player_unit_deselected.emit(unit)
-	unit= null
+	if not re_enter_same_state:
+		unit= null
 
 
 func on_unhandled_input(event: InputEvent) -> void:

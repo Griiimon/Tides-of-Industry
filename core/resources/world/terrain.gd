@@ -8,3 +8,5 @@ extends NamedResource
 
 @export var terraforming_result: Terrain
 @export var terraforming_cost: int= 0
+
+@export var can_prospect: bool= false

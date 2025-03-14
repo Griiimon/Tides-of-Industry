@@ -48,7 +48,7 @@ func on_unhandled_input(_event: InputEvent):
 	pass
 
 
-func on_exit():
+func on_exit(re_enter_same_state: bool):
 	pass
 
 

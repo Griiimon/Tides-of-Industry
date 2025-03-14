@@ -20,6 +20,7 @@ signal player_unit_deselected(unit: UnitInstance)
 signal player_unit_moved(unit: UnitInstance)
 signal player_unit_move_finished(unit: UnitInstance)
 signal unit_removed(unit: UnitInstance)
+signal player_unit_action_executed(unit: UnitInstance)
 
 signal building_constructed(tile: Vector2i)
 signal building_upgraded(tile: Vector2i)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitActionProspect" load_steps=2 format=3 uid="uid://dbjbxh7wcom0d"]
+
+[ext_resource type="Script" path="res://core/resources/units/unit_action_prospect.gd" id="1_wbgk4"]
+
+[resource]
+script = ExtResource("1_wbgk4")
+prospect_chance = 20.0
+ap_cost = 10
+name = ""

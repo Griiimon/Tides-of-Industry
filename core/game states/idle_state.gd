@@ -19,7 +19,7 @@ func on_enter():
 	SignalManager.hide_building_panel.emit()
 
 
-func on_exit():
+func on_exit(re_enter_same_state: bool):
 	SignalManager.hide_tile_info.emit()
 
 

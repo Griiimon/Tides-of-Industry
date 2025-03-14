@@ -49,3 +49,7 @@ func _ready() -> void:
 
 func get_empire_state()-> EmpireState:
 	return world_state.empire_state
+
+
+func get_global_rng()-> RandomNumberGenerator:
+	return world_state.rng

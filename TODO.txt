@@ -1,4 +1,12 @@
-engineer actions
+when unit is selected shows 1 move(s) instead of 2
+
+dont use island/island_instance BUT city:
+	city has multiple town centers, new town centers need to be in radius + 5 (?) of another one
+	discover Colonies tech to settle other islands?
+
+grey out available unit action if it cant be executed
+
+try to find next active unit after unit is killed
 
 finish + test coal plant
 

@@ -54,7 +54,7 @@ func get_terrain(coords: Vector2i)-> Terrain:
 		if humidity > marsh_humidity_threshold:
 			return marsh
 		elif humidity > fertile_humidity_threshold:
-			print(fertile_noise.get_noise_2dv(coords))
+			#print(fertile_noise.get_noise_2dv(coords))
 			if fertile_noise.get_noise_2dv(coords) > fertile_noise_threshold:
 				return fertile_ground
 		elif humidity < desert_humidity_threshold:

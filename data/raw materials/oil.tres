@@ -21,5 +21,5 @@ script = ExtResource("1_6b67d")
 atlas_coords = Vector2i(2, 0)
 base_production = 0
 occurrence = SubResource("Resource_5g1vx")
-initial_discovery_chance = 100.0
+initial_discovery_chance = 50.0
 name = ""

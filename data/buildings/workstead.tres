@@ -50,5 +50,6 @@ population = Array[int]([])
 power = Array[int]([])
 research = Array[int]([])
 max_workers = Array[int]([15])
+power_required = Array[int]([])
 custom_los = Array[int]([])
 name = ""

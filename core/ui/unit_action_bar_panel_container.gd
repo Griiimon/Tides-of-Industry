@@ -34,7 +34,8 @@ func activate(_unit: UnitInstance):
 
 func on_action_button_pressed(action: BaseUnitAction):
 	if action.can_execute(unit):
-		action.execute(unit)
+		if action.execute(unit):
+			SignalManager.player_unit_action_executed.emit(unit)
 
 
 func _on_kill_button_pressed() -> void:
