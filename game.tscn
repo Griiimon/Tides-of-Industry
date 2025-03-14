@@ -390,6 +390,7 @@ tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAQAAAABAAA
 tile_set = SubResource("TileSet_5tw1o")
 
 [node name="TileMap Resources" type="TileMapLayer" parent="World"]
+visible = false
 modulate = Color(0.94902, 0.329412, 0.329412, 0.654902)
 tile_set = SubResource("TileSet_1jrfm")
 
@@ -428,12 +429,12 @@ script = ExtResource("5_8nmma")
 
 [node name="Game States" type="Node" parent="." node_paths=PackedStringArray("world", "camera", "current_state")]
 script = ExtResource("4_7s3ma")
-allow_no_state = null
-debug = true
-paused = null
 world = NodePath("../World")
 camera = NodePath("../Camera2D")
 current_state = NodePath("Idle")
+allow_no_state = null
+debug = true
+paused = null
 
 [node name="Idle" type="Node" parent="Game States"]
 script = ExtResource("5_t57mi")

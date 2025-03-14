@@ -87,7 +87,9 @@ func get_atlas_coords()-> Vector2i:
 
 func get_actual_type()-> Unit:
 	if type is AmphibiousUnit:
-		if world.get_terrain(tile_pos).is_sea:
+		var terrain: Terrain= world.get_terrain(tile_pos)
+		if not terrain: return type
+		if terrain.is_sea:
 				return (type as AmphibiousUnit).ship_reference
 	return type
 

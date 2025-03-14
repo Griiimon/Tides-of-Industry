@@ -1,6 +1,7 @@
 class_name BuildingStatTileProduction
 extends BaseBuildingStatModifier
 
+@export var stat: Building.Stat
 @export var override: bool= true
 @export var replace_with_own_base_stat: bool= false
 @export var tier_factors: Array[int]
@@ -8,6 +9,7 @@ extends BaseBuildingStatModifier
 @export var terrains: Array[Terrain]
 @export var features: Array[TerrainFeature]
 @export var raw_materials: Array[RawMaterial]
+@export var only_raw_materials: bool= true
 
 
 
@@ -25,7 +27,7 @@ func process_tile(tile: Vector2i, building: Building, building_tier: int, world:
 	if other_building and other_building in buildings:
 		production= other_building.get_stat(Building.Stat.PRODUCTION, building_tier, tile, world, island)
 	else:
-		var raw_material: RawMaterial= world.get_raw_material(tile, true)
+		var raw_material: RawMaterial= world.get_raw_material(tile, only_raw_materials)
 		if raw_material in raw_materials:
 			production= raw_material.base_production
 		else:
@@ -38,7 +40,7 @@ func process_tile(tile: Vector2i, building: Building, building_tier: int, world:
 					production= terrain.base_production
 	
 	if production != null and replace_with_own_base_stat:
-		production= building.get_base_stat(Building.Stat.PRODUCTION, building_tier)
+		production= building.get_base_stat(stat, building_tier)
 	
 	if production == null:
 		production= 0
@@ -47,7 +49,7 @@ func process_tile(tile: Vector2i, building: Building, building_tier: int, world:
 
 
 func get_stat()-> Building.Stat:
-	return Building.Stat.PRODUCTION
+	return stat
 
 
 func get_short_desc()-> String:

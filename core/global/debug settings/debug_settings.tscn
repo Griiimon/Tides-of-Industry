@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3el08t5qa7r5"]
+[gd_scene load_steps=4 format=3 uid="uid://b3el08t5qa7r5"]
 
 [ext_resource type="Script" path="res://core/global/debug settings/debug_settings.gd" id="1_kvhga"]
+[ext_resource type="Script" path="res://core/resources/empire/policies/base_policy.gd" id="2_mne62"]
+[ext_resource type="Resource" uid="uid://tclj27ne7el3" path="res://data/policies/expansion.tres" id="3_a80hs"]
 
 [node name="Debug Settings" type="Node"]
 script = ExtResource("1_kvhga")
@@ -8,3 +10,5 @@ enable = true
 initial_construction_points = 100000
 only_allow_buildings_in_list = false
 unlock_all_buildings = true
+all_raw_materials_appear = true
+max_out_policies = Array[ExtResource("2_mne62")]([ExtResource("3_a80hs")])

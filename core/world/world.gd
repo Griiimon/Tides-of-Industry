@@ -95,7 +95,8 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 			if terrain.is_sea and terrain != coast_terrain and tile_map_terrain_ids.get_cell_source_id(world_coords) == coast_id:
 				terrain= coast_terrain
 				
-			tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[terrain], false)
+			if not DebugSettings.is_enabled() or not DebugSettings.disable_terrain_connect:
+				tile_map_terrain.set_cells_terrain_connect([world_coords], 0, terrain_index_lookup[terrain], false)
 			tile_map_terrain_ids.set_cell(world_coords, GameData.terrains.find(terrain), Vector2i.ZERO)
 
 			if terrain == coast_terrain:
@@ -113,7 +114,8 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 						var id: int= tile_map_terrain_ids.get_cell_source_id(neighbor_coords)
 						if id == -1 or id == sea_id:
 							tile_map_terrain_ids.set_cell(neighbor_coords, coast_id, Vector2i.ZERO)
-							tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
+							if not DebugSettings.is_enabled() or not DebugSettings.disable_terrain_connect:
+								tile_map_terrain.set_cells_terrain_connect([neighbor_coords], 0, terrain_index_lookup[coast_terrain], false)
 		
 		if non_blocking:
 			await get_tree().process_frame
@@ -138,7 +140,7 @@ func generate_chunk(chunk_coords: Vector2i, non_blocking: bool= true):
 			var raw_material: RawMaterial= generator.get_raw_material(world_coords, terrain, feature, chunk_rng)
 			if raw_material:
 				tile_map_resources.set_cell(world_coords, 0, raw_material.atlas_coords)
-				if RngUtils.chance100_rng(raw_material.initial_discovery_chance, rng):
+				if RngUtils.chance100_rng(raw_material.initial_discovery_chance, rng) or ( DebugSettings.is_enabled() and DebugSettings.all_raw_materials_appear ):
 					tile_map_resources_discovered.set_cell(world_coords, 0, raw_material.atlas_coords)
 
 		if non_blocking:
@@ -273,6 +275,7 @@ func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, valu
 
 
 func discover(rect: Rect2i):
+	generate_rect(rect)
 	for x in range(rect.position.x, rect.position.x + rect.size.x):
 		for y in range(rect.position.y, rect.position.y + rect.size.y):
 			tile_map_boundaries.erase_cell(Vector2i(x, y))

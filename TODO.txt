@@ -1,3 +1,7 @@
+initial policy max out not working
+
+show tile coords in tile info panel
+
 when unit is selected shows 1 move(s) instead of 2
 
 dont use island/island_instance BUT city:

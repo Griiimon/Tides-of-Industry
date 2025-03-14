@@ -17,9 +17,11 @@
 [resource]
 script = ExtResource("10_ta7j4")
 radius = 5
+stat = 1
+override = true
+replace_with_own_base_stat = false
 tier_factors = Array[int]([1])
 buildings = Array[ExtResource("1_iku8k")]([ExtResource("2_i3620")])
 terrains = Array[ExtResource("11_poldi")]([ExtResource("12_p7yko"), ExtResource("13_g2tds")])
 features = Array[ExtResource("3_ssnk0")]([ExtResource("4_cacly"), ExtResource("5_d6e73"), ExtResource("6_7q5pp")])
 raw_materials = Array[ExtResource("7_458yq")]([ExtResource("8_y0a8d"), ExtResource("9_ulm82")])
-type = 1

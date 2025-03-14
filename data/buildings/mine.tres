@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building" load_steps=9 format=3 uid="uid://it1qeb7m77iv"]
+[gd_resource type="Resource" script_class="Building" load_steps=16 format=3 uid="uid://it1qeb7m77iv"]
 
 [ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_j80tk"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_eg603"]
@@ -7,11 +7,29 @@
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/terrain_placement_condition.gd" id="5_6ekv6"]
 [ext_resource type="Script" path="res://core/resources/world/terrain.gd" id="6_868np"]
 [ext_resource type="Resource" uid="uid://bde357srjk4qd" path="res://data/terrain/mountains.tres" id="7_q270q"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="8_t8yhd"]
+[ext_resource type="Script" path="res://core/resources/world/terrain_feature.gd" id="9_b270b"]
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="10_81ini"]
+[ext_resource type="Resource" uid="uid://boldx1o1xn5y2" path="res://data/raw materials/coal.tres" id="11_imr34"]
+[ext_resource type="Resource" uid="uid://cji0xytrrc2am" path="res://data/raw materials/iron_ore.tres" id="12_ie8l0"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_tile_production.gd" id="13_qyy1g"]
 
 [sub_resource type="Resource" id="Resource_layy7"]
 script = ExtResource("5_6ekv6")
 terrain_whitelist = Array[ExtResource("6_868np")]([ExtResource("7_q270q")])
 terrain_blacklist = null
+
+[sub_resource type="Resource" id="Resource_5l8b7"]
+script = ExtResource("13_qyy1g")
+stat = 1
+override = true
+replace_with_own_base_stat = false
+tier_factors = Array[int]([5])
+buildings = Array[ExtResource("3_ce8x6")]([])
+terrains = Array[ExtResource("6_868np")]([])
+features = Array[ExtResource("9_b270b")]([])
+raw_materials = Array[ExtResource("10_81ini")]([ExtResource("11_imr34"), ExtResource("12_ie8l0")])
+only_raw_materials = false
 
 [resource]
 script = ExtResource("3_ce8x6")
@@ -21,14 +39,14 @@ available_in_build_menu = null
 can_destroy_neighbor_features = true
 category = ExtResource("1_j80tk")
 placement_conditions = Array[ExtResource("2_eg603")]([ExtResource("4_h5bh6"), SubResource("Resource_layy7")])
-stat_modifiers = null
+stat_modifiers = Array[ExtResource("8_t8yhd")]([SubResource("Resource_5l8b7")])
 empire_modifiers = null
 production = null
 pollution = null
 population = null
 power = null
 research = null
-max_workers = Array[int]([])
+max_workers = Array[int]([50])
 power_required = Array[int]([])
 custom_los = Array[int]([])
 name = null
