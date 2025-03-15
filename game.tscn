@@ -386,6 +386,7 @@ visible = false
 tile_set = SubResource("TileSet_ko4q6")
 
 [node name="TileMap Terrain Features" type="TileMapLayer" parent="World"]
+z_index = 1
 tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAQAAAABAAAAAAD//wMAAAACAAAAAAD//wYAAAADAAAAAAACAAcAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_5tw1o")
 
@@ -395,9 +396,11 @@ modulate = Color(0.94902, 0.329412, 0.329412, 0.654902)
 tile_set = SubResource("TileSet_1jrfm")
 
 [node name="TileMap Resources Discovered" type="TileMapLayer" parent="World"]
+z_index = 3
 tile_set = SubResource("TileSet_d6bjk")
 
 [node name="TileMap Buildings" type="TileMapLayer" parent="World"]
+z_index = 2
 tile_set = SubResource("TileSet_oy6i8")
 
 [node name="TileMap Building Levels" type="TileMapLayer" parent="World"]
@@ -405,20 +408,25 @@ visible = false
 tile_set = SubResource("TileSet_uhmkn")
 
 [node name="TileMap Units" type="TileMapLayer" parent="World"]
+z_index = 5
 tile_set = SubResource("TileSet_etllx")
 
 [node name="TileMap Unit Selection" type="TileMapLayer" parent="World"]
 modulate = Color(0.14902, 0.388235, 0.160784, 0.827451)
+z_index = 4
 tile_set = SubResource("TileSet_hnj5s")
 
 [node name="TileMap Buildings Ghost" type="TileMapLayer" parent="World"]
 modulate = Color(1, 1, 1, 0.501961)
+z_index = 3
 tile_set = SubResource("TileSet_oy6i8")
 
 [node name="TileMap Frames" type="TileMapLayer" parent="World"]
+z_index = 2
 tile_set = SubResource("TileSet_bfrmp")
 
 [node name="TileMap Boundaries" type="TileMapLayer" parent="World"]
+z_index = 10
 tile_set = SubResource("TileSet_p7g0w")
 
 [node name="Islands" type="Node" parent="World"]

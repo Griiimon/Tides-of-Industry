@@ -66,7 +66,7 @@ func update():
 
 
 func show_tile_info(tile: Vector2i):
-	tile_info_container.update(world.get_building(tile), world.get_terrain(tile), world.get_feature(tile),\
+	tile_info_container.update(tile, world.get_building(tile), world.get_terrain(tile), world.get_feature(tile),\
 			world.get_raw_material(tile), world.get_tile_base_production(tile), world.get_unit(tile))
 	
 	if FLOATING_TILE_INFO_CONTAINER:

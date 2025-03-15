@@ -1,13 +1,28 @@
-[gd_resource type="Resource" script_class="Building" load_steps=9 format=3 uid="uid://cgkayum1fm8nb"]
+[gd_resource type="Resource" script_class="Building" load_steps=15 format=3 uid="uid://cgkayum1fm8nb"]
 
 [ext_resource type="Resource" uid="uid://8tbgo4wuwg0u" path="res://data/building categories/power.tres" id="1_ejpn6"]
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_cudlk"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="3_t0mxe"]
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="3_wu08c"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="4_02lch"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="5_jb0g1"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="6_g2wms"]
 [ext_resource type="Resource" uid="uid://c6vtwha86myql" path="res://data/building placement conditions/default_feature_list.tres" id="6_umqar"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="8_ab5ly"]
+[ext_resource type="Resource" uid="uid://boldx1o1xn5y2" path="res://data/raw materials/coal.tres" id="10_dtwov"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_cancel_stat_modifier.gd" id="10_scl2l"]
+[ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/building_stat_extracted_material_radius_condition.gd" id="11_0jevh"]
+
+[sub_resource type="Resource" id="Resource_axb4q"]
+script = ExtResource("10_scl2l")
+type = 3
+
+[sub_resource type="Resource" id="Resource_nggif"]
+script = ExtResource("11_0jevh")
+raw_material = ExtResource("10_dtwov")
+radius = 2
+modifier = SubResource("Resource_axb4q")
+inverted = true
 
 [resource]
 script = ExtResource("6_g2wms")
@@ -17,14 +32,15 @@ available_in_build_menu = true
 can_destroy_neighbor_features = true
 category = ExtResource("1_ejpn6")
 placement_conditions = Array[ExtResource("3_t0mxe")]([ExtResource("4_02lch"), ExtResource("5_jb0g1"), ExtResource("6_umqar")])
-stat_modifiers = Array[ExtResource("8_ab5ly")]([null])
+stat_modifiers = Array[ExtResource("8_ab5ly")]([SubResource("Resource_nggif")])
 empire_modifiers = Array[ExtResource("2_cudlk")]([])
 production = Array[int]([])
-pollution = Array[int]([])
+pollution = Array[int]([25, 50])
 population = Array[int]([])
-power = Array[int]([])
+power = Array[int]([50, 100])
 research = Array[int]([])
-max_workers = Array[int]([])
+max_workers = Array[int]([20, 40])
 power_required = Array[int]([])
 custom_los = Array[int]([])
+extract_raw_materials = Array[ExtResource("3_wu08c")]([])
 name = ""

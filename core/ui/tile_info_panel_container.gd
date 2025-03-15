@@ -9,10 +9,11 @@ extends PanelContainer
 @onready var unit_label: Label = %"Unit Label"
 @onready var unit_moves_label: Label = %"Unit Moves Label"
 @onready var unit_ap_label: Label = %"Unit AP Label"
+@onready var tile_coords_label: Label = %"Tile Coords Label"
 
 
 
-func update(building: Building, terrain: Terrain, feature: TerrainFeature, raw_material: RawMaterial, total_production: int, unit: UnitInstance):
+func update(tile: Vector2i, building: Building, terrain: Terrain, feature: TerrainFeature, raw_material: RawMaterial, total_production: int, unit: UnitInstance):
 	if building:
 		building_label.text= building.get_display_name()
 		building_label.show()
@@ -49,3 +50,9 @@ func update(building: Building, terrain: Terrain, feature: TerrainFeature, raw_m
 		unit_label.hide()
 		unit_moves_label.hide()
 		unit_ap_label.hide()
+
+	if DebugSettings.is_enabled():
+		tile_coords_label.text= str(tile)
+		tile_coords_label.show()
+	else:
+		tile_coords_label.hide()

@@ -23,6 +23,7 @@ const DEFAULT_LOS= 5
 @export var power_required: Array[int]
 
 @export var custom_los: Array[int]
+@export var extract_raw_materials: Array[RawMaterial]
 
 
 
@@ -43,6 +44,9 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 	for modifier in stat_modifiers:
 		assert(modifier.get_stat() > -1)
 		if modifier.get_stat() == stat:
+			if DebugSettings.is_enabled() and Input.is_action_pressed("debug_building_stats"):
+				breakpoint
+
 			var modifier_result= modifier.apply(result, self, tile, tier, world, island)
 			if result > 0:
 				modifier_result= max(0, modifier_result)
@@ -76,6 +80,10 @@ func get_base_stat(stat: Stat, tier: int)-> int:
 func update_stats(tier: int, tile: Vector2i, world: World, island: IslandInstance):
 	for stat in Stat.values():
 		get_stat(stat, tier, tile, world, island, true)
+
+
+func can_extract(raw_material: RawMaterial)-> bool:
+	return raw_material in extract_raw_materials
 
 
 func get_required_power(tier: int)-> int:

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Building" load_steps=16 format=3 uid="uid://it1qeb7m77iv"]
+[gd_resource type="Resource" script_class="Building" load_steps=17 format=3 uid="uid://it1qeb7m77iv"]
 
-[ext_resource type="Resource" uid="uid://bjdswdg765h6c" path="res://data/building categories/production.tres" id="1_j80tk"]
+[ext_resource type="Resource" uid="uid://car6phf2ws3uh" path="res://data/building categories/extraction.tres" id="1_daahm"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_eg603"]
+[ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_hhlq2"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="3_ce8x6"]
 [ext_resource type="Resource" uid="uid://400suhsme0to" path="res://data/building placement conditions/default_town_center_condition.tres" id="4_h5bh6"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/terrain_placement_condition.gd" id="5_6ekv6"]
@@ -35,18 +36,19 @@ only_raw_materials = false
 script = ExtResource("3_ce8x6")
 atlas_coords = Array[Vector2i]([Vector2i(7, 0), Vector2i(7, 3)])
 build_costs = Array[int]([500, 2000])
-available_in_build_menu = null
+available_in_build_menu = true
 can_destroy_neighbor_features = true
-category = ExtResource("1_j80tk")
+category = ExtResource("1_daahm")
 placement_conditions = Array[ExtResource("2_eg603")]([ExtResource("4_h5bh6"), SubResource("Resource_layy7")])
 stat_modifiers = Array[ExtResource("8_t8yhd")]([SubResource("Resource_5l8b7")])
-empire_modifiers = null
-production = null
-pollution = null
-population = null
-power = null
-research = null
+empire_modifiers = Array[ExtResource("2_hhlq2")]([])
+production = Array[int]([])
+pollution = Array[int]([])
+population = Array[int]([])
+power = Array[int]([])
+research = Array[int]([])
 max_workers = Array[int]([50])
 power_required = Array[int]([])
 custom_los = Array[int]([])
-name = null
+extract_raw_materials = Array[ExtResource("10_81ini")]([ExtResource("11_imr34"), ExtResource("12_ie8l0")])
+name = ""

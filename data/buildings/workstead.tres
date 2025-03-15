@@ -34,6 +34,7 @@ buildings = Array[ExtResource("2_6b5gv")]([])
 terrains = Array[ExtResource("9_sxa6n")]([ExtResource("10_id4ik"), ExtResource("11_ojp76")])
 features = Array[ExtResource("8_lhhut")]([ExtResource("13_hls44"), ExtResource("14_oh1jn"), ExtResource("15_vjjt8")])
 raw_materials = Array[ExtResource("12_lved7")]([])
+only_raw_materials = true
 
 [resource]
 script = ExtResource("2_6b5gv")

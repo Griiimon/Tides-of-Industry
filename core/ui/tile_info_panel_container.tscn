@@ -90,3 +90,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 label_settings = SubResource("LabelSettings_aevw6")
+
+[node name="Tile Coords Label" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aevw6")

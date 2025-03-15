@@ -30,7 +30,8 @@ func late_ready():
 	
 # ------- UNITS ------------
 	if enable_units:
-		world.spawn_unit(load("res://data/units/explorer.tres"), Vector2i(20, 25))
+		var settler: UnitInstance= world.spawn_unit(load("res://data/units/explorer.tres"), Vector2i(23, 31))
+		settler.action_points_left= -1
 		#var engineer: UnitInstance= world.spawn_unit(load("res://data/units/engineer.tres"), Vector2i(1, 7))
 		#engineer.action_points_left= 100000
 

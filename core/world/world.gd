@@ -460,6 +460,7 @@ func get_tile_base_production(tile: Vector2i)-> int:
 		result+= raw_material.base_production
 	return result 
 
+
 func is_tile_occupied(tile: Vector2i)-> bool:
 	return tile_map_units.get_cell_source_id(tile) > -1
 

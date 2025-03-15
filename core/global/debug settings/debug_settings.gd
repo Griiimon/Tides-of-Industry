@@ -26,7 +26,9 @@ func late_ready():
 		SignalManager.technology_researched.emit(null)
 
 	for policy in max_out_policies:
-		policy.level= 9
+		for cloned_policy in GameData.get_empire_state().policies:
+			if policy.get_script() == cloned_policy.get_script():
+				cloned_policy.level= 9
 
 
 func is_enabled()-> bool:

@@ -1,8 +1,6 @@
-initial policy max out not working
+power generation from worker ratio
 
-show tile coords in tile info panel
-
-when unit is selected shows 1 move(s) instead of 2
+use power in factories
 
 dont use island/island_instance BUT city:
 	city has multiple town centers, new town centers need to be in radius + 5 (?) of another one
@@ -12,13 +10,9 @@ grey out available unit action if it cant be executed
 
 try to find next active unit after unit is killed
 
-finish + test coal plant
-
 reform points generation decreases with amount of accumulated, unspent points
 
 building list scroll
-
-discover() should trigger terrain generator
 
 disable closing of event popups => make plain PanelContainer
 
@@ -32,9 +26,9 @@ untoggle Research Button when popup is closed ( due to click outside )
 
 show move cost in TileInfo
 
-fog of war + building los ( town center high, other buildings low, outpost max)
+fog of war
 
-tooltips
+tooltips ( Tooltip component, makes labels clickable on mobile )
 
 
 rename building levels => tiers
