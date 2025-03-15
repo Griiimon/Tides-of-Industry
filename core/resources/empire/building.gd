@@ -17,6 +17,7 @@ const DEFAULT_LOS= 5
 @export var production: Array[int]
 @export var pollution: Array[int]
 @export var population: Array[int]
+@export var active_producer: bool= true
 @export var power: Array[int]
 @export var research: Array[int]
 @export var max_workers: Array[int]
@@ -94,6 +95,10 @@ func get_required_power(tier: int)-> int:
 
 func does_require_power()-> bool:
 	return not power_required.is_empty()
+
+
+func does_require_workers()-> bool:
+	return not max_workers.is_empty()
 
 
 func get_cost(level: int)-> int:

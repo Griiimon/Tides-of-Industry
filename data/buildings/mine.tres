@@ -45,6 +45,7 @@ empire_modifiers = Array[ExtResource("2_hhlq2")]([])
 production = Array[int]([])
 pollution = Array[int]([])
 population = Array[int]([])
+active_producer = false
 power = Array[int]([])
 research = Array[int]([])
 max_workers = Array[int]([50])

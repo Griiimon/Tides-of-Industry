@@ -265,13 +265,13 @@ func clear_building_stat(tile: Vector2i, stat: Building.Stat, temp_log: bool):
 		building_logs[tile].clear_stat(stat)
 
 
-func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: int, temp_log: bool):
+func log_building_stat(tile: Vector2i, stat: Building.Stat, prefix: String, value: Variant, temp_log: bool):
 	#prints("Log Stat", get_building(tile).get_display_name(), Building.Stat.keys()[stat], prefix, Utils.signed_number(value))
 	if temp_log:
-		temp_building_log.log_stat(stat, prefix, value)
+		temp_building_log.log_stat(stat, prefix, str(value))
 	else:
 		assert(building_logs.has(tile))
-		building_logs[tile].log_stat(stat, prefix, value)
+		building_logs[tile].log_stat(stat, prefix, str(value))
 
 
 func discover(rect: Rect2i):
@@ -312,6 +312,7 @@ func get_building_stat(stat: Building.Stat, tile: Vector2i, power_ratio: float= 
 	
 	if stat == Building.Stat.PRODUCTION and building.does_require_power():
 		result*= power_ratio
+		log_building_stat(tile, stat, "Power", str(int(power_ratio) * 100, "%"), false) 
 	
 	return result
 

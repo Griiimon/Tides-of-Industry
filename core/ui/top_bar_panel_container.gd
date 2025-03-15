@@ -27,7 +27,7 @@ func update(island: IslandInstance):
 		population_label.text= str("Pop: %d (%d)" % [ island.population, island.max_workers ])
 		production_label.text= str("Prod: %d (%d x %.2f)" % [ island.production, island.base_production, island.workers_ratio ])
 		pollution_label.text= str("Poll: ", island.pollution)
-		power_label.text= str("Pow: ", island.power)
+		power_label.text= str("Pow: %d/%d" % [ island.power, island.base_power ])
 		research_label.text= str("Res: ", island.research)
 	
 		island_container.show()

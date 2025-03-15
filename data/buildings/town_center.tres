@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="TownCenter" load_steps=9 format=3 uid="uid://416y2yuxhu1u"]
+[gd_resource type="Resource" script_class="TownCenter" load_steps=10 format=3 uid="uid://416y2yuxhu1u"]
 
 [ext_resource type="Resource" uid="uid://bhaevah8f4pim" path="res://data/building categories/infrastructure.tres" id="1_rph07"]
 [ext_resource type="Script" path="res://core/resources/empire/town_center.gd" id="2_1gk1e"]
 [ext_resource type="Script" path="res://core/resources/mechanics/placement conditions/base_building_placement_condition.gd" id="2_piwfs"]
 [ext_resource type="Script" path="res://core/resources/mechanics/empire modifier effects/base_empire_modifier_effect.gd" id="2_rjinl"]
+[ext_resource type="Script" path="res://core/resources/world/raw_material.gd" id="3_hm830"]
 [ext_resource type="Resource" uid="uid://citxcsqn1v114" path="res://data/building placement conditions/default_terrain_list.tres" id="3_ushdd"]
 [ext_resource type="Resource" uid="uid://c6vtwha86myql" path="res://data/building placement conditions/default_feature_list.tres" id="5_hm1qg"]
 [ext_resource type="Script" path="res://core/resources/mechanics/building stat modifier/base_building_stat_modifier.gd" id="5_ymlca"]
@@ -23,9 +24,11 @@ empire_modifiers = Array[ExtResource("2_rjinl")]([])
 production = Array[int]([1])
 pollution = Array[int]([])
 population = Array[int]([10])
+active_producer = true
 power = Array[int]([])
 research = Array[int]([])
 max_workers = Array[int]([20, 50, 100])
 power_required = Array[int]([])
 custom_los = Array[int]([7, 12, 17])
+extract_raw_materials = Array[ExtResource("3_hm830")]([])
 name = ""

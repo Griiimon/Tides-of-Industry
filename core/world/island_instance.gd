@@ -12,6 +12,7 @@ var population: int
 var base_production: int
 var production: int
 var power: int
+var base_power: int
 var research: int
 
 var max_workers: int
@@ -91,7 +92,11 @@ func update_population():
 func update_production():
 	base_production= 0
 	for building_pos in buildings:
-		base_production+= world.get_building_stat(Building.Stat.PRODUCTION, building_pos, available_power_ratio)
+		var tmp_production= world.get_building_stat(Building.Stat.PRODUCTION, building_pos, available_power_ratio)
+		
+		var building: Building= world.get_building(building_pos)
+		if building.active_producer:
+			base_production+= tmp_production
 
 	base_production= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.PRODUCTION, base_production)
 	production= floor(base_production * workers_ratio)
@@ -99,9 +104,20 @@ func update_production():
 
 func update_power():
 	power= 0
+	var passive_power: int= 0
+	
 	for building_pos in buildings:
-		power+= world.get_building_stat(Building.Stat.POWER, building_pos)
+		var tmp_power: int= world.get_building_stat(Building.Stat.POWER, building_pos)
+		
+		var building: Building= world.get_building(building_pos)
+		if building.does_require_workers():
+			power+= tmp_power
+		else:
+			passive_power+= tmp_power
 
+	base_power= power + passive_power
+
+	power= floor(power * workers_ratio) + passive_power
 	power= get_empire_state().apply_modifiers(BaseEmpireModifierEffect.Type.POWER, power)
 
 

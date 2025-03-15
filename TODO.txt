@@ -1,6 +1,6 @@
-power generation from worker ratio
+building.get_base_stat() use last [-1] array stat instead of 0 if tier > array size EXCEPT when array size is zero
 
-use power in factories
+dont need research value in top bar
 
 dont use island/island_instance BUT city:
 	city has multiple town centers, new town centers need to be in radius + 5 (?) of another one
