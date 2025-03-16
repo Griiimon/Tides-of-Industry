@@ -6,7 +6,7 @@ extends BaseBuildingStatConditionalModifier
 
 
 
-func is_condition_met(tile: Vector2i, world: World, island: IslandInstance)-> bool:
+func is_condition_met(tile: Vector2i, world: World, city: CityInstance)-> bool:
 	for worked_tile in world.get_tiles_in_radius(tile, radius, false):
 		var building: Building= world.get_building(worked_tile)
 		if building:

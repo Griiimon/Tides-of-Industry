@@ -24,7 +24,7 @@ const FOG_OF_WAR_ATLAS_X= 1
 @onready var tile_map_resources_discovered: TileMapLayer = $"TileMap Resources Discovered"
 @onready var tile_map_boundaries: TileMapLayer = $"TileMap Boundaries"
 
-@onready var islands: Node = $Islands
+@onready var cities: Node = $Cities
 
 var empire: Empire= Empire.new()
 var rng: RandomNumberGenerator
@@ -178,7 +178,7 @@ func upgrade_building(tile: Vector2i):
 	var tier: int= get_building_level(tile)
 	tile_map_buildings.set_cell(tile, 0, building.atlas_coords[tier + 1])
 	tile_map_building_levels.set_cell(tile, tier + 1, Vector2i.ZERO)
-	get_island(tile).update_stats()
+	get_city(tile).update_stats()
 	SignalManager.building_upgraded.emit(tile)
 	
 
@@ -187,13 +187,13 @@ func draw_ghost_building(building: Building, tier: int, tile: Vector2i):
 	tile_map_buildings_ghost.set_cell(tile, 0, building.atlas_coords[tier])
 
 
-func settle_island(town_center_pos: Vector2i)-> IslandInstance:
-	var island_definition= Island.new(true)
-	var island_instance= IslandInstance.new()
-	island_instance.definition= island_definition
-	island_instance.world= self
-	islands.add_child(island_instance)
-	return island_instance
+func settle(town_center_pos: Vector2i)-> CityInstance:
+	var city_definition= City.new(true)
+	var city_instance= CityInstance.new()
+	city_instance.definition= city_definition
+	city_instance.world= self
+	cities.add_child(city_instance)
+	return city_instance
 
 
 func set_building_ghost_layer_valid(flag: bool):
@@ -308,7 +308,7 @@ func get_building_stat(stat: Building.Stat, tile: Vector2i, power_ratio: float= 
 	var building: Building= GameData.building_atlas_lookup[atlas_coords]
 	var level: int= tile_map_building_levels.get_cell_source_id(tile)
 	assert(level >= 0, str(tile_map_building_levels.get_used_cells()))
-	var result: int= building.get_stat(stat, level, tile, self, get_island(tile))
+	var result: int= building.get_stat(stat, level, tile, self, get_city(tile))
 	
 	if stat == Building.Stat.PRODUCTION and building.does_require_power():
 		result*= power_ratio
@@ -359,16 +359,16 @@ func get_feature(tile: Vector2i)-> TerrainFeature:
 	return GameData.terrain_feature_atlas_lookup[coords]
 
 
-func get_island(tile: Vector2i)-> IslandInstance:
-	for island in get_islands():
-		if island.definition.bounding_box.has_point(tile):
-			return island
+func get_city(tile: Vector2i)-> CityInstance:
+	for city in get_cities():
+		if city.definition.bounding_box.has_point(tile):
+			return city
 	return null
 
 
-func get_islands()-> Array[IslandInstance]:
-	var result: Array[IslandInstance]
-	result.assign(islands.get_children())
+func get_cities()-> Array[CityInstance]:
+	var result: Array[CityInstance]
+	result.assign(cities.get_children())
 	return result
 
 
@@ -468,8 +468,8 @@ func is_tile_occupied(tile: Vector2i)-> bool:
 
 func get_population()-> int:
 	var result: int= 0
-	for island in get_islands():
-		result+= island.population
+	for city in get_cities():
+		result+= city.population
 	return result
 
 

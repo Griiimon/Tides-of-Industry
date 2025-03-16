@@ -3,6 +3,6 @@ extends Resource
 
 
 
-func evaluate(tile: Vector2i, building: Building,world: World, island: IslandInstance)-> bool:
+func evaluate(tile: Vector2i, building: Building,world: World, city: CityInstance)-> bool:
 	assert(false, "Abstract class")
 	return false

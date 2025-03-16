@@ -1,4 +1,4 @@
-class_name Island
+class_name City
 extends Resource
 
 static var ID_CTR: int
@@ -13,7 +13,7 @@ static var ID_CTR: int
 func _init(generate_name: bool= false):
 	ID_CTR+= 1
 	if generate_name:
-		name= str("Island #", ID_CTR)
+		name= str("City #", ID_CTR)
 
 
 func add_town_center_position(tile: Vector2i):

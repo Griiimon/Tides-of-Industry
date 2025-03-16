@@ -6,7 +6,7 @@ extends BaseBuildingPlacementCondition
 
 
 
-func evaluate(tile: Vector2i, building: Building, world: World, island: IslandInstance)-> bool:
+func evaluate(tile: Vector2i, building: Building, world: World, city: CityInstance)-> bool:
 	for neighbor_tile in world.get_surrounding_cells(tile):
 		var neighbor_building: Building= world.get_building(neighbor_tile)
 		if neighbor_building:

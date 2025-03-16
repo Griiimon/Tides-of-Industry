@@ -18,37 +18,37 @@ theme_override_constants/margin_bottom = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Island HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="City HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Island Name Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="City Name Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Island #1"
 
-[node name="Population Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="Population Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Pop: 10"
 
-[node name="Production Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="Production Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Prod: 2"
 
-[node name="Pollution Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="Pollution Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Poll: 0"
 
-[node name="Power Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="Power Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Pow: 0"
 
-[node name="Research Label" type="Label" parent="MarginContainer/HBoxContainer/Island HBoxContainer"]
+[node name="Research Label" type="Label" parent="MarginContainer/HBoxContainer/City HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Res: 1"

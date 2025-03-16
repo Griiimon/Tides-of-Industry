@@ -3,7 +3,7 @@ extends BaseBuildingStatModifierWithStat
 
 
 
-func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
+func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, city: CityInstance)-> int:
 	return -base_value
 
 

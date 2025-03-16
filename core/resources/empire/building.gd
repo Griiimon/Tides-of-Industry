@@ -28,14 +28,14 @@ const DEFAULT_LOS= 5
 
 
 
-func evaluate_placement_conditions(tile: Vector2i, world: World, island: IslandInstance)-> bool:
+func evaluate_placement_conditions(tile: Vector2i, world: World, city: CityInstance)-> bool:
 	for condition in placement_conditions:
-		if not condition.evaluate(tile, self, world, island):
+		if not condition.evaluate(tile, self, world, city):
 			return false
 	return true
 
 
-func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: IslandInstance, temp_log: bool= false)-> int:
+func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, city: CityInstance, temp_log: bool= false)-> int:
 	var result: int= get_base_stat(stat, tier)
 
 	world.clear_building_stat(tile, stat, temp_log)
@@ -48,7 +48,7 @@ func get_stat(stat: Stat, tier: int, tile: Vector2i, world: World, island: Islan
 			if DebugSettings.is_enabled() and Input.is_action_pressed("debug_building_stats"):
 				breakpoint
 
-			var modifier_result= modifier.apply(result, self, tile, tier, world, island)
+			var modifier_result= modifier.apply(result, self, tile, tier, world, city)
 			if result > 0:
 				modifier_result= max(0, modifier_result)
 			elif result < 0:
@@ -78,9 +78,9 @@ func get_base_stat(stat: Stat, tier: int)-> int:
 	return 0
 
 
-func update_stats(tier: int, tile: Vector2i, world: World, island: IslandInstance):
+func update_stats(tier: int, tile: Vector2i, world: World, city: CityInstance):
 	for stat in Stat.values():
-		get_stat(stat, tier, tile, world, island, true)
+		get_stat(stat, tier, tile, world, city, true)
 
 
 func can_extract(raw_material: RawMaterial)-> bool:

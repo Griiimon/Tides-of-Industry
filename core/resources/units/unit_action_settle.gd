@@ -4,9 +4,9 @@ extends BaseUnitAction
 
 
 func execute(unit: UnitInstance)-> bool:
-	var island: IslandInstance= unit.world.settle_island(unit.tile_pos)
+	var city: CityInstance= unit.world.settle(unit.tile_pos)
 
-	island.build(GameData.town_center, 0, unit.tile_pos)
+	city.build(GameData.town_center, 0, unit.tile_pos)
 	SignalManager.building_constructed.emit(unit.tile_pos)
 	unit.kill()
 	return false

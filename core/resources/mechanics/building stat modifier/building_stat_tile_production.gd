@@ -13,19 +13,19 @@ extends BaseBuildingStatModifier
 
 
 
-func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, island: IslandInstance)-> int:
-	var result: int= process_tile(tile, building, building_tier, world, island)
+func apply(base_value: int, building: Building, tile: Vector2i, building_tier: int, world: World, city: CityInstance)-> int:
+	var result: int= process_tile(tile, building, building_tier, world, city)
 	if result == 0 and not override:
 		return base_value
 	return result
 
 
-func process_tile(tile: Vector2i, building: Building, building_tier: int, world: World, island: IslandInstance)-> int:
+func process_tile(tile: Vector2i, building: Building, building_tier: int, world: World, city: CityInstance)-> int:
 	var production= null
 	
 	var other_building: Building= world.get_building(tile)
 	if other_building and other_building in buildings:
-		production= other_building.get_stat(Building.Stat.PRODUCTION, building_tier, tile, world, island)
+		production= other_building.get_stat(Building.Stat.PRODUCTION, building_tier, tile, world, city)
 	else:
 		var raw_material: RawMaterial= world.get_raw_material(tile, only_raw_materials)
 		if raw_material in raw_materials:
