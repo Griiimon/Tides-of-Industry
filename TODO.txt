@@ -6,10 +6,6 @@ dont use island/island_instance BUT city:
 	city has multiple town centers, new town centers need to be in radius + 5 (?) of another one
 	discover Colonies tech to settle other islands?
 
-grey out available unit action if it cant be executed
-
-try to find next active unit after unit is killed
-
 reform points generation decreases with amount of accumulated, unspent points
 
 building list scroll

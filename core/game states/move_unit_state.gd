@@ -18,7 +18,7 @@ func on_enter():
 	state_machine.world.set_unit_selection_box(unit.tile_pos)
 	SignalManager.player_unit_selected.emit(unit)
 	SignalManager.show_tile_info.emit(unit.tile_pos)
-	
+
 
 func on_exit(re_enter_same_state: bool):
 	state_machine.world.reset_unit_selection_boxes()
@@ -84,6 +84,7 @@ func try_to_move_to(target_pos: Vector2i):
 			UnitActionMove.new().execute(tmp_unit)
 		else:
 			state_machine.world.set_unit_selection_box(unit.tile_pos)
+			SignalManager.update_unit_available_actions.emit(unit)
 
 
 func on_unit_deselected(unit: UnitInstance):

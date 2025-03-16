@@ -37,6 +37,7 @@ empire_modifiers = Array[ExtResource("2_cudlk")]([])
 production = Array[int]([])
 pollution = Array[int]([25, 50])
 population = Array[int]([])
+active_producer = true
 power = Array[int]([50, 100])
 research = Array[int]([])
 max_workers = Array[int]([20, 40])

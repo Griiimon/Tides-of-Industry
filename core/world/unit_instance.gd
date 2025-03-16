@@ -64,7 +64,9 @@ func discover():
 
 
 func kill():
-	SignalManager.player_unit_deselected.emit(self)
+	if not is_ai:
+		SignalManager.player_unit_deselected.emit(self)
+		SignalManager.player_unit_killed.emit(self)
 	world.remove_unit(self)
 
 

@@ -20,6 +20,7 @@ var is_forcing_pause: bool= false: set= set_is_forcing_pause
 
 func _ready() -> void:
 	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
+	SignalManager.player_unit_killed.connect(on_player_unit_move_finished)
 	SignalManager.force_pause.connect(set_is_forcing_pause.bind(true))
 	SignalManager.cancel_forced_pause.connect(set_is_forcing_pause.bind(false))
 	turn_cooldown.timeout.connect(on_turn_cooldown_timeout)
