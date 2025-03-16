@@ -429,7 +429,7 @@ tile_set = SubResource("TileSet_bfrmp")
 z_index = 10
 tile_set = SubResource("TileSet_p7g0w")
 
-[node name="Islands" type="Node" parent="World"]
+[node name="Cities" type="Node" parent="World"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

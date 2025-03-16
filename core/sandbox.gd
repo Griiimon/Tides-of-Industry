@@ -26,7 +26,7 @@ func late_ready():
 	
 # ------- BUILDINGS ------------
 	if enable_buildings:
-		game_states.world.settle_island(tile).build(town_center, 0, tile)
+		game_states.world.settle(tile).build(town_center, 0, tile)
 	
 # ------- UNITS ------------
 	if enable_units:

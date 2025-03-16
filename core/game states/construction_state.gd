@@ -20,7 +20,7 @@ var current_tile: Vector2i:
 		if world.has_building(tile):
 			is_valid_position= false
 		else:
-			is_valid_position= building.evaluate_placement_conditions(tile, world, world.get_island(tile)) 
+			is_valid_position= building.evaluate_placement_conditions(tile, world, world.get_city(tile)) 
 
 var info: ConstructionInfo
 
@@ -69,16 +69,16 @@ func on_unhandled_input(event: InputEvent) -> void:
 
 
 func build():
-	var island: IslandInstance
+	var city: CityInstance
 	
 	if building.is_town_center():
-		island= state_machine.world.settle_island(current_tile)
+		city= state_machine.world.settle(current_tile)
 	else:
-		island= state_machine.world.get_island(current_tile)
-		assert(island)
+		city= state_machine.world.get_city(current_tile)
+		assert(city)
 
 	GameData.get_empire_state().spend_construction_points(cost)
-	island.build(building, tier, current_tile)
+	city.build(building, tier, current_tile)
 
 
 func update_current_tile(force_update: bool= false):
@@ -87,7 +87,7 @@ func update_current_tile(force_update: bool= false):
 		current_tile= new_tile
 		state_machine.world.draw_ghost_building(building, tier, current_tile)
 
-		building.update_stats(tier, current_tile, state_machine.world, state_machine.world.get_island(current_tile))
+		building.update_stats(tier, current_tile, state_machine.world, state_machine.world.get_city(current_tile))
 		info.is_valid_position= is_valid_position
 		info.stats= state_machine.world.temp_building_log
 		SignalManager.display_construction_info.emit(info)

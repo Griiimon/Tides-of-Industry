@@ -15,8 +15,8 @@ func tick(world: World):
 	
 	var total_production: int
 	
-	for island in world.get_islands():
-		total_production+= island.production
+	for city in world.get_cities():
+		total_production+= city.production
 	
 	var yields: ProductionYields= state.production_yields
 	
@@ -79,7 +79,7 @@ func spawn_random_specialist(world: World):
 		if rnd < chances[key]:
 			specialist_unit= GameData.specialist_unit_lookup[key]
 	
-	var spawn_pos: Vector2i= world.get_islands()[0].definition.town_center_positions[0]
+	var spawn_pos: Vector2i= world.get_cities()[0].definition.town_center_positions[0]
 	world.spawn_unit(specialist_unit, spawn_pos)
 
 

@@ -41,7 +41,7 @@ func _ready() -> void:
 
 	SignalManager.show_tile_info.connect(show_tile_info)
 	SignalManager.hide_tile_info.connect(hide_tile_info)
-	SignalManager.island_stats_updated.connect(on_island_stats_updated)
+	SignalManager.city_stats_updated.connect(on_city_stats_updated)
 	SignalManager.empire_stats_updated.connect(update_top_bar)
 	SignalManager.building_constructed.connect(on_building_constructed)
 	SignalManager.building_upgraded.connect(on_building_constructed)
@@ -80,7 +80,7 @@ func hide_tile_info():
 
 
 func update_top_bar():
-	top_bar_container.update(get_island_in_view())
+	top_bar_container.update(get_city_in_view())
 
 
 func on_build(building: Building, tier: int):
@@ -97,8 +97,8 @@ func on_cancel_upgrade():
 	game_states.reset()
 
 
-func on_island_stats_updated(island: IslandInstance):
-	if get_island_in_view() == island:
+func on_city_stats_updated(city: CityInstance):
+	if get_city_in_view() == city:
 		update_top_bar()
 
 
@@ -138,6 +138,6 @@ func on_player_unit_action_executed(unit: UnitInstance):
 	show_tile_info(unit.tile_pos)
 
 
-func get_island_in_view()-> IslandInstance:
+func get_city_in_view()-> CityInstance:
 	var global_pos: Vector2= get_viewport().get_camera_2d().get_screen_center_position()
-	return world.get_island(world.get_tile(global_pos))
+	return world.get_city(world.get_tile(global_pos))

@@ -1,11 +1,11 @@
 class_name TopBarPanelContainer
 extends PanelContainer
 
-@onready var island_container: HBoxContainer = %"Island HBoxContainer"
+@onready var city_container: HBoxContainer = %"City HBoxContainer"
 @onready var empire_container: HBoxContainer = %"Empire HBoxContainer"
 
 
-@onready var island_name_label: Label = %"Island Name Label"
+@onready var city_name_label: Label = %"City Name Label"
 @onready var population_label: Label = %"Population Label"
 @onready var production_label: Label = %"Production Label"
 @onready var pollution_label: Label = %"Pollution Label"
@@ -19,18 +19,18 @@ extends PanelContainer
 
 
 
-func update(island: IslandInstance):
-	if not island:
-		island_container.hide()
+func update(city: CityInstance):
+	if not city:
+		city_container.hide()
 	else:
-		island_name_label.text= island.definition.name
-		population_label.text= str("Pop: %d (%d)" % [ island.population, island.max_workers ])
-		production_label.text= str("Prod: %d (%d x %.2f)" % [ island.production, island.base_production, island.workers_ratio ])
-		pollution_label.text= str("Poll: ", island.pollution)
-		power_label.text= str("Pow: %d/%d" % [ island.power, island.base_power ])
-		research_label.text= str("Res: ", island.research)
+		city_name_label.text= city.definition.name
+		population_label.text= str("Pop: %d (%d)" % [ city.population, city.max_workers ])
+		production_label.text= str("Prod: %d (%d x %.2f)" % [ city.production, city.base_production, city.workers_ratio ])
+		pollution_label.text= str("Poll: ", city.pollution)
+		power_label.text= str("Pow: %d/%d" % [ city.power, city.base_power ])
+		research_label.text= str("Res: ", city.research)
 	
-		island_container.show()
+		city_container.show()
 		
 		
 	var empire_state: EmpireState= GameData.get_empire_state()

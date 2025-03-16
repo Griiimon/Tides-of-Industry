@@ -6,7 +6,7 @@ extends BaseBuildingPlacementCondition
 
 
 
-func evaluate(tile: Vector2i, building: Building, world: World, island: IslandInstance)-> bool:
+func evaluate(tile: Vector2i, building: Building, world: World, city: CityInstance)-> bool:
 	var feature: TerrainFeature= world.get_feature(tile)
 	
 	if not feature_whitelist.is_empty() and not feature in feature_whitelist:

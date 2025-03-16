@@ -1,7 +1,7 @@
-class_name IslandInstance
+class_name CityInstance
 extends Node2D
 
-var definition: Island
+var definition: City
 
 var world: World
 var buildings: Array[Vector2i]
@@ -38,7 +38,7 @@ func update_stats():
 	update_production()
 	update_research()
 
-	SignalManager.island_stats_updated.emit(self)
+	SignalManager.city_stats_updated.emit(self)
 
 
 func build(building: Building, tier: int, tile: Vector2i):
