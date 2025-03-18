@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PoliticalView" load_steps=2 format=3 uid="uid://jicl8av655wi"]
+
+[ext_resource type="Script" path="res://core/resources/politics/political_view.gd" id="1_t6cny"]
+
+[resource]
+script = ExtResource("1_t6cny")
+min_require_pop = 0
+pop_cap = 100
+name = ""
