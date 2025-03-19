@@ -38,6 +38,7 @@ func tick(world: World):
 			if modifier.lifetime == 0:
 				state.active_modifiers.erase(modifier)
 
+	
 	state.reform_points+= state.reform_points_increase
 	
 	state.specialist_points_increase= world.get_population() * ( 0.1 + state.get_policy_modifier(BasePolicy.Modifier.SPECIALIZATION_BONUS_PCT))

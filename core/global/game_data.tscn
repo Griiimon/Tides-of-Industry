@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dh5gadx5pq421"]
+[gd_scene load_steps=57 format=3 uid="uid://dh5gadx5pq421"]
 
 [ext_resource type="Script" path="res://core/global/game_data.gd" id="1_xq1md"]
 [ext_resource type="Script" path="res://core/resources/empire/building.gd" id="2_67we0"]
@@ -54,6 +54,13 @@
 [ext_resource type="Script" path="res://core/events/base_event.gd" id="42_i6skf"]
 [ext_resource type="Resource" uid="uid://doowk5r80rqbq" path="res://data/events/new_research.tres" id="43_kgsln"]
 [ext_resource type="Resource" uid="uid://bpx3ojfntyerl" path="res://data/policies/specialization.tres" id="51_nq2wr"]
+[ext_resource type="Script" path="res://core/resources/misc/level_settings.gd" id="55_kp35w"]
+
+[sub_resource type="Resource" id="Resource_m2uxl"]
+script = ExtResource("55_kp35w")
+initial_reform_points = 5
+base_reform_points_increase = 0.005
+base_stability = 50.0
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_xq1md")
@@ -67,3 +74,4 @@ policies = Array[ExtResource("34_6faj6")]([ExtResource("35_ab8ks"), ExtResource(
 initial_building_unlocks = Array[ExtResource("2_67we0")]([ExtResource("3_y316n")])
 initial_events = Array[ExtResource("42_i6skf")]([ExtResource("43_kgsln")])
 town_center = ExtResource("3_ge107")
+level_settings = SubResource("Resource_m2uxl")

@@ -42,10 +42,14 @@ func update(tile: Vector2i, building: Building, terrain: Terrain, feature: Terra
 	if unit:
 		unit_label.text= unit.type.get_display_name()
 		unit_moves_label.text= str(unit.moves_left, " move(s)")
-		unit_ap_label.text= str(unit.action_points_left, "/", unit.type.action_points, " AP")
 		unit_label.show()
 		unit_moves_label.show()
-		unit_ap_label.show()
+
+		if unit.action_points_left >= 0:
+			unit_ap_label.text= str(unit.action_points_left, "/", unit.type.action_points, " AP")
+			unit_ap_label.show()
+		else:
+			unit_ap_label.hide()
 	else:
 		unit_label.hide()
 		unit_moves_label.hide()

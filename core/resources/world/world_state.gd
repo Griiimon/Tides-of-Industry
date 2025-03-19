@@ -17,10 +17,11 @@ func initialize():
 	for event in GameData.initial_events:
 		event_manager.add_event(event)
 	
-	empire_state.initialize()
 
 	rng= RandomNumberGenerator.new()
 	rng.seed= get_seed_hash()
+
+	SignalManager.world_state_initialized.emit()
 
 
 func get_seed_hash()-> int:

@@ -13,8 +13,11 @@ extends Node
 @export var town_center: TownCenter
 
 
+@export var level_settings: LevelSettings
+
 var world_state: WorldState= WorldState.new()
 var user_settings: UserSettings= UserSettings.new()
+
 
 var terrain_set_lookup: Dictionary
 var terrain_feature_atlas_lookup: Dictionary
@@ -44,7 +47,10 @@ func _ready() -> void:
 		if unit.specialist != Unit.Specialist.NONE:
 			specialist_unit_lookup[unit.specialist]= unit
 
+
+func initialize():
 	world_state.initialize()
+	world_state.empire_state.initialize()
 
 
 func get_empire_state()-> EmpireState:

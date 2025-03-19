@@ -1,5 +1,7 @@
 extends Node
 
+signal world_state_initialized
+
 signal show_tile_info(tile: Vector2)
 signal hide_tile_info
 signal camera_moved

@@ -25,6 +25,8 @@ func _ready() -> void:
 	SignalManager.cancel_forced_pause.connect(set_is_forcing_pause.bind(false))
 	turn_cooldown.timeout.connect(on_turn_cooldown_timeout)
 	
+	GameData.initialize()
+	
 	late_ready.call_deferred()
 
 

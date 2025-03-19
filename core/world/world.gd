@@ -43,7 +43,7 @@ var temp_building_log:= BuildingLog.new()
 
 
 func _ready() -> void:
-	
+	SignalManager.world_state_initialized.connect(initialize)
 	SignalManager.player_unit_move_finished.connect(on_player_unit_move_finished)
 	
 	for terrain in GameData.terrains:
@@ -53,13 +53,14 @@ func _ready() -> void:
 				terrain_index_lookup[terrain]= i
 				break
 	
+	#if not generator: return
+
+
+func initialize():
 	rng= RandomNumberGenerator.new()
 	rng.seed= GameData.world_state.get_seed_hash() 
-	
-	if not generator: return
 
 	clear_tilemaps()
-	#generate_chunk(Vector2i.ZERO)
 	generate_radius(Vector2i.ZERO, initial_radius, false)
 
 
